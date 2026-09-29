@@ -1,1 +1,2751 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>MAISON GLOBAL — International Beauty</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600&display=swap');
+
+:root{
+    --black:#080808;
+    --black2:#121212;
+    --cream:#f5f0e8;
+    --white:#fffdf9;
+    --gold:#c7a86b;
+    --gold2:#e1c98e;
+    --gray:#77736d;
+    --line:#ded8cf;
+}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:var(--white);
+    color:#111;
+    font-family:'Montserrat',Arial,sans-serif;
+}
+
+button{
+    font-family:inherit;
+    cursor:pointer;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:78px;
+    z-index:1000;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 5%;
+    color:white;
+    transition:.4s;
+}
+
+header.scrolled{
+    background:rgba(8,8,8,.94);
+    backdrop-filter:blur(15px);
+    box-shadow:0 5px 30px rgba(0,0,0,.15);
+}
+
+.logo{
+    font-family:'Cormorant Garamond',serif;
+    font-size:27px;
+    letter-spacing:.18em;
+    white-space:nowrap;
+}
+
+.nav{
+    display:flex;
+    gap:30px;
+}
+
+.nav a{
+    color:inherit;
+    text-decoration:none;
+    font-size:10px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    position:relative;
+}
+
+.nav a::after{
+    content:"";
+    position:absolute;
+    bottom:-7px;
+    left:0;
+    width:0;
+    height:1px;
+    background:var(--gold);
+    transition:.3s;
+}
+
+.nav a:hover::after{
+    width:100%;
+}
+
+.cart-button{
+    background:transparent;
+    color:inherit;
+    border:1px solid rgba(255,255,255,.6);
+    padding:11px 16px;
+    font-size:10px;
+    letter-spacing:.14em;
+    transition:.3s;
+}
+
+.cart-button:hover{
+    background:white;
+    color:#111;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:100vh;
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    color:white;
+    background:
+        radial-gradient(circle at 75% 20%,rgba(199,168,107,.20),transparent 27%),
+        radial-gradient(circle at 15% 80%,rgba(255,255,255,.06),transparent 25%),
+        linear-gradient(120deg,#050505,#17130f 55%,#292118);
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        linear-gradient(90deg,rgba(0,0,0,.85),rgba(0,0,0,.35),rgba(0,0,0,.55));
+}
+
+.hero-decoration{
+    position:absolute;
+    width:600px;
+    height:600px;
+    border:1px solid rgba(199,168,107,.18);
+    border-radius:50%;
+    right:-180px;
+    top:-150px;
+}
+
+.hero-decoration::after{
+    content:"";
+    position:absolute;
+    inset:55px;
+    border:1px solid rgba(199,168,107,.12);
+    border-radius:50%;
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    max-width:1250px;
+    width:100%;
+    margin:auto;
+    padding:130px 5% 80px;
+}
+
+.hero-kicker{
+    color:var(--gold2);
+    font-size:11px;
+    letter-spacing:.42em;
+    text-transform:uppercase;
+    animation:fadeUp 1s ease;
+}
+
+.hero h1{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:300;
+    font-size:clamp(65px,9vw,130px);
+    line-height:.78;
+    margin:28px 0;
+    letter-spacing:-.03em;
+    animation:fadeUp 1.2s ease;
+}
+
+.hero h1 span{
+    font-style:italic;
+    color:#ddd4c7;
+}
+
+.hero-description{
+    max-width:520px;
+    color:#d3cec5;
+    line-height:1.9;
+    font-size:13px;
+    animation:fadeUp 1.4s ease;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:12px;
+    margin-top:35px;
+    animation:fadeUp 1.6s ease;
+}
+
+.btn-primary{
+    border:0;
+    background:var(--cream);
+    color:#111;
+    padding:16px 27px;
+    font-size:10px;
+    letter-spacing:.16em;
+}
+
+.btn-outline{
+    border:1px solid rgba(255,255,255,.5);
+    background:transparent;
+    color:white;
+    padding:16px 27px;
+    font-size:10px;
+    letter-spacing:.16em;
+}
+
+.hero-bottom{
+    position:absolute;
+    bottom:35px;
+    left:5%;
+    right:5%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:9px;
+    letter-spacing:.2em;
+    color:#aaa;
+}
+
+.hero-line{
+    width:130px;
+    height:1px;
+    background:#777;
+}
+
+/* =========================
+   INTRO
+========================= */
+
+.intro{
+    padding:130px 5%;
+    text-align:center;
+    background:var(--cream);
+}
+
+.eyebrow{
+    color:#8e7957;
+    font-size:10px;
+    letter-spacing:.35em;
+    text-transform:uppercase;
+}
+
+.intro h2{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:400;
+    font-size:clamp(45px,6vw,78px);
+    line-height:1;
+    max-width:950px;
+    margin:25px auto;
+}
+
+.intro p{
+    max-width:700px;
+    margin:auto;
+    color:#6f6960;
+    line-height:1.9;
+    font-size:14px;
+}
+
+/* =========================
+   ABOUT
+========================= */
+
+.about{
+    max-width:1300px;
+    margin:auto;
+    padding:120px 5%;
+}
+
+.about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:90px;
+    align-items:center;
+}
+
+.about-number{
+    font-family:'Cormorant Garamond',serif;
+    font-size:120px;
+    color:#e8e0d5;
+    line-height:.7;
+}
+
+.about h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:60px;
+    font-weight:400;
+    line-height:.95;
+    margin:20px 0 30px;
+}
+
+.about p{
+    color:#666;
+    line-height:1.9;
+    font-size:14px;
+}
+
+.about-signature{
+    margin-top:35px;
+    font-family:'Cormorant Garamond',serif;
+    font-size:25px;
+    font-style:italic;
+}
+
+/* =========================
+   PROCESS
+========================= */
+
+.process{
+    background:#0a0a0a;
+    color:white;
+    padding:120px 5%;
+}
+
+.process-inner{
+    max-width:1250px;
+    margin:auto;
+}
+
+.process-title{
+    max-width:700px;
+    margin-bottom:70px;
+}
+
+.process-title h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:70px;
+    font-weight:400;
+    line-height:.9;
+    margin-top:20px;
+}
+
+.process-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    border-top:1px solid #333;
+}
+
+.process-card{
+    padding:35px 25px 35px 0;
+    border-right:1px solid #333;
+    margin-right:25px;
+}
+
+.process-card:last-child{
+    border-right:0;
+}
+
+.process-number{
+    color:var(--gold);
+    font-family:'Cormorant Garamond',serif;
+    font-size:40px;
+}
+
+.process-card h3{
+    font-family:'Cormorant Garamond',serif;
+    font-size:30px;
+    font-weight:400;
+    margin:15px 0;
+}
+
+.process-card p{
+    color:#aaa;
+    font-size:12px;
+    line-height:1.8;
+}
+
+/* =========================
+   CATEGORIES
+========================= */
+
+.categories{
+    padding:120px 5%;
+    max-width:1400px;
+    margin:auto;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.section-title h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:65px;
+    font-weight:400;
+    margin-top:15px;
+}
+
+.category-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.category{
+    height:600px;
+    position:relative;
+    overflow:hidden;
+    background:
+        linear-gradient(180deg,transparent 35%,rgba(0,0,0,.85)),
+        linear-gradient(135deg,#d8d0c4,#756e64);
+    color:white;
+    display:flex;
+    align-items:end;
+    padding:38px;
+    transition:.5s;
+}
+
+.category:hover{
+    transform:translateY(-8px);
+}
+
+.category:nth-child(2){
+    background:
+        linear-gradient(180deg,transparent 35%,rgba(0,0,0,.85)),
+        linear-gradient(135deg,#cfc5b4,#80766a);
+}
+
+.category:nth-child(3){
+    background:
+        linear-gradient(180deg,transparent 35%,rgba(0,0,0,.85)),
+        linear-gradient(135deg,#5e564d,#151311);
+}
+
+.category-content h3{
+    font-family:'Cormorant Garamond',serif;
+    font-size:52px;
+    font-weight:400;
+}
+
+.category-content p{
+    font-size:11px;
+    color:#ddd;
+    margin:10px 0 22px;
+    line-height:1.6;
+}
+
+.category-content button{
+    background:transparent;
+    color:white;
+    border:1px solid rgba(255,255,255,.5);
+    padding:11px 17px;
+    font-size:9px;
+    letter-spacing:.14em;
+}
+
+/* =========================
+   SHOP
+========================= */
+
+.shop{
+    max-width:1400px;
+    margin:auto;
+    padding:120px 5%;
+}
+
+.shop-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+    margin-bottom:40px;
+}
+
+.shop-header h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:70px;
+    font-weight:400;
+}
+
+.shop-header p{
+    max-width:380px;
+    color:#777;
+    font-size:12px;
+    line-height:1.7;
+}
+
+.filters{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-bottom:40px;
+}
+
+.filter{
+    background:white;
+    border:1px solid var(--line);
+    padding:11px 17px;
+    font-size:9px;
+    letter-spacing:.13em;
+    text-transform:uppercase;
+}
+
+.filter.active,
+.filter:hover{
+    background:#111;
+    color:white;
+    border-color:#111;
+}
+
+.product-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:30px 20px;
+}
+
+.product{
+    position:relative;
+    min-width:0;
+}
+
+.product-image{
+    aspect-ratio:4/5;
+    background:#eeeae3;
+    position:relative;
+    overflow:hidden;
+}
+
+.product-image img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    padding:20px;
+    transition:.6s cubic-bezier(.2,.7,.2,1);
+}
+
+.product:hover .product-image img{
+    transform:scale(1.08);
+}
+
+.product-overlay{
+    position:absolute;
+    inset:auto 0 0;
+    padding:20px;
+    color:white;
+    background:linear-gradient(transparent,rgba(0,0,0,.92));
+    transform:translateY(100%);
+    transition:.4s;
+}
+
+.product:hover .product-overlay{
+    transform:translateY(0);
+}
+
+.product-overlay small{
+    color:var(--gold2);
+    letter-spacing:.18em;
+    font-size:9px;
+}
+
+.product-overlay p{
+    font-size:11px;
+    line-height:1.5;
+    margin:9px 0 13px;
+}
+
+.product-overlay button{
+    border:0;
+    background:white;
+    color:#111;
+    padding:9px 12px;
+    font-size:9px;
+    letter-spacing:.12em;
+}
+
+.product-info{
+    padding:15px 0 25px;
+}
+
+.product-brand{
+    font-size:9px;
+    color:#858078;
+    letter-spacing:.17em;
+    text-transform:uppercase;
+}
+
+.product-name{
+    font-family:'Cormorant Garamond',serif;
+    font-size:23px;
+    margin:6px 0;
+}
+
+.product-price{
+    font-size:12px;
+}
+
+.swatches{
+    display:flex;
+    gap:6px;
+    margin:10px 0;
+}
+
+.swatch{
+    width:18px;
+    height:18px;
+    border-radius:50%;
+    border:1px solid #aaa;
+}
+
+.add-cart{
+    width:100%;
+    background:#111;
+    color:white;
+    border:0;
+    padding:12px;
+    font-size:9px;
+    letter-spacing:.14em;
+    margin-top:8px;
+}
+
+/* =========================
+   STORY BANNER
+========================= */
+
+.story-banner{
+    background:#0a0a0a;
+    color:white;
+    min-height:500px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:80px 20px;
+}
+
+.story-banner h2{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:300;
+    font-size:clamp(55px,8vw,105px);
+    line-height:.85;
+}
+
+.story-banner p{
+    max-width:580px;
+    margin:30px auto;
+    color:#aaa;
+    line-height:1.8;
+    font-size:13px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    background:#050505;
+    color:white;
+    padding:80px 5% 35px;
+}
+
+.footer-grid{
+    max-width:1300px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1fr;
+    gap:50px;
+    padding-bottom:60px;
+}
+
+.footer-logo{
+    font-family:'Cormorant Garamond',serif;
+    font-size:34px;
+    letter-spacing:.15em;
+}
+
+.footer-description{
+    color:#999;
+    font-size:11px;
+    line-height:1.8;
+    max-width:350px;
+    margin-top:20px;
+}
+
+.footer-col h4{
+    font-size:9px;
+    letter-spacing:.2em;
+    color:var(--gold2);
+    margin-bottom:20px;
+}
+
+.footer-col a{
+    display:block;
+    color:#aaa;
+    text-decoration:none;
+    font-size:11px;
+    margin:12px 0;
+}
+
+.footer-bottom{
+    max-width:1300px;
+    margin:auto;
+    border-top:1px solid #222;
+    padding-top:25px;
+    color:#666;
+    font-size:9px;
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.modal-bg{
+    position:fixed;
+    inset:0;
+    z-index:2000;
+    background:rgba(0,0,0,.75);
+    backdrop-filter:blur(8px);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+.modal{
+    background:var(--white);
+    width:min(1000px,100%);
+    max-height:92vh;
+    overflow:auto;
+    position:relative;
+    padding:35px;
+}
+
+.close{
+    position:absolute;
+    right:20px;
+    top:15px;
+    background:none;
+    border:0;
+    font-size:28px;
+}
+
+.modal-product{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:45px;
+}
+
+.modal-product-image{
+    background:#eeeae3;
+    min-height:520px;
+}
+
+.modal-product-image img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+}
+
+.modal-brand{
+    font-size:10px;
+    letter-spacing:.18em;
+    color:#8b7a60;
+}
+
+.modal h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:50px;
+    font-weight:400;
+    line-height:.95;
+    margin:18px 0;
+}
+
+.modal-description{
+    color:#666;
+    line-height:1.8;
+    font-size:13px;
+}
+
+.modal-price{
+    font-size:20px;
+    margin:25px 0;
+}
+
+.color-title{
+    font-size:10px;
+    letter-spacing:.12em;
+    margin-bottom:12px;
+}
+
+.color-options{
+    display:flex;
+    gap:10px;
+}
+
+.color-option{
+    width:30px;
+    height:30px;
+    border-radius:50%;
+    border:2px solid transparent;
+}
+
+.color-option.selected{
+    border-color:#111;
+    outline:2px solid white;
+    box-shadow:0 0 0 1px #111;
+}
+
+.quantity{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    margin:25px 0;
+}
+
+.quantity button{
+    width:34px;
+    height:34px;
+    background:white;
+    border:1px solid #ccc;
+}
+
+.modal-add{
+    width:100%;
+    background:#111;
+    color:white;
+    border:0;
+    padding:16px;
+    letter-spacing:.15em;
+    font-size:10px;
+}
+
+/* =========================
+   CHECKOUT
+========================= */
+
+.checkout-title{
+    font-family:'Cormorant Garamond',serif;
+    font-size:48px;
+    font-weight:400;
+    margin-bottom:30px;
+}
+
+.checkout-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+.checkout-input{
+    width:100%;
+    padding:14px;
+    border:1px solid #d9d2c9;
+    background:white;
+    outline:none;
+    font-family:inherit;
+}
+
+.checkout-input:focus{
+    border-color:#111;
+}
+
+.checkout-full{
+    grid-column:1/-1;
+}
+
+.checkout-section{
+    margin:30px 0 12px;
+    font-family:'Cormorant Garamond',serif;
+    font-size:25px;
+}
+
+.demo-note{
+    background:#f1ece4;
+    padding:14px;
+    font-size:10px;
+    color:#666;
+    line-height:1.6;
+    margin:20px 0;
+}
+
+.order-success{
+    text-align:center;
+    padding:70px 20px;
+}
+
+.success-symbol{
+    font-family:'Cormorant Garamond',serif;
+    font-size:70px;
+    color:var(--gold);
+}
+
+.order-success h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:55px;
+    font-weight:400;
+    margin:15px 0;
+}
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:1000px){
+
+    .nav{
+        display:none;
+    }
+
+    .process-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .category-grid{
+        grid-template-columns:1fr;
+    }
+
+    .category{
+        height:500px;
+    }
+
+    .product-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+@media(max-width:650px){
+
+    header{
+        height:65px;
+        padding:0 18px;
+    }
+
+    .logo{
+        font-size:20px;
+    }
+
+    .cart-button{
+        padding:9px 11px;
+    }
+
+    .hero-content{
+        padding:120px 22px 80px;
+    }
+
+    .hero h1{
+        font-size:65px;
+    }
+
+    .hero-buttons{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .hero-bottom{
+        left:22px;
+        right:22px;
+    }
+
+    .intro{
+        padding:90px 22px;
+    }
+
+    .about{
+        padding:90px 22px;
+    }
+
+    .about-grid{
+        grid-template-columns:1fr;
+        gap:30px;
+    }
+
+    .about h2{
+        font-size:50px;
+    }
+
+    .process{
+        padding:90px 22px;
+    }
+
+    .process-title h2{
+        font-size:55px;
+    }
+
+    .process-grid{
+        grid-template-columns:1fr;
+    }
+
+    .process-card{
+        border-right:0;
+        border-bottom:1px solid #333;
+        padding:30px 0;
+    }
+
+    .categories{
+        padding:90px 18px;
+    }
+
+    .section-title h2{
+        font-size:52px;
+    }
+
+    .category{
+        height:430px;
+    }
+
+    .shop{
+        padding:90px 18px;
+    }
+
+    .shop-header{
+        display:block;
+    }
+
+    .shop-header h2{
+        font-size:55px;
+        margin-bottom:15px;
+    }
+
+    .product-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:22px 12px;
+    }
+
+    .product-name{
+        font-size:19px;
+    }
+
+    .product-overlay{
+        display:none;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+
+    .modal{
+        padding:20px;
+    }
+
+    .modal-product{
+        grid-template-columns:1fr;
+        gap:25px;
+    }
+
+    .modal-product-image{
+        min-height:350px;
+    }
+
+    .modal h2{
+        font-size:42px;
+    }
+
+    .checkout-grid{
+        grid-template-columns:1fr;
+    }
+
+    .checkout-full{
+        grid-column:auto;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header id="header">
+
+    <div class="logo">
+        MAISON GLOBAL
+    </div>
+
+    <nav class="nav">
+        <a href="#sobre">A Maison</a>
+        <a href="#trabalho">Nosso trabalho</a>
+        <a href="#categorias">Categorias</a>
+        <a href="#loja">Shop</a>
+    </nav>
+
+    <button class="cart-button" onclick="openCart()">
+        SACOLA (<span id="cartCount">0</span>)
+    </button>
+
+</header>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+    <div class="hero-decoration"></div>
+
+    <div class="hero-content">
+
+        <div class="hero-kicker">
+            INTERNATIONAL BEAUTY & ESTHETICS
+        </div>
+
+        <h1>
+            Beauty,<br>
+            <span>reimagined.</span>
+        </h1>
+
+        <p class="hero-description">
+            Uma nova forma de descobrir o universo da beleza internacional.
+            Curadoria, estética e experiência reunidas em uma única maison.
+        </p>
+
+        <div class="hero-buttons">
+
+            <button class="btn-primary"
+                    onclick="scrollToSection('loja')">
+                EXPLORAR COLEÇÃO
+            </button>
+
+            <button class="btn-outline"
+                    onclick="scrollToSection('sobre')">
+                CONHEÇA A MAISON
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="hero-bottom">
+
+        <span>
+            01 — MAISON GLOBAL
+        </span>
+
+        <div class="hero-line"></div>
+
+        <span>
+            INTERNATIONAL BEAUTY
+        </span>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     INTRO
+========================= -->
+
+<section class="intro">
+
+    <div class="eyebrow">
+        THE MAISON EXPERIENCE
+    </div>
+
+    <h2>
+        Beleza que atravessa fronteiras.
+    </h2>
+
+    <p>
+        A Maison Global nasceu para conectar o universo da beleza
+        internacional ao mercado brasileiro através de uma experiência
+        sofisticada, informativa e cuidadosamente construída.
+    </p>
+
+</section>
+
+
+<!-- =========================
+     SOBRE
+========================= -->
+
+<section class="about" id="sobre">
+
+    <div class="about-grid">
+
+        <div>
+
+            <div class="about-number">
+                01
+            </div>
+
+            <h2>
+                Mais do que uma distribuidora.
+                Uma conexão com o mundo da beleza.
+            </h2>
+
+            <p>
+                Nosso trabalho consiste em aproximar consumidores brasileiros
+                de uma seleção internacional de produtos de beleza e estética.
+            </p>
+
+            <br>
+
+            <p>
+                Trabalhamos com uma curadoria que reúne maquiagem,
+                skincare e fragrâncias de marcas reconhecidas mundialmente,
+                transformando produtos em uma experiência completa.
+            </p>
+
+            <div class="about-signature">
+                Maison Global
+            </div>
+
+        </div>
+
+        <div>
+
+            <div style="
+                min-height:620px;
+                background:
+                radial-gradient(circle at 70% 30%,#c9ad78 0%,transparent 25%),
+                linear-gradient(145deg,#17130f,#3a3024);
+                display:flex;
+                align-items:flex-end;
+                padding:45px;
+                color:white;
+            ">
+
+                <div>
+
+                    <div style="
+                        font-size:10px;
+                        letter-spacing:.3em;
+                        color:#d7bd86;
+                    ">
+                        OUR VISION
+                    </div>
+
+                    <div style="
+                        font-family:'Cormorant Garamond',serif;
+                        font-size:55px;
+                        line-height:.9;
+                        margin-top:18px;
+                    ">
+                        O luxo está<br>
+                        nos detalhes.
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     NOSSO TRABALHO
+========================= -->
+
+<section class="process" id="trabalho">
+
+    <div class="process-inner">
+
+        <div class="process-title">
+
+            <div class="eyebrow">
+                WHAT WE DO
+            </div>
+
+            <h2>
+                Do mundo<br>
+                para a sua beleza.
+            </h2>
+
+        </div>
+
+        <div class="process-grid">
+
+            <div class="process-card">
+
+                <div class="process-number">
+                    01
+                </div>
+
+                <h3>
+                    Curadoria
+                </h3>
+
+                <p>
+                    Selecionamos produtos e categorias que representam
+                    diferentes universos da beleza internacional.
+                </p>
+
+            </div>
+
+            <div class="process-card">
+
+                <div class="process-number">
+                    02
+                </div>
+
+                <h3>
+                    Conexão
+                </h3>
+
+                <p>
+                    Aproximamos marcas, produtos e consumidores
+                    através de uma experiência digital sofisticada.
+                </p>
+
+            </div>
+
+            <div class="process-card">
+
+                <div class="process-number">
+                    03
+                </div>
+
+                <h3>
+                    Seleção
+                </h3>
+
+                <p>
+                    Nossa proposta reúne maquiagem, skincare e fragrâncias
+                    em uma única seleção internacional.
+                </p>
+
+            </div>
+
+            <div class="process-card">
+
+                <div class="process-number">
+                    04
+                </div>
+
+                <h3>
+                    Experiência
+                </h3>
+
+                <p>
+                    Criamos uma jornada de compra que une informação,
+                    estética, praticidade e exclusividade.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CATEGORIAS
+========================= -->
+
+<section class="categories" id="categorias">
+
+    <div class="section-title">
+
+        <div class="eyebrow">
+            DISCOVER
+        </div>
+
+        <h2>
+            The world of beauty.
+        </h2>
+
+    </div>
+
+    <div class="category-grid">
+
+        <div class="category">
+
+            <div class="category-content">
+
+                <div class="eyebrow" style="color:#d7bd86;">
+                    01
+                </div>
+
+                <h3>
+                    Makeup
+                </h3>
+
+                <p>
+                    Cores, texturas e produtos para criar
+                    sua própria assinatura.
+                </p>
+
+                <button onclick="filterCategory('makeup')">
+                    EXPLORAR MAQUIAGEM
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="category">
+
+            <div class="category-content">
+
+                <div class="eyebrow" style="color:#d7bd86;">
+                    02
+                </div>
+
+                <h3>
+                    Skincare
+                </h3>
+
+                <p>
+                    Rituais de cuidado inspirados
+                    pela alta beleza internacional.
+                </p>
+
+                <button onclick="filterCategory('skin')">
+                    EXPLORAR SKINCARE
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="category">
+
+            <div class="category-content">
+
+                <div class="eyebrow" style="color:#d7bd86;">
+                    03
+                </div>
+
+                <h3>
+                    Fragrances
+                </h3>
+
+                <p>
+                    Fragrâncias que transformam
+                    presença em assinatura.
+                </p>
+
+                <button onclick="filterCategory('fragrance')">
+                    EXPLORAR FRAGRÂNCIAS
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SHOP
+========================= -->
+
+<section class="shop" id="loja">
+
+    <div class="shop-header">
+
+        <div>
+
+            <div class="eyebrow">
+                CURATED COLLECTION
+            </div>
+
+            <h2>
+                Shop the Maison.
+            </h2>
+
+        </div>
+
+        <p>
+            Explore nossa seleção demonstrativa de maquiagem,
+            skincare e fragrâncias internacionais.
+        </p>
+
+    </div>
+
+
+    <div class="filters">
+
+        <button class="filter active"
+                onclick="filterProducts('all',this)">
+            TODOS
+        </button>
+
+        <button class="filter"
+                onclick="filterProducts('makeup',this)">
+            MAQUIAGEM
+        </button>
+
+        <button class="filter"
+                onclick="filterProducts('skin',this)">
+            SKINCARE
+        </button>
+
+        <button class="filter"
+                onclick="filterProducts('fragrance',this)">
+            FRAGRÂNCIAS
+        </button>
+
+    </div>
+
+
+    <div class="product-grid" id="productGrid"></div>
+
+</section>
+
+
+<!-- =========================
+     FINAL CAMPAIGN
+========================= -->
+
+<section class="story-banner">
+
+    <div>
+
+        <div class="eyebrow">
+            MAISON GLOBAL
+        </div>
+
+        <h2>
+            Beauty has<br>
+            no borders.
+        </h2>
+
+        <p>
+            Uma experiência criada para aproximar o mundo
+            da beleza de você.
+        </p>
+
+        <button class="btn-primary"
+                onclick="scrollToSection('loja')">
+            DISCOVER THE COLLECTION
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="footer-grid">
+
+        <div>
+
+            <div class="footer-logo">
+                MAISON GLOBAL
+            </div>
+
+            <p class="footer-description">
+                International Beauty & Esthetics.
+                Uma experiência demonstrativa de distribuição,
+                curadoria e comércio de produtos de beleza.
+            </p>
+
+        </div>
+
+
+        <div class="footer-col">
+
+            <h4>EXPLORE</h4>
+
+            <a href="#sobre">A Maison</a>
+            <a href="#trabalho">Nosso trabalho</a>
+            <a href="#categorias">Categorias</a>
+            <a href="#loja">Shop</a>
+
+        </div>
+
+
+        <div class="footer-col">
+
+            <h4>COLLECTION</h4>
+
+            <a href="#loja">Makeup</a>
+            <a href="#loja">Skincare</a>
+            <a href="#loja">Fragrances</a>
+
+        </div>
+
+
+        <div class="footer-col">
+
+            <h4>MAISON</h4>
+
+            <a href="#">Instagram</a>
+            <a href="#">Contato</a>
+            <a href="#">Informações</a>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        © 2026 MAISON GLOBAL — Projeto demonstrativo.
+        Os valores exibidos são ilustrativos e o checkout não realiza pagamentos reais.
+
+    </div>
+
+</footer>
+
+
+<!-- =========================
+     MODAL
+========================= -->
+
+<div class="modal-bg" id="modal">
+
+    <div class="modal" id="modalContent"></div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   PRODUTOS
+========================= */
+
+const products = [
+
+{
+image:"IMG_9893.jpeg",
+brand:"DIOR",
+name:"Dior Addict Lip Glow",
+price:299,
+category:"makeup",
+description:"Bálsamo labial luminoso com proposta hidratante e acabamento sofisticado.",
+lipstick:true
+},
+
+{
+image:"IMG_9894.jpeg",
+brand:"DIOR",
+name:"Dior Forever",
+price:429,
+category:"makeup",
+description:"Base de acabamento sofisticado para uma pele uniforme."
+},
+
+{
+image:"IMG_9895.jpeg",
+brand:"CHANEL",
+name:"Rouge Coco Chanel",
+price:399,
+category:"makeup",
+description:"Batom cremoso com aparência elegante e sofisticada.",
+lipstick:true
+},
+
+{
+image:"IMG_9896.jpeg",
+brand:"CHANEL",
+name:"Les Beiges",
+price:565,
+category:"makeup",
+description:"Seleção de maquiagem inspirada em uma aparência natural."
+},
+
+{
+image:"IMG_9897.jpeg",
+brand:"YVES SAINT LAURENT",
+name:"Touche Éclat",
+price:299,
+category:"makeup",
+description:"Produto iluminador para criar pontos de luz no rosto."
+},
+
+{
+image:"IMG_9898.jpeg",
+brand:"GIORGIO ARMANI",
+name:"Luminous Silk Foundation",
+price:499,
+category:"makeup",
+description:"Base de acabamento luminoso e aparência natural."
+},
+
+{
+image:"IMG_9899.jpeg",
+brand:"TOM FORD",
+name:"Lip Color",
+price:399,
+category:"makeup",
+description:"Batom de acabamento intenso e sofisticado.",
+lipstick:true
+},
+
+{
+image:"IMG_9900.jpeg",
+brand:"GUERLAIN",
+name:"Rouge G",
+price:399,
+category:"makeup",
+description:"Batom luxuoso com acabamento marcante.",
+lipstick:true
+},
+
+{
+image:"IMG_9901.jpeg",
+brand:"LA MER",
+name:"Crème de la Mer",
+price:3540,
+category:"skin",
+description:"Creme facial de luxo para uma rotina de skincare premium."
+},
+
+{
+image:"IMG_9902.jpeg",
+brand:"LA PRAIRIE",
+name:"Skin Caviar",
+price:3200,
+category:"skin",
+description:"Tratamento premium inspirado no universo do caviar."
+},
+
+{
+image:"IMG_9903.jpeg",
+brand:"ESTÉE LAUDER",
+name:"Advanced Night Repair",
+price:649,
+category:"skin",
+description:"Sérum para uma rotina de cuidado noturno."
+},
+
+{
+image:"IMG_9904.jpeg",
+brand:"DIOR",
+name:"Dior Prestige La Crème",
+price:3589,
+category:"skin",
+description:"Creme de tratamento da linha Dior Prestige."
+},
+
+{
+image:"IMG_9905.jpeg",
+brand:"LANCÔME",
+name:"Absolue Kit",
+price:1890,
+category:"skin",
+description:"Seleção de cuidados premium para a pele."
+},
+
+{
+image:"IMG_9906.jpeg",
+brand:"SHISEIDO",
+name:"Future Solution LX",
+price:2200,
+category:"skin",
+description:"Tratamento avançado para uma rotina de skincare."
+},
+
+{
+image:"IMG_9907.jpeg",
+brand:"CLÉ DE PEAU BEAUTÉ",
+name:"La Crème",
+price:3174,
+category:"skin",
+description:"Creme facial de luxo com textura rica."
+},
+
+{
+image:"IMG_9908.jpeg",
+brand:"AUGUSTINUS BADER",
+name:"The Rich Cream",
+price:1200,
+category:"skin",
+description:"Creme nutritivo para uma rotina sofisticada."
+},
+
+{
+image:"IMG_9909.jpeg",
+brand:"CHANEL",
+name:"N°5 Paris",
+price:1199,
+category:"fragrance",
+description:"Fragrância clássica e atemporal."
+},
+
+{
+image:"IMG_9910.jpeg",
+brand:"CHANEL",
+name:"Coco Mademoiselle Paris",
+price:1099,
+category:"fragrance",
+description:"Fragrância elegante e marcante."
+},
+
+{
+image:"IMG_9911.jpeg",
+brand:"DIOR",
+name:"J’adore",
+price:899,
+category:"fragrance",
+description:"Fragrância floral sofisticada."
+},
+
+{
+image:"IMG_9912.jpeg",
+brand:"DIOR",
+name:"Miss Dior",
+price:899,
+category:"fragrance",
+description:"Fragrância delicada e feminina."
+},
+
+{
+image:"IMG_9913.jpeg",
+brand:"YVES SAINT LAURENT",
+name:"Black Opium",
+price:799,
+category:"fragrance",
+description:"Fragrância intensa e contemporânea."
+},
+
+{
+image:"IMG_9914.jpeg",
+brand:"TOM FORD",
+name:"Lost Cherry",
+price:2399,
+category:"fragrance",
+description:"Fragrância marcante e envolvente."
+},
+
+{
+image:"IMG_9915.jpeg",
+brand:"TOM FORD",
+name:"Oud Wood",
+price:2399,
+category:"fragrance",
+description:"Fragrância de perfil amadeirado sofisticado."
+},
+
+{
+image:"IMG_9916.jpeg",
+brand:"JO MALONE LONDON",
+name:"English Pear & Freesia",
+price:899,
+category:"fragrance",
+description:"Fragrância fresca e elegante."
+},
+
+{
+image:"IMG_9917.jpeg",
+brand:"ORIENT ROUGE",
+name:"Orient Rouge",
+price:699,
+category:"fragrance",
+description:"Fragrância envolvente para uma assinatura marcante."
+}
+
+];
+
+
+/* =========================
+   CARRINHO
+========================= */
+
+let cart = [];
+
+
+/* =========================
+   RENDER
+========================= */
+
+function renderProducts(list = products){
+
+    const grid = document.getElementById("productGrid");
+
+    grid.innerHTML = "";
+
+    list.forEach((product,index)=>{
+
+        const card = document.createElement("article");
+
+        card.className = "product";
+
+        card.innerHTML = `
+
+            <div class="product-image">
+
+                <img
+                    src="${product.image}"
+                    alt="${product.name}"
+                    onerror="this.style.opacity='.12'"
+                >
+
+                <div class="product-overlay">
+
+                    <small>${product.brand}</small>
+
+                    <p>
+                        ${product.description}
+                    </p>
+
+                    <button onclick="openProduct(${products.indexOf(product)})">
+                        VER PRODUTO
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div class="product-info">
+
+                <div class="product-brand">
+                    ${product.brand}
+                </div>
+
+                <div class="product-name">
+                    ${product.name}
+                </div>
+
+                <div class="product-price">
+                    ${formatPrice(product.price)}
+                </div>
+
+                ${
+                    product.lipstick
+                    ?
+                    `
+                    <div class="swatches">
+
+                        <span class="swatch" style="background:#d88f9a"></span>
+                        <span class="swatch" style="background:#c86d78"></span>
+                        <span class="swatch" style="background:#a9464e"></span>
+                        <span class="swatch" style="background:#8b3038"></span>
+                        <span class="swatch" style="background:#9c6a55"></span>
+
+                    </div>
+                    `
+                    :
+                    ""
+                }
+
+                <button
+                    class="add-cart"
+                    onclick="addToCart(${products.indexOf(product)})"
+                >
+                    ADICIONAR À SACOLA
+                </button>
+
+            </div>
+
+        `;
+
+        grid.appendChild(card);
+
+    });
+
+}
+
+
+/* =========================
+   FILTROS
+========================= */
+
+function filterProducts(category,button){
+
+    document.querySelectorAll(".filter")
+    .forEach(item=>item.classList.remove("active"));
+
+    button.classList.add("active");
+
+    if(category === "all"){
+
+        renderProducts(products);
+
+    }else{
+
+        renderProducts(
+            products.filter(product=>product.category === category)
+        );
+
+    }
+
+}
+
+
+function filterCategory(category){
+
+    document.getElementById("loja")
+    .scrollIntoView({
+        behavior:"smooth"
+    });
+
+    setTimeout(()=>{
+
+        const button = [...document.querySelectorAll(".filter")]
+        .find(btn=>btn.textContent.toLowerCase().includes(
+            category === "makeup"
+            ? "maquiagem"
+            : category === "skin"
+            ? "skincare"
+            : "fragrâncias"
+        ));
+
+        if(button){
+
+            filterProducts(category,button);
+
+        }
+
+    },600);
+
+}
+
+
+/* =========================
+   FORMATAR PREÇO
+========================= */
+
+function formatPrice(value){
+
+    return value.toLocaleString(
+        "pt-BR",
+        {
+            style:"currency",
+            currency:"BRL"
+        }
+    );
+
+}
+
+
+/* =========================
+   ADICIONAR
+========================= */
+
+function addToCart(index){
+
+    cart.push({
+        ...products[index],
+        quantity:1
+    });
+
+    updateCart();
+
+}
+
+
+/* =========================
+   CONTADOR
+========================= */
+
+function updateCart(){
+
+    document.getElementById("cartCount").textContent =
+        cart.reduce(
+            (total,item)=>total + item.quantity,
+            0
+        );
+
+}
+
+
+/* =========================
+   PRODUTO
+========================= */
+
+function openProduct(index){
+
+    const product = products[index];
+
+    const modal = document.getElementById("modal");
+
+    const content = document.getElementById("modalContent");
+
+    content.innerHTML = `
+
+        <button
+            class="close"
+            onclick="closeModal()"
+        >
+            ×
+        </button>
+
+        <div class="modal-product">
+
+            <div class="modal-product-image">
+
+                <img
+                    src="${product.image}"
+                    alt="${product.name}"
+                >
+
+            </div>
+
+            <div>
+
+                <div class="modal-brand">
+                    ${product.brand}
+                </div>
+
+                <h2>
+                    ${product.name}
+                </h2>
+
+                <p class="modal-description">
+                    ${product.description}
+                </p>
+
+                <div class="modal-price">
+                    ${formatPrice(product.price)}
+                </div>
+
+                ${
+                    product.lipstick
+                    ?
+                    `
+                    <div class="color-title">
+                        ESCOLHA A COR
+                    </div>
+
+                    <div class="color-options">
+
+                        <button
+                            class="color-option selected"
+                            style="background:#d88f9a"
+                        ></button>
+
+                        <button
+                            class="color-option"
+                            style="background:#c86d78"
+                        ></button>
+
+                        <button
+                            class="color-option"
+                            style="background:#a9464e"
+                        ></button>
+
+                        <button
+                            class="color-option"
+                            style="background:#8b3038"
+                        ></button>
+
+                        <button
+                            class="color-option"
+                            style="background:#9c6a55"
+                        ></button>
+
+                    </div>
+                    `
+                    :
+                    ""
+                }
+
+                <div class="quantity">
+
+                    <span>QUANTIDADE</span>
+
+                    <button onclick="changeQuantity(-1)">
+                        −
+                    </button>
+
+                    <strong id="productQuantity">
+                        1
+                    </strong>
+
+                    <button onclick="changeQuantity(1)">
+                        +
+                    </button>
+
+                </div>
+
+                <button
+                    class="modal-add"
+                    onclick="addProductWithQuantity(${index})"
+                >
+                    ADICIONAR À SACOLA
+                </button>
+
+            </div>
+
+        </div>
+
+    `;
+
+    modal.style.display = "flex";
+
+}
+
+
+/* =========================
+   QUANTIDADE
+========================= */
+
+let selectedQuantity = 1;
+
+function changeQuantity(amount){
+
+    selectedQuantity += amount;
+
+    if(selectedQuantity < 1){
+        selectedQuantity = 1;
+    }
+
+    document.getElementById("productQuantity")
+    .textContent = selectedQuantity;
+
+}
+
+function addProductWithQuantity(index){
+
+    for(let i=0;i<selectedQuantity;i++){
+
+        addToCart(index);
+
+    }
+
+    selectedQuantity = 1;
+
+    closeModal();
+
+}
+
+
+/* =========================
+   SACOLA
+========================= */
+
+function openCart(){
+
+    const modal = document.getElementById("modal");
+
+    const content = document.getElementById("modalContent");
+
+    if(cart.length === 0){
+
+        content.innerHTML = `
+
+            <button
+                class="close"
+                onclick="closeModal()"
+            >
+                ×
+            </button>
+
+            <div class="order-success">
+
+                <div class="success-symbol">
+                    ♡
+                </div>
+
+                <h2>
+                    Sua sacola está vazia.
+                </h2>
+
+                <p>
+                    Descubra nossa seleção internacional.
+                </p>
+
+            </div>
+
+        `;
+
+        modal.style.display = "flex";
+
+        return;
+
+    }
+
+
+    let total = cart.reduce(
+        (sum,item)=>sum + item.price * item.quantity,
+        0
+    );
+
+
+    content.innerHTML = `
+
+        <button
+            class="close"
+            onclick="closeModal()"
+        >
+            ×
+        </button>
+
+        <div class="checkout-title">
+            Sua sacola
+        </div>
+
+        ${
+
+            cart.map((item,index)=>`
+
+                <div style="
+                    display:flex;
+                    gap:18px;
+                    padding:18px 0;
+                    border-bottom:1px solid #ddd;
+                    align-items:center;
+                ">
+
+                    <img
+                        src="${item.image}"
+                        style="
+                            width:80px;
+                            height:90px;
+                            object-fit:contain;
+                            background:#eeeae3;
+                        "
+                    >
+
+                    <div style="flex:1">
+
+                        <div class="product-brand">
+                            ${item.brand}
+                        </div>
+
+                        <div class="product-name">
+                            ${item.name}
+                        </div>
+
+                        <div>
+                            ${formatPrice(item.price)}
+                        </div>
+
+                        <div style="
+                            font-size:10px;
+                            color:#777;
+                            margin-top:5px;
+                        ">
+                            Quantidade: ${item.quantity}
+                        </div>
+
+                    </div>
+
+                    <button
+                        onclick="removeFromCart(${index})"
+                        style="
+                            border:0;
+                            background:none;
+                            font-size:18px;
+                        "
+                    >
+                        ×
+                    </button>
+
+                </div>
+
+            `).join("")
+
+        }
+
+        <div style="
+            display:flex;
+            justify-content:space-between;
+            margin:30px 0;
+            font-size:18px;
+        ">
+
+            <strong>
+                TOTAL
+            </strong>
+
+            <strong>
+                ${formatPrice(total)}
+            </strong>
+
+        </div>
+
+        <button
+            class="modal-add"
+            onclick="openCheckout()"
+        >
+            IR PARA CHECKOUT
+        </button>
+
+    `;
+
+    modal.style.display = "flex";
+
+}
+
+
+function removeFromCart(index){
+
+    cart.splice(index,1);
+
+    updateCart();
+
+    openCart();
+
+}
+
+
+/* =========================
+   CHECKOUT
+========================= */
+
+function openCheckout(){
+
+    const content =
+        document.getElementById("modalContent");
+
+    content.innerHTML = `
+
+        <button
+            class="close"
+            onclick="closeModal()"
+        >
+            ×
+        </button>
+
+        <div class="checkout-title">
+            Finalizar pedido
+        </div>
+
+        <div class="checkout-section">
+            Dados pessoais
+        </div>
+
+        <div class="checkout-grid">
+
+            <input
+                class="checkout-input"
+                placeholder="Nome completo"
+            >
+
+            <input
+                class="checkout-input"
+                placeholder="E-mail"
+                type="email"
+            >
+
+            <input
+                class="checkout-input"
+                placeholder="Telefone"
+            >
+
+            <input
+                class="checkout-input"
+                placeholder="CPF"
+            >
+
+        </div>
+
+
+        <div class="checkout-section">
+            Entrega
+        </div>
+
+        <div class="checkout-grid">
+
+            <input
+                class="checkout-input"
+                placeholder="CEP"
+                id="cep"
+                onblur="searchCEP()"
+            >
+
+            <input
+                class="checkout-input"
+                placeholder="Estado"
+                id="estado"
+            >
+
+            <input
+                class="checkout-input checkout-full"
+                placeholder="Rua"
+                id="rua"
+            >
+
+            <input
+                class="checkout-input"
+                placeholder="Número"
+            >
+
+            <input
+                class="checkout-input"
+                placeholder="Complemento"
+            >
+
+            <input
+                class="checkout-input"
+                placeholder="Cidade"
+                id="cidade"
+            >
+
+            <input
+                class="checkout-input"
+                placeholder="Bairro"
+                id="bairro"
+            >
+
+        </div>
+
+
+        <div class="checkout-section">
+            Pagamento
+        </div>
+
+        <select class="checkout-input">
+
+            <option>
+                Cartão de crédito — demonstração
+            </option>
+
+            <option>
+                Pix — demonstração
+            </option>
+
+            <option>
+                Cartão de débito — demonstração
+            </option>
+
+        </select>
+
+
+        <div class="demo-note">
+
+            ESTE É UM CHECKOUT DEMONSTRATIVO.
+            Nenhum pagamento real será realizado,
+            nenhum cartão será processado e nenhum pedido
+            será enviado.
+
+        </div>
+
+
+        <button
+            class="modal-add"
+            onclick="finishOrder()"
+        >
+            FINALIZAR PEDIDO DEMONSTRATIVO
+        </button>
+
+    `;
+
+}
+
+
+/* =========================
+   CEP
+========================= */
+
+async function searchCEP(){
+
+    const cep =
+        document.getElementById("cep")
+        .value
+        .replace(/\D/g,"");
+
+    if(cep.length !== 8){
+        return;
+    }
+
+    try{
+
+        const response =
+            await fetch(
+                "https://viacep.com.br/ws/"
+                + cep +
+                "/json/"
+            );
+
+        const data =
+            await response.json();
+
+        if(!data.erro){
+
+            document.getElementById("rua").value =
+                data.logradouro || "";
+
+            document.getElementById("cidade").value =
+                data.localidade || "";
+
+            document.getElementById("estado").value =
+                data.uf || "";
+
+            document.getElementById("bairro").value =
+                data.bairro || "";
+
+        }
+
+    }catch(error){
+
+        console.log(error);
+
+    }
+
+}
+
+
+/* =========================
+   FINALIZAR
+========================= */
+
+function finishOrder(){
+
+    const orderNumber =
+        "MG-" +
+        Math.floor(
+            10000 +
+            Math.random()*89999
+        );
+
+
+    document.getElementById("modalContent")
+    .innerHTML = `
+
+        <div class="order-success">
+
+            <div class="success-symbol">
+                ✦
+            </div>
+
+            <h2>
+                Pedido confirmado.
+            </h2>
+
+            <p>
+                Obrigada por escolher a
+                Maison Global.
+            </p>
+
+            <br>
+
+            <strong>
+                Pedido ${orderNumber}
+            </strong>
+
+            <p class="demo-note">
+                Esta é uma compra demonstrativa.
+                Nenhum pagamento foi realizado.
+            </p>
+
+        </div>
+
+    `;
+
+    cart = [];
+
+    updateCart();
+
+}
+
+
+/* =========================
+   MODAL
+========================= */
+
+function closeModal(){
+
+    document.getElementById("modal")
+    .style.display = "none";
+
+    selectedQuantity = 1;
+
+}
+
+
+document.getElementById("modal")
+.addEventListener("click",(event)=>{
+
+    if(event.target.id === "modal"){
+
+        closeModal();
+
+    }
+
+});
+
+
+/* =========================
+   HEADER SCROLL
+========================= */
+
+window.addEventListener("scroll",()=>{
+
+    const header =
+        document.getElementById("header");
+
+    if(window.scrollY > 50){
+
+        header.classList.add("scrolled");
+
+    }else{
+
+        header.classList.remove("scrolled");
+
+    }
+
+});
+
+
+/* =========================
+   SCROLL
+========================= */
+
+function scrollToSection(id){
+
+    document
+        .getElementById(id)
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+
+}
+
+
+/* =========================
+   START
+========================= */
+
+renderProducts();
+
+</script>
+
+</body>
+</html>
