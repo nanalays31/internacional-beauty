@@ -25,9 +25,7 @@ body{
     font-family:'Montserrat',sans-serif;
 }
 
-button,
-input,
-select{
+button,input,select{
     font-family:inherit;
 }
 
@@ -35,9 +33,7 @@ button{
     cursor:pointer;
 }
 
-/* =========================
-   HEADER
-========================= */
+/* HEADER */
 
 header{
     position:fixed;
@@ -86,9 +82,7 @@ nav a:hover{
     letter-spacing:1px;
 }
 
-/* =========================
-   HERO
-========================= */
+/* HERO */
 
 .hero{
     height:100vh;
@@ -111,25 +105,26 @@ nav a:hover{
     opacity:1;
 }
 
-/*
- PRIMEIRA FOTO:
- perfume + modelo + lua.
- Não aproximamos demais para o perfume continuar aparecendo.
-*/
+/* PRIMEIRA FOTO:
+   perfume + modelo + lua */
 .hero-slide.hero-first{
     background-size:cover;
     background-position:center center;
 }
 
-/*
- OUTRAS FOTOS:
- aproximação maior e posicionada para cima.
- Isso corta o colo/parte de baixo e mantém
- o rosto + ombros como foco principal.
-*/
-.hero-slide.hero-face{
+/* SEGUNDA FOTO:
+   rosto + ombros, sem mostrar o colo */
+.hero-slide.hero-second{
     background-size:145% auto;
     background-position:center 17%;
+}
+
+/* TERCEIRA E QUARTA:
+   voltam exatamente ao enquadramento mais aberto
+   que estava funcionando */
+.hero-slide.hero-normal{
+    background-size:cover;
+    background-position:center center;
 }
 
 .hero-overlay{
@@ -205,9 +200,7 @@ nav a:hover{
     width:55px;
 }
 
-/* =========================
-   INTRO
-========================= */
+/* INTRO */
 
 .intro{
     padding:130px 8%;
@@ -237,9 +230,7 @@ nav a:hover{
     line-height:2;
 }
 
-/* =========================
-   CATEGORIES
-========================= */
+/* CATEGORIES */
 
 .categories{
     padding:20px 4%;
@@ -301,9 +292,7 @@ nav a:hover{
     margin-top:8px;
 }
 
-/* =========================
-   SHOP
-========================= */
+/* SHOP */
 
 .shop{
     padding:120px 6%;
@@ -428,9 +417,7 @@ nav a:hover{
     color:white;
 }
 
-/* =========================
-   ABOUT
-========================= */
+/* ABOUT */
 
 .about{
     padding:140px 8%;
@@ -470,9 +457,7 @@ nav a:hover{
     margin-top:20px;
 }
 
-/* =========================
-   CART
-========================= */
+/* CART */
 
 .cart-panel{
     position:fixed;
@@ -566,9 +551,7 @@ nav a:hover{
     text-transform:uppercase;
 }
 
-/* =========================
-   MODAL
-========================= */
+/* MODAL */
 
 .modal{
     position:fixed;
@@ -651,9 +634,7 @@ nav a:hover{
     line-height:1.7;
 }
 
-/* =========================
-   FOOTER
-========================= */
+/* FOOTER */
 
 footer{
     padding:70px 6%;
@@ -672,9 +653,7 @@ footer p{
     letter-spacing:1px;
 }
 
-/* =========================
-   MOBILE
-========================= */
+/* MOBILE */
 
 @media(max-width:900px){
 
@@ -694,23 +673,23 @@ footer p{
         min-height:700px;
     }
 
-    /*
-    PRIMEIRA FOTO NO CELULAR:
-    mantém perfume + lua + modelo.
-    */
+    /* PRIMEIRA: mantém perfume + lua */
     .hero-slide.hero-first{
         background-size:cover;
         background-position:center center;
     }
 
-    /*
-    OUTRAS FOTOS NO CELULAR:
-    MUITO MAIS FOCO NO ROSTO.
-    O zoom reduz a quantidade de corpo aparecendo.
-    */
-    .hero-slide.hero-face{
-        background-size:190% auto;
-        background-position:center 13%;
+    /* SEGUNDA: mantém o ajuste que ficou perfeito */
+    .hero-slide.hero-second{
+        background-size:175% auto;
+        background-position:center 14%;
+    }
+
+    /* TERCEIRA E QUARTA:
+       sem zoom excessivo */
+    .hero-slide.hero-normal{
+        background-size:cover;
+        background-position:center center;
     }
 
     .hero-content{
@@ -778,16 +757,20 @@ footer p{
 
 @media(max-width:500px){
 
-    /*
-    Ajuste final para as fotos 2, 3 e 4:
-    só rosto + parte superior dos ombros.
-    */
-    .hero-slide.hero-face{
-        background-size:215% auto;
-        background-position:center 11%;
+    /* PRIMEIRA: PERFEITA */
+    .hero-slide.hero-first{
+        background-size:cover;
+        background-position:center center;
     }
 
-    .hero-slide.hero-first{
+    /* SEGUNDA: PERFEITA */
+    .hero-slide.hero-second{
+        background-size:190% auto;
+        background-position:center 12%;
+    }
+
+    /* TERCEIRA: COMO ESTAVA ANTES */
+    .hero-slide.hero-normal{
         background-size:cover;
         background-position:center center;
     }
@@ -856,37 +839,29 @@ footer p{
 </header>
 
 
-<!-- =========================
-     CAPA
-========================= -->
-
 <section class="hero" id="inicio">
 
-    <!-- PRIMEIRA:
-         perfume + mulher + lua -->
+    <!-- 1ª FOTO: PERFUME + LUA + MODELO -->
     <div
         class="hero-slide hero-first active"
         style="background-image:url('./IMG_0079.jpeg');">
     </div>
 
-    <!-- SEGUNDA:
-         rosto / ombros -->
+    <!-- 2ª FOTO: ROSTO + OMBROS -->
     <div
-        class="hero-slide hero-face"
+        class="hero-slide hero-second"
         style="background-image:url('./IMG_0080.jpeg');">
     </div>
 
-    <!-- TERCEIRA:
-         rosto / ombros -->
+    <!-- 3ª FOTO: ENQUADRAMENTO ORIGINAL -->
     <div
-        class="hero-slide hero-face"
+        class="hero-slide hero-normal"
         style="background-image:url('./IMG_0081.jpeg');">
     </div>
 
-    <!-- QUARTA:
-         rosto / ombros -->
+    <!-- 4ª FOTO: ENQUADRAMENTO ORIGINAL -->
     <div
-        class="hero-slide hero-face"
+        class="hero-slide hero-normal"
         style="background-image:url('./IMG_0082.jpeg');">
     </div>
 
@@ -910,7 +885,9 @@ footer p{
             quem transforma beleza em experiência.
         </p>
 
-        <button class="hero-btn" onclick="document.getElementById('shop').scrollIntoView()">
+        <button
+            class="hero-btn"
+            onclick="document.getElementById('shop').scrollIntoView()">
             Descobrir coleção
         </button>
 
@@ -925,10 +902,6 @@ footer p{
 
 </section>
 
-
-<!-- =========================
-     INTRO
-========================= -->
 
 <section class="intro">
 
@@ -951,45 +924,27 @@ footer p{
 </section>
 
 
-<!-- =========================
-     CATEGORIAS
-========================= -->
-
 <section class="categories" id="colecao">
-
-    <!-- MAKEUP -->
 
     <div class="category-card category-slider" id="makeupCategory">
 
-        <div
-            class="category-bg active"
-            style="background-image:url('./IMG_9899.jpeg')">
-        </div>
+        <div class="category-bg active"
+             style="background-image:url('./IMG_9899.jpeg')"></div>
 
-        <div
-            class="category-bg"
-            style="background-image:url('./IMG_9893.jpeg')">
-        </div>
+        <div class="category-bg"
+             style="background-image:url('./IMG_9893.jpeg')"></div>
 
-        <div
-            class="category-bg"
-            style="background-image:url('./IMG_9895.jpeg')">
-        </div>
+        <div class="category-bg"
+             style="background-image:url('./IMG_9895.jpeg')"></div>
 
-        <div
-            class="category-bg"
-            style="background-image:url('./IMG_9896.jpeg')">
-        </div>
+        <div class="category-bg"
+             style="background-image:url('./IMG_9896.jpeg')"></div>
 
-        <div
-            class="category-bg"
-            style="background-image:url('./IMG_9897.jpeg')">
-        </div>
+        <div class="category-bg"
+             style="background-image:url('./IMG_9897.jpeg')"></div>
 
-        <div
-            class="category-bg"
-            style="background-image:url('./IMG_9898.jpeg')">
-        </div>
+        <div class="category-bg"
+             style="background-image:url('./IMG_9898.jpeg')"></div>
 
         <div class="category-info">
             <span>01 — Collection</span>
@@ -999,44 +954,28 @@ footer p{
     </div>
 
 
-    <!-- SKINCARE -->
-
     <div class="category-card category-slider" id="skincareCategory">
 
-        <div
-            class="category-bg active"
-            style="background-image:url('./IMG_9901.jpeg')">
-        </div>
+        <div class="category-bg active"
+             style="background-image:url('./IMG_9901.jpeg')"></div>
 
-        <div
-            class="category-bg"
-            style="background-image:url('./IMG_9902.jpeg')">
-        </div>
+        <div class="category-bg"
+             style="background-image:url('./IMG_9902.jpeg')"></div>
 
-        <div
-            class="category-bg"
-            style="background-image:url('./IMG_9903.jpeg')">
-        </div>
+        <div class="category-bg"
+             style="background-image:url('./IMG_9903.jpeg')"></div>
 
-        <div
-            class="category-bg"
-            style="background-image:url('./IMG_9904.jpeg')">
-        </div>
+        <div class="category-bg"
+             style="background-image:url('./IMG_9904.jpeg')"></div>
 
-        <div
-            class="category-bg"
-            style="background-image:url('./IMG_9906.jpeg')">
-        </div>
+        <div class="category-bg"
+             style="background-image:url('./IMG_9906.jpeg')"></div>
 
-        <div
-            class="category-bg"
-            style="background-image:url('./IMG_9907.jpeg')">
-        </div>
+        <div class="category-bg"
+             style="background-image:url('./IMG_9907.jpeg')"></div>
 
-        <div
-            class="category-bg"
-            style="background-image:url('./IMG_9908.jpeg')">
-        </div>
+        <div class="category-bg"
+             style="background-image:url('./IMG_9908.jpeg')"></div>
 
         <div class="category-info">
             <span>02 — Collection</span>
@@ -1046,54 +985,34 @@ footer p{
     </div>
 
 
-    <!-- FRAGRANCES -->
-
     <div class="category-card category-slider" id="fragranceCategory">
 
-        <div
-            class="category-bg active"
-            style="background-image:url('./IMG_9909.jpeg')">
-        </div>
+        <div class="category-bg active"
+             style="background-image:url('./IMG_9909.jpeg')"></div>
 
-        <div
-            class="category-bg"
-            style="background-image:url('./IMG_9910.jpeg')">
-        </div>
+        <div class="category-bg"
+             style="background-image:url('./IMG_9910.jpeg')"></div>
 
-        <div
-            class="category-bg"
-            style="background-image:url('./IMG_9911.jpeg')">
-        </div>
+        <div class="category-bg"
+             style="background-image:url('./IMG_9911.jpeg')"></div>
 
-        <div
-            class="category-bg"
-            style="background-image:url('./IMG_9912.jpeg')">
-        </div>
+        <div class="category-bg"
+             style="background-image:url('./IMG_9912.jpeg')"></div>
 
-        <div
-            class="category-bg"
-            style="background-image:url('./IMG_9913.jpeg')">
-        </div>
+        <div class="category-bg"
+             style="background-image:url('./IMG_9913.jpeg')"></div>
 
-        <div
-            class="category-bg"
-            style="background-image:url('./IMG_9914.jpeg')">
-        </div>
+        <div class="category-bg"
+             style="background-image:url('./IMG_9914.jpeg')"></div>
 
-        <div
-            class="category-bg"
-            style="background-image:url('./IMG_9915.jpeg')">
-        </div>
+        <div class="category-bg"
+             style="background-image:url('./IMG_9915.jpeg')"></div>
 
-        <div
-            class="category-bg"
-            style="background-image:url('./IMG_9916.jpeg')">
-        </div>
+        <div class="category-bg"
+             style="background-image:url('./IMG_9916.jpeg')"></div>
 
-        <div
-            class="category-bg"
-            style="background-image:url('./IMG_9917.jpeg')">
-        </div>
+        <div class="category-bg"
+             style="background-image:url('./IMG_9917.jpeg')"></div>
 
         <div class="category-info">
             <span>03 — Collection</span>
@@ -1104,10 +1023,6 @@ footer p{
 
 </section>
 
-
-<!-- =========================
-     SHOP
-========================= -->
 
 <section class="shop" id="shop">
 
@@ -1125,19 +1040,23 @@ footer p{
 
     <div class="filters">
 
-        <button class="filter active" onclick="filterProducts('Todos',this)">
+        <button class="filter active"
+                onclick="filterProducts('Todos',this)">
             Todos
         </button>
 
-        <button class="filter" onclick="filterProducts('Makeup',this)">
+        <button class="filter"
+                onclick="filterProducts('Makeup',this)">
             Makeup
         </button>
 
-        <button class="filter" onclick="filterProducts('Skincare',this)">
+        <button class="filter"
+                onclick="filterProducts('Skincare',this)">
             Skincare
         </button>
 
-        <button class="filter" onclick="filterProducts('Fragrances',this)">
+        <button class="filter"
+                onclick="filterProducts('Fragrances',this)">
             Fragrances
         </button>
 
@@ -1147,10 +1066,6 @@ footer p{
 
 </section>
 
-
-<!-- =========================
-     SOBRE
-========================= -->
 
 <section class="about" id="sobre">
 
@@ -1193,10 +1108,6 @@ footer p{
 </section>
 
 
-<!-- =========================
-     FOOTER
-========================= -->
-
 <footer>
 
     <div class="logo">
@@ -1209,10 +1120,6 @@ footer p{
 
 </footer>
 
-
-<!-- =========================
-     CARRINHO
-========================= -->
 
 <div class="cart-panel" id="cartPanel">
 
@@ -1246,10 +1153,6 @@ footer p{
 
 </div>
 
-
-<!-- =========================
-     CHECKOUT
-========================= -->
 
 <div class="modal" id="checkoutModal">
 
@@ -1350,736 +1253,695 @@ footer p{
 
 <script>
 
-/* =========================
-   PRODUTOS
-========================= */
-
 const products = [
 
-    {
-        id:1,
-        brand:"Dior",
-        name:"Dior Addict Lip Glow 001",
-        category:"Makeup",
-        price:299,
-        image:"IMG_9893.jpeg"
-    },
+{
+id:1,
+brand:"Dior",
+name:"Dior Addict Lip Glow 001",
+category:"Makeup",
+price:299,
+image:"IMG_9893.jpeg"
+},
 
-    {
-        id:2,
-        brand:"Dior",
-        name:"Dior Forever",
-        category:"Makeup",
-        price:399,
-        image:"IMG_9894.jpeg"
-    },
+{
+id:2,
+brand:"Dior",
+name:"Dior Forever",
+category:"Makeup",
+price:399,
+image:"IMG_9894.jpeg"
+},
 
-    {
-        id:3,
-        brand:"Chanel",
-        name:"Rouge Coco",
-        category:"Makeup",
-        price:349,
-        image:"IMG_9895.jpeg"
-    },
+{
+id:3,
+brand:"Chanel",
+name:"Rouge Coco",
+category:"Makeup",
+price:349,
+image:"IMG_9895.jpeg"
+},
 
-    {
-        id:4,
-        brand:"Chanel",
-        name:"Les Beiges",
-        category:"Makeup",
-        price:389,
-        image:"IMG_9896.jpeg"
-    },
+{
+id:4,
+brand:"Chanel",
+name:"Les Beiges",
+category:"Makeup",
+price:389,
+image:"IMG_9896.jpeg"
+},
 
-    {
-        id:5,
-        brand:"Yves Saint Laurent",
-        name:"Touche Éclat",
-        category:"Makeup",
-        price:329,
-        image:"IMG_9897.jpeg"
-    },
+{
+id:5,
+brand:"Yves Saint Laurent",
+name:"Touche Éclat",
+category:"Makeup",
+price:329,
+image:"IMG_9897.jpeg"
+},
 
-    {
-        id:6,
-        brand:"Giorgio Armani",
-        name:"Luminous Silk Foundation",
-        category:"Makeup",
-        price:449,
-        image:"IMG_9898.jpeg"
-    },
+{
+id:6,
+brand:"Giorgio Armani",
+name:"Luminous Silk Foundation",
+category:"Makeup",
+price:449,
+image:"IMG_9898.jpeg"
+},
 
-    {
-        id:7,
-        brand:"Tom Ford",
-        name:"Lip Color",
-        category:"Makeup",
-        price:449,
-        image:"IMG_9899.jpeg"
-    },
+{
+id:7,
+brand:"Tom Ford",
+name:"Lip Color",
+category:"Makeup",
+price:449,
+image:"IMG_9899.jpeg"
+},
 
-    {
-        id:8,
-        brand:"Guerlain",
-        name:"Rouge",
-        category:"Makeup",
-        price:379,
-        image:"IMG_9900.jpeg"
-    },
+{
+id:8,
+brand:"Guerlain",
+name:"Rouge",
+category:"Makeup",
+price:379,
+image:"IMG_9900.jpeg"
+},
 
-    {
-        id:9,
-        brand:"La Mer",
-        name:"Crème de la Mer",
-        category:"Skincare",
-        price:2499,
-        image:"IMG_9901.jpeg"
-    },
+{
+id:9,
+brand:"La Mer",
+name:"Crème de la Mer",
+category:"Skincare",
+price:2499,
+image:"IMG_9901.jpeg"
+},
 
-    {
-        id:10,
-        brand:"La Prairie",
-        name:"Skin Caviar",
-        category:"Skincare",
-        price:2199,
-        image:"IMG_9902.jpeg"
-    },
+{
+id:10,
+brand:"La Prairie",
+name:"Skin Caviar",
+category:"Skincare",
+price:2199,
+image:"IMG_9902.jpeg"
+},
 
-    {
-        id:11,
-        brand:"Estée Lauder",
-        name:"Luxury Skincare",
-        category:"Skincare",
-        price:799,
-        image:"IMG_9903.jpeg"
-    },
+{
+id:11,
+brand:"Estée Lauder",
+name:"Luxury Skincare",
+category:"Skincare",
+price:799,
+image:"IMG_9903.jpeg"
+},
 
-    {
-        id:12,
-        brand:"Dior",
-        name:"Dior Prestige La Crème",
-        category:"Skincare",
-        price:2399,
-        image:"IMG_9904.jpeg"
-    },
+{
+id:12,
+brand:"Dior",
+name:"Dior Prestige La Crème",
+category:"Skincare",
+price:2399,
+image:"IMG_9904.jpeg"
+},
 
-    {
-        id:13,
-        brand:"Lancôme",
-        name:"Luxury Kit",
-        category:"Skincare",
-        price:899,
-        image:"IMG_9905.jpeg"
-    },
+{
+id:13,
+brand:"Lancôme",
+name:"Luxury Kit",
+category:"Skincare",
+price:899,
+image:"IMG_9905.jpeg"
+},
 
-    {
-        id:14,
-        brand:"Shiseido",
-        name:"Premium Skincare",
-        category:"Skincare",
-        price:749,
-        image:"IMG_9906.jpeg"
-    },
+{
+id:14,
+brand:"Shiseido",
+name:"Premium Skincare",
+category:"Skincare",
+price:749,
+image:"IMG_9906.jpeg"
+},
 
-    {
-        id:15,
-        brand:"Clé de Peau Beauté",
-        name:"Premium Collection",
-        category:"Skincare",
-        price:1899,
-        image:"IMG_9907.jpeg"
-    },
+{
+id:15,
+brand:"Clé de Peau Beauté",
+name:"Premium Collection",
+category:"Skincare",
+price:1899,
+image:"IMG_9907.jpeg"
+},
 
-    {
-        id:16,
-        brand:"Augustinus Bader",
-        name:"The Rich Cream",
-        category:"Skincare",
-        price:1799,
-        image:"IMG_9908.jpeg"
-    },
+{
+id:16,
+brand:"Augustinus Bader",
+name:"The Rich Cream",
+category:"Skincare",
+price:1799,
+image:"IMG_9908.jpeg"
+},
 
-    {
-        id:17,
-        brand:"Chanel",
-        name:"N°5 Paris",
-        category:"Fragrances",
-        price:899,
-        image:"IMG_9909.jpeg"
-    },
+{
+id:17,
+brand:"Chanel",
+name:"N°5 Paris",
+category:"Fragrances",
+price:899,
+image:"IMG_9909.jpeg"
+},
 
-    {
-        id:18,
-        brand:"Chanel",
-        name:"Coco Mademoiselle",
-        category:"Fragrances",
-        price:899,
-        image:"IMG_9910.jpeg"
-    },
+{
+id:18,
+brand:"Chanel",
+name:"Coco Mademoiselle",
+category:"Fragrances",
+price:899,
+image:"IMG_9910.jpeg"
+},
 
-    {
-        id:19,
-        brand:"Dior",
-        name:"J'adore",
-        category:"Fragrances",
-        price:799,
-        image:"IMG_9911.jpeg"
-    },
+{
+id:19,
+brand:"Dior",
+name:"J'adore",
+category:"Fragrances",
+price:799,
+image:"IMG_9911.jpeg"
+},
 
-    {
-        id:20,
-        brand:"Dior",
-        name:"Miss Dior",
-        category:"Fragrances",
-        price:749,
-        image:"IMG_9912.jpeg"
-    },
+{
+id:20,
+brand:"Dior",
+name:"Miss Dior",
+category:"Fragrances",
+price:749,
+image:"IMG_9912.jpeg"
+},
 
-    {
-        id:21,
-        brand:"Yves Saint Laurent",
-        name:"Black Opium",
-        category:"Fragrances",
-        price:699,
-        image:"IMG_9913.jpeg"
-    },
+{
+id:21,
+brand:"Yves Saint Laurent",
+name:"Black Opium",
+category:"Fragrances",
+price:699,
+image:"IMG_9913.jpeg"
+},
 
-    {
-        id:22,
-        brand:"Tom Ford",
-        name:"Lost Cherry",
-        category:"Fragrances",
-        price:1499,
-        image:"IMG_9914.jpeg"
-    },
+{
+id:22,
+brand:"Tom Ford",
+name:"Lost Cherry",
+category:"Fragrances",
+price:1499,
+image:"IMG_9914.jpeg"
+},
 
-    {
-        id:23,
-        brand:"Tom Ford",
-        name:"Oud Wood",
-        category:"Fragrances",
-        price:1399,
-        image:"IMG_9915.jpeg"
-    },
+{
+id:23,
+brand:"Tom Ford",
+name:"Oud Wood",
+category:"Fragrances",
+price:1399,
+image:"IMG_9915.jpeg"
+},
 
-    {
-        id:24,
-        brand:"Jo Malone London",
-        name:"London Collection",
-        category:"Fragrances",
-        price:899,
-        image:"IMG_9916.jpeg"
-    },
+{
+id:24,
+brand:"Jo Malone London",
+name:"London Collection",
+category:"Fragrances",
+price:899,
+image:"IMG_9916.jpeg"
+},
 
-    {
-        id:25,
-        brand:"Orient Rouge",
-        name:"Orient Rouge",
-        category:"Fragrances",
-        price:599,
-        image:"IMG_9917.jpeg"
-    }
+{
+id:25,
+brand:"Orient Rouge",
+name:"Orient Rouge",
+category:"Fragrances",
+price:599,
+image:"IMG_9917.jpeg"
+}
 
 ];
 
-
-/* =========================
-   RENDER PRODUTOS
-========================= */
 
 let currentFilter = "Todos";
 
 function renderProducts(){
 
-    const container =
-        document.getElementById("products");
+const container =
+document.getElementById("products");
 
-    let list = products;
+let list = products;
 
-    if(currentFilter !== "Todos"){
-        list = products.filter(
-            product => product.category === currentFilter
-        );
-    }
+if(currentFilter !== "Todos"){
+list = products.filter(
+product => product.category === currentFilter
+);
+}
 
-    container.innerHTML = list.map(product => `
+container.innerHTML = list.map(product => `
 
-        <div class="product">
+<div class="product">
 
-            <div class="product-image">
+<div class="product-image">
 
-                <img
-                    src="./${product.image}"
-                    alt="${product.name}"
-                >
+<img
+src="./${product.image}"
+alt="${product.name}">
 
-            </div>
+</div>
 
-            <div class="product-info">
+<div class="product-info">
 
-                <div class="product-brand">
-                    ${product.brand}
-                </div>
+<div class="product-brand">
+${product.brand}
+</div>
 
-                <div class="product-name">
-                    ${product.name}
-                </div>
+<div class="product-name">
+${product.name}
+</div>
 
-                <div class="product-price">
-                    R$ ${product.price.toLocaleString(
-                        'pt-BR',
-                        {
-                            minimumFractionDigits:2
-                        }
-                    )}
-                </div>
+<div class="product-price">
+R$ ${product.price.toLocaleString(
+'pt-BR',
+{
+minimumFractionDigits:2
+}
+)}
+</div>
 
-                <div class="product-actions">
+<div class="product-actions">
 
-                    <button
-                        class="add-btn"
-                        onclick="addToCart(${product.id})">
-                        Adicionar
-                    </button>
+<button
+class="add-btn"
+onclick="addToCart(${product.id})">
+Adicionar
+</button>
 
-                    <button
-                        class="details-btn"
-                        onclick="showProduct(${product.id})">
-                        +
-                    </button>
+<button
+class="details-btn"
+onclick="showProduct(${product.id})">
++
+</button>
 
-                </div>
+</div>
 
-            </div>
+</div>
 
-        </div>
+</div>
 
-    `).join("");
+`).join("");
 
 }
 
 
 function filterProducts(category,button){
 
-    currentFilter = category;
+currentFilter = category;
 
-    document
-        .querySelectorAll(".filter")
-        .forEach(btn =>
-            btn.classList.remove("active")
-        );
+document
+.querySelectorAll(".filter")
+.forEach(btn =>
+btn.classList.remove("active")
+);
 
-    button.classList.add("active");
+button.classList.add("active");
 
-    renderProducts();
+renderProducts();
 
 }
 
-
-/* =========================
-   CARRINHO
-========================= */
 
 let cart = [];
 
 function addToCart(id){
 
-    const product =
-        products.find(item => item.id === id);
+const product =
+products.find(item => item.id === id);
 
-    cart.push(product);
+cart.push(product);
 
-    renderCart();
+renderCart();
 
-    openCart();
+openCart();
 
 }
 
 
 function removeFromCart(index){
 
-    cart.splice(index,1);
+cart.splice(index,1);
 
-    renderCart();
+renderCart();
 
 }
 
 
 function renderCart(){
 
-    const items =
-        document.getElementById("cartItems");
+const items =
+document.getElementById("cartItems");
 
-    const count =
-        document.getElementById("cartCount");
+const count =
+document.getElementById("cartCount");
 
-    const total =
-        document.getElementById("cartTotal");
+const total =
+document.getElementById("cartTotal");
 
-    count.textContent = cart.length;
+count.textContent = cart.length;
 
-    if(cart.length === 0){
+if(cart.length === 0){
 
-        items.innerHTML = `
-            <p style="
-                color:#777;
-                margin-top:30px;
-                font-size:12px;
-            ">
-                Sua sacola está vazia.
-            </p>
-        `;
+items.innerHTML = `
+<p style="
+color:#777;
+margin-top:30px;
+font-size:12px;
+">
+Sua sacola está vazia.
+</p>
+`;
 
-        total.textContent = "R$ 0,00";
+total.textContent = "R$ 0,00";
 
-        return;
-    }
+return;
+}
 
-    items.innerHTML = cart.map((product,index) => `
+items.innerHTML = cart.map((product,index) => `
 
-        <div class="cart-item">
+<div class="cart-item">
 
-            <img
-                src="./${product.image}"
-                alt="${product.name}"
-            >
+<img
+src="./${product.image}"
+alt="${product.name}">
 
-            <div>
+<div>
 
-                <div class="cart-item-name">
-                    ${product.name}
-                </div>
+<div class="cart-item-name">
+${product.name}
+</div>
 
-                <div class="cart-item-price">
-                    R$ ${product.price.toLocaleString(
-                        'pt-BR',
-                        {
-                            minimumFractionDigits:2
-                        }
-                    )}
-                </div>
+<div class="cart-item-price">
+R$ ${product.price.toLocaleString(
+'pt-BR',
+{
+minimumFractionDigits:2
+}
+)}
+</div>
 
-            </div>
+</div>
 
-            <button
-                class="remove-item"
-                onclick="removeFromCart(${index})">
-                remover
-            </button>
+<button
+class="remove-item"
+onclick="removeFromCart(${index})">
+remover
+</button>
 
-        </div>
+</div>
 
-    `).join("");
+`).join("");
 
-    const cartTotal =
-        cart.reduce(
-            (sum,product) =>
-                sum + product.price,
-            0
-        );
+const cartTotal =
+cart.reduce(
+(sum,product) =>
+sum + product.price,
+0
+);
 
-    total.textContent =
-        "R$ " +
-        cartTotal.toLocaleString(
-            'pt-BR',
-            {
-                minimumFractionDigits:2
-            }
-        );
+total.textContent =
+"R$ " +
+cartTotal.toLocaleString(
+'pt-BR',
+{
+minimumFractionDigits:2
+}
+);
 
 }
 
 
 function openCart(){
 
-    document
-        .getElementById("cartPanel")
-        .classList.add("open");
+document
+.getElementById("cartPanel")
+.classList.add("open");
 
 }
 
 
 function closeCart(){
 
-    document
-        .getElementById("cartPanel")
-        .classList.remove("open");
+document
+.getElementById("cartPanel")
+.classList.remove("open");
 
 }
 
 
-/* =========================
-   CHECKOUT
-========================= */
-
 function openCheckout(){
 
-    if(cart.length === 0){
+if(cart.length === 0){
 
-        alert("Adicione pelo menos um produto à sacola.");
+alert("Adicione pelo menos um produto à sacola.");
 
-        return;
-    }
+return;
+}
 
-    document
-        .getElementById("checkoutModal")
-        .classList.add("open");
+document
+.getElementById("checkoutModal")
+.classList.add("open");
 
 }
 
 
 function closeCheckout(){
 
-    document
-        .getElementById("checkoutModal")
-        .classList.remove("open");
+document
+.getElementById("checkoutModal")
+.classList.remove("open");
 
 }
 
-
-/* =========================
-   CEP
-========================= */
 
 async function buscarCep(){
 
-    let cep =
-        document
-        .getElementById("customerCep")
-        .value
-        .replace(/\D/g,"");
+let cep =
+document
+.getElementById("customerCep")
+.value
+.replace(/\D/g,"");
 
-    if(cep.length !== 8) return;
+if(cep.length !== 8) return;
 
-    try{
+try{
 
-        const response =
-            await fetch(
-                `https://viacep.com.br/ws/${cep}/json/`
-            );
+const response =
+await fetch(
+`https://viacep.com.br/ws/${cep}/json/`
+);
 
-        const data =
-            await response.json();
+const data =
+await response.json();
 
-        if(data.erro){
+if(data.erro){
 
-            alert("CEP não encontrado.");
+alert("CEP não encontrado.");
 
-            return;
-        }
+return;
+}
 
-        document
-            .getElementById("customerAddress")
-            .value =
-            `${data.logradouro}, ${data.bairro}`;
+document
+.getElementById("customerAddress")
+.value =
+`${data.logradouro}, ${data.bairro}`;
 
-        document
-            .getElementById("customerCity")
-            .value =
-            `${data.localidade} - ${data.uf}`;
+document
+.getElementById("customerCity")
+.value =
+`${data.localidade} - ${data.uf}`;
 
-    }catch(error){
+}catch(error){
 
-        console.log(error);
-
-    }
+console.log(error);
 
 }
 
+}
 
-/* =========================
-   FINALIZAR PEDIDO
-========================= */
 
 function finishOrder(){
 
-    const name =
-        document
-        .getElementById("customerName")
-        .value.trim();
+const name =
+document
+.getElementById("customerName")
+.value.trim();
 
-    const email =
-        document
-        .getElementById("customerEmail")
-        .value.trim();
+const email =
+document
+.getElementById("customerEmail")
+.value.trim();
 
-    const payment =
-        document
-        .getElementById("payment")
-        .value;
+const payment =
+document
+.getElementById("payment")
+.value;
 
-    if(!name || !email || !payment){
+if(!name || !email || !payment){
 
-        alert(
-            "Preencha seu nome, e-mail e forma de pagamento."
-        );
+alert(
+"Preencha seu nome, e-mail e forma de pagamento."
+);
 
-        return;
-    }
+return;
+}
 
-    alert(
-        "Pedido demonstrativo realizado com sucesso! ✨"
-    );
+alert(
+"Pedido demonstrativo realizado com sucesso! ✨"
+);
 
-    cart = [];
+cart = [];
 
-    renderCart();
+renderCart();
 
-    closeCheckout();
+closeCheckout();
 
-    closeCart();
+closeCart();
 
 }
 
-
-/* =========================
-   DETALHES
-========================= */
 
 function showProduct(id){
 
-    const product =
-        products.find(item => item.id === id);
+const product =
+products.find(item => item.id === id);
 
-    alert(
-        `${product.name}\n\n` +
-        `${product.brand}\n\n` +
-        `Categoria: ${product.category}\n\n` +
-        `R$ ${product.price.toLocaleString(
-            'pt-BR',
-            {
-                minimumFractionDigits:2
-            }
-        )}`
-    );
+alert(
+`${product.name}\n\n` +
+`${product.brand}\n\n` +
+`Categoria: ${product.category}\n\n` +
+`R$ ${product.price.toLocaleString(
+'pt-BR',
+{
+minimumFractionDigits:2
+}
+)}`
+);
 
 }
 
 
-/* =========================
-   SLIDER DAS CATEGORIAS
-========================= */
+/* SLIDER DAS CATEGORIAS */
 
-function startCategorySlider(
-    id,
-    interval
-){
+function startCategorySlider(id,interval){
 
-    const card =
-        document.getElementById(id);
+const card =
+document.getElementById(id);
 
-    if(!card) return;
+if(!card) return;
 
-    const images =
-        card.querySelectorAll(".category-bg");
+const images =
+card.querySelectorAll(".category-bg");
 
-    if(images.length <= 1) return;
+if(images.length <= 1) return;
 
-    let current = 0;
+let current = 0;
 
-    setInterval(() => {
+setInterval(() => {
 
-        images[current]
-            .classList
-            .remove("active");
+images[current]
+.classList
+.remove("active");
 
-        current =
-            (current + 1) %
-            images.length;
+current =
+(current + 1) %
+images.length;
 
-        images[current]
-            .classList
-            .add("active");
+images[current]
+.classList
+.add("active");
 
-    },interval);
+},interval);
 
 }
 
 
 startCategorySlider(
-    "makeupCategory",
-    5000
+"makeupCategory",
+5000
 );
 
 startCategorySlider(
-    "skincareCategory",
-    5500
+"skincareCategory",
+5500
 );
 
 startCategorySlider(
-    "fragranceCategory",
-    6000
+"fragranceCategory",
+6000
 );
 
 
-/* =========================
-   HERO SLIDER
-========================= */
+/* HERO */
 
 let currentSlide = 0;
 
 const slides =
-    document.querySelectorAll(".hero-slide");
+document.querySelectorAll(".hero-slide");
 
 const dots =
-    document.querySelectorAll(".hero-dot");
+document.querySelectorAll(".hero-dot");
 
 
 function goSlide(index){
 
-    currentSlide = index;
+currentSlide = index;
 
-    slides.forEach(
-        (slide,i) => {
+slides.forEach(
+(slide,i) => {
 
-            slide.classList.toggle(
-                "active",
-                i === index
-            );
+slide.classList.toggle(
+"active",
+i === index
+);
 
-        }
-    );
+}
+);
 
-    dots.forEach(
-        (dot,i) => {
+dots.forEach(
+(dot,i) => {
 
-            dot.classList.toggle(
-                "active",
-                i === index
-            );
+dot.classList.toggle(
+"active",
+i === index
+);
 
-        }
-    );
+}
+);
 
 }
 
 
 setInterval(() => {
 
-    goSlide(
-        (currentSlide + 1) %
-        slides.length
-    );
+goSlide(
+(currentSlide + 1) %
+slides.length
+);
 
 },6000);
 
 
 dots.forEach(
-    (dot,index) => {
+(dot,index) => {
 
-        dot.addEventListener(
-            "click",
-            () => goSlide(index)
-        );
-
-    }
+dot.addEventListener(
+"click",
+() => goSlide(index)
 );
 
+}
+);
 
-/* =========================
-   INICIALIZAÇÃO
-========================= */
 
 renderProducts();
 
