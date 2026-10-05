@@ -3,665 +3,1677 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>MAISON GLOBAL — International Beauty</title>
-<meta name="description" content="MAISON GLOBAL — curadoria internacional de beleza, skincare, maquiagem e fragrâncias.">
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
 
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:"DM Sans",Arial,sans-serif;background:#f7f4ee;color:#171512}
-button,input,select{font:inherit}
-button{cursor:pointer}
-a{text-decoration:none;color:inherit}
-
-:root{
- --cream:#f7f4ee;
- --paper:#fffdf9;
- --black:#171512;
- --brown:#2a241d;
- --gold:#b69b67;
- --line:rgba(23,21,18,.16);
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-.header{
- position:fixed;
- top:0;
- left:0;
- width:100%;
- z-index:50;
- height:82px;
- padding:0 5%;
- display:flex;
- align-items:center;
- justify-content:space-between;
- background:rgba(22,18,14,.91);
- backdrop-filter:blur(12px);
- color:white;
- border-bottom:1px solid rgba(255,255,255,.12)
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#0c0b0a;
+    color:#f5f0e8;
+    font-family:'Montserrat',sans-serif;
+}
+
+button,
+input,
+select{
+    font-family:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1000;
+    padding:22px 5%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background:linear-gradient(to bottom,rgba(0,0,0,.85),transparent);
 }
 
 .logo{
- font-family:"Playfair Display",serif;
- font-size:27px;
- letter-spacing:7px
+    font-family:'Cormorant Garamond',serif;
+    font-size:31px;
+    letter-spacing:5px;
+    color:#fff;
 }
 
-.nav{
- display:flex;
- gap:34px;
- align-items:center;
- font-size:11px;
- letter-spacing:2px;
- text-transform:uppercase
+nav{
+    display:flex;
+    gap:35px;
 }
 
-.nav a{
- opacity:.9;
- transition:.25s
+nav a{
+    color:#fff;
+    text-decoration:none;
+    font-size:11px;
+    letter-spacing:2px;
+    text-transform:uppercase;
 }
 
-.nav a:hover{
- opacity:1;
- color:#d7c08f
+nav a:hover{
+    color:#d8b77b;
 }
 
-.cart-btn{
- border:1px solid rgba(255,255,255,.5);
- background:transparent;
- color:white;
- padding:12px 18px;
- font-size:10px;
- letter-spacing:2px;
- text-transform:uppercase
+.cart-button{
+    border:1px solid rgba(255,255,255,.5);
+    background:rgba(0,0,0,.35);
+    color:white;
+    padding:10px 16px;
+    border-radius:30px;
+    font-size:11px;
+    letter-spacing:1px;
 }
-
 
 /* =========================
-   CAPA
+   HERO
 ========================= */
 
 .hero{
- height:100vh;
- min-height:650px;
- position:relative;
- overflow:hidden;
- background:#17120e
+    height:100vh;
+    min-height:680px;
+    position:relative;
+    overflow:hidden;
+    background:#080706;
 }
 
 .hero-slide{
- position:absolute;
- inset:0;
- opacity:0;
- transition:opacity 1.2s ease;
- background-repeat:no-repeat;
- background-color:#17120e;
-}
-
-/* AS 3 FOTOS QUE ESTAVAM BOAS CONTINUAM PROPORCIONAIS */
-.hero-slide:not(.hero-face){
- background-size:cover;
- background-position:center center;
-}
-
-/* PRIMEIRA FOTO: ENQUADRAMENTO MAIS ABERTO,
-   SEM DEIXAR A ROUPA TOMAR A CAPA */
-.hero-slide.hero-face{
- background-size:cover;
- background-position:center 28%;
+    position:absolute;
+    inset:0;
+    opacity:0;
+    transition:opacity 1.3s ease;
+    background-repeat:no-repeat;
+    pointer-events:none;
 }
 
 .hero-slide.active{
- opacity:1
+    opacity:1;
+}
+
+/*
+ PRIMEIRA FOTO:
+ perfume + modelo + lua.
+ Não aproximamos demais para o perfume continuar aparecendo.
+*/
+.hero-slide.hero-first{
+    background-size:cover;
+    background-position:center center;
+}
+
+/*
+ OUTRAS FOTOS:
+ aproximação maior e posicionada para cima.
+ Isso corta o colo/parte de baixo e mantém
+ o rosto + ombros como foco principal.
+*/
+.hero-slide.hero-face{
+    background-size:145% auto;
+    background-position:center 17%;
 }
 
 .hero-overlay{
- position:absolute;
- inset:0;
- z-index:1;
- background:
- linear-gradient(
-  90deg,
-  rgba(0,0,0,.48),
-  rgba(0,0,0,.12) 60%,
-  rgba(0,0,0,.22)
- )
+    position:absolute;
+    inset:0;
+    z-index:2;
+    background:
+        linear-gradient(90deg,rgba(0,0,0,.62) 0%,rgba(0,0,0,.18) 48%,rgba(0,0,0,.05) 100%),
+        linear-gradient(0deg,rgba(0,0,0,.7) 0%,transparent 45%);
 }
 
 .hero-content{
- position:absolute;
- z-index:3;
- left:8%;
- bottom:13%;
- color:white;
- max-width:650px
+    position:absolute;
+    z-index:4;
+    left:7%;
+    bottom:15%;
+    max-width:550px;
 }
 
-.kicker{
- text-transform:uppercase;
- letter-spacing:4px;
- font-size:11px;
- margin-bottom:18px
+.hero-small{
+    font-size:10px;
+    letter-spacing:5px;
+    text-transform:uppercase;
+    color:#d7bb86;
+    margin-bottom:18px;
 }
 
 .hero h1{
- font-family:"Playfair Display",serif;
- font-size:clamp(55px,8vw,105px);
- font-weight:400;
- line-height:.92
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(60px,8vw,120px);
+    line-height:.82;
+    font-weight:500;
+    letter-spacing:3px;
 }
 
 .hero p{
- max-width:480px;
- line-height:1.7;
- margin:25px 0;
- font-size:14px
+    margin-top:25px;
+    max-width:430px;
+    font-size:12px;
+    line-height:1.9;
+    color:#ddd6cb;
 }
 
 .hero-btn{
- display:inline-block;
- border:1px solid rgba(255,255,255,.7);
- padding:15px 25px;
- font-size:10px;
- letter-spacing:2px;
- text-transform:uppercase
+    margin-top:30px;
+    padding:15px 30px;
+    border:1px solid #d8b77b;
+    background:#d8b77b;
+    color:#17120e;
+    font-size:10px;
+    letter-spacing:2px;
+    text-transform:uppercase;
 }
 
 .hero-dots{
- position:absolute;
- z-index:4;
- bottom:38px;
- left:8%;
- display:flex;
- gap:9px
+    position:absolute;
+    z-index:5;
+    bottom:45px;
+    left:7%;
+    display:flex;
+    gap:8px;
 }
 
 .hero-dot{
- width:32px;
- height:2px;
- background:rgba(255,255,255,.4);
- border:0
+    width:35px;
+    height:2px;
+    background:rgba(255,255,255,.4);
+    transition:.4s;
 }
 
 .hero-dot.active{
- background:white
+    background:#d8b77b;
+    width:55px;
 }
 
-
 /* =========================
-   GERAL
+   INTRO
 ========================= */
 
-.section{
- padding:105px 6%
+.intro{
+    padding:130px 8%;
+    text-align:center;
+    background:#11100e;
 }
 
 .eyebrow{
- text-transform:uppercase;
- letter-spacing:3px;
- font-size:10px;
- color:#77694f;
- margin-bottom:16px
+    color:#c7a86d;
+    font-size:10px;
+    letter-spacing:5px;
+    text-transform:uppercase;
+    margin-bottom:20px;
 }
 
-.section-title{
- font-family:"Playfair Display",serif;
- font-size:clamp(38px,5vw,64px);
- font-weight:400;
- line-height:1.05
+.intro h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(45px,6vw,78px);
+    font-weight:400;
 }
 
-.section-text{
- max-width:700px;
- color:#665f55;
- line-height:1.8;
- font-size:14px
+.intro p{
+    max-width:700px;
+    margin:30px auto 0;
+    color:#aaa49a;
+    font-size:13px;
+    line-height:2;
 }
-
-.intro{
- text-align:center;
- max-width:900px;
- margin:auto
-}
-
-.intro .section-text{
- margin:25px auto 0
-}
-
-.about{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:70px;
- align-items:center;
- background:#eee8dd
-}
-
-.about-copy{
- max-width:650px
-}
-
-.about-copy p{
- margin-top:25px;
- line-height:1.9;
- color:#615b51;
- font-size:14px
-}
-
-.about-stat{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:1px;
- background:var(--line)
-}
-
-.stat{
- background:#eee8dd;
- padding:35px
-}
-
-.stat strong{
- font-family:"Playfair Display",serif;
- font-size:42px;
- font-weight:400;
- display:block
-}
-
-.stat span{
- font-size:10px;
- letter-spacing:2px;
- text-transform:uppercase;
- color:#716a5d
-}
-
-.process{
- display:grid;
- grid-template-columns:repeat(3,1fr);
- gap:1px;
- background:var(--line);
- margin-top:50px
-}
-
-.process-item{
- background:var(--cream);
- padding:42px
-}
-
-.process-number{
- font-family:"Playfair Display",serif;
- font-size:45px;
- color:#9d8963
-}
-
-.process h3{
- font-family:"Playfair Display",serif;
- font-size:26px;
- font-weight:400;
- margin:15px 0
-}
-
-.process p{
- font-size:13px;
- line-height:1.7;
- color:#6b655c
-}
-
 
 /* =========================
-   CATEGORIAS
+   CATEGORIES
 ========================= */
 
 .categories{
- display:grid;
- grid-template-columns:repeat(3,1fr);
- gap:18px;
- padding:90px 6%;
- background:#fffdf9
+    padding:20px 4%;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+    background:#11100e;
 }
 
 .category-card{
- height:610px;
- position:relative;
- overflow:hidden;
- background-size:cover;
- background-position:center;
- display:flex;
- align-items:flex-end;
- transition:.5s
-}
-
-.category-card:hover{
- transform:translateY(-5px)
-}
-
-.category-slider{
- isolation:isolate
+    height:610px;
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    align-items:flex-end;
+    padding:45px;
 }
 
 .category-bg{
- position:absolute;
- inset:0;
- background-size:cover;
- background-position:center;
- background-repeat:no-repeat;
- opacity:0;
- transform:scale(1.03);
- transition:opacity 1s ease,transform 6s ease;
- z-index:0
+    position:absolute;
+    inset:0;
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    opacity:0;
+    transform:scale(1.05);
+    transition:opacity 1.2s ease,transform 6s ease;
 }
 
 .category-bg.active{
- opacity:1;
- transform:scale(1)
+    opacity:1;
+    transform:scale(1);
 }
 
-.category-card:before{
- content:"";
- position:absolute;
- inset:0;
- background:linear-gradient(
-  to top,
-  rgba(0,0,0,.8),
-  rgba(0,0,0,.06) 75%
- );
- z-index:1
+.category-card::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(0deg,rgba(0,0,0,.8),rgba(0,0,0,.05) 65%);
+    z-index:1;
 }
 
-.category-content{
- position:relative;
- z-index:2;
- color:white;
- padding:42px
+.category-info{
+    position:relative;
+    z-index:2;
 }
 
-.category-content h2{
- font-family:"Playfair Display",serif;
- font-size:54px;
- font-weight:400
+.category-info span{
+    color:#d8b77b;
+    font-size:9px;
+    letter-spacing:4px;
+    text-transform:uppercase;
 }
 
-.category-content p{
- font-size:13px;
- line-height:1.6;
- max-width:330px;
- margin:10px 0 22px
+.category-info h3{
+    font-family:'Cormorant Garamond',serif;
+    font-size:52px;
+    font-weight:400;
+    margin-top:8px;
 }
-
-.category-btn{
- display:inline-block;
- border:1px solid rgba(255,255,255,.75);
- padding:13px 22px;
- font-size:10px;
- letter-spacing:2px
-}
-
 
 /* =========================
-   PRODUTOS
+   SHOP
 ========================= */
 
-.shop-head{
- display:flex;
- justify-content:space-between;
- gap:30px;
- align-items:end;
- margin-bottom:35px
+.shop{
+    padding:120px 6%;
+    background:#0c0b0a;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.section-title h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:65px;
+    font-weight:400;
 }
 
 .filters{
- display:flex;
- gap:8px;
- flex-wrap:wrap
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:50px;
 }
 
 .filter{
- border:1px solid var(--line);
- background:transparent;
- padding:10px 15px;
- font-size:10px;
- letter-spacing:1.5px;
- text-transform:uppercase
+    background:transparent;
+    border:1px solid #3b3833;
+    color:#aaa49a;
+    padding:11px 20px;
+    font-size:10px;
+    letter-spacing:2px;
+    text-transform:uppercase;
 }
 
 .filter.active,
 .filter:hover{
- background:#211d18;
- color:white
+    border-color:#d8b77b;
+    color:#d8b77b;
 }
 
 .products{
- display:grid;
- grid-template-columns:repeat(4,1fr);
- gap:22px
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
 }
 
 .product{
- background:#fff;
- cursor:pointer;
- position:relative;
- overflow:hidden
+    background:#151311;
+    position:relative;
+    overflow:hidden;
+    transition:.5s;
 }
 
-.product-img{
- height:370px;
- background:#f0ede6;
- display:flex;
- align-items:center;
- justify-content:center;
- overflow:hidden
+.product:hover{
+    transform:translateY(-7px);
 }
 
-.product-img img{
- width:100%;
- height:100%;
- object-fit:cover;
- transition:.55s
+.product-image{
+    height:380px;
+    background:#eeeae3;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
 }
 
-.product:hover .product-img img{
- transform:scale(1.06)
+.product-image img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    transition:.6s;
+}
+
+.product:hover .product-image img{
+    transform:scale(1.07);
 }
 
 .product-info{
- padding:18px 4px 25px
+    padding:22px;
 }
 
 .product-brand{
- text-transform:uppercase;
- letter-spacing:2px;
- font-size:9px;
- color:#8a806f
+    color:#bda16e;
+    font-size:9px;
+    letter-spacing:2px;
+    text-transform:uppercase;
 }
 
 .product-name{
- font-family:"Playfair Display",serif;
- font-size:21px;
- margin:7px 0
+    font-family:'Cormorant Garamond',serif;
+    font-size:24px;
+    margin:7px 0;
 }
 
 .product-price{
- font-size:12px;
- color:#4e493f
+    color:#ddd4c7;
+    font-size:13px;
 }
 
-.product-tag{
- position:absolute;
- top:12px;
- left:12px;
- background:#fff;
- padding:7px 9px;
- font-size:8px;
- letter-spacing:1.5px;
- text-transform:uppercase;
- z-index:2
+.product-actions{
+    margin-top:17px;
+    display:flex;
+    gap:8px;
 }
 
-.product.hide{
- display:none
+.add-btn{
+    flex:1;
+    padding:12px;
+    background:#d8b77b;
+    border:0;
+    color:#17120e;
+    font-size:9px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
 }
 
+.details-btn{
+    width:44px;
+    border:1px solid #49443d;
+    background:transparent;
+    color:white;
+}
 
 /* =========================
-   NEWSLETTER / FOOTER
+   ABOUT
 ========================= */
 
-.newsletter{
- background:#211d18;
- color:white;
- text-align:center;
- padding:95px 6%
+.about{
+    padding:140px 8%;
+    background:#15120f;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:100px;
+    align-items:center;
 }
 
-.newsletter p{
- max-width:570px;
- margin:20px auto;
- line-height:1.7;
- color:#cfc7ba;
- font-size:13px
+.about h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:70px;
+    font-weight:400;
+    line-height:.95;
 }
 
-.footer{
- background:#15120f;
- color:white;
- padding:55px 6% 30px
+.about p{
+    color:#aaa49a;
+    font-size:13px;
+    line-height:2;
+    margin-top:25px;
 }
 
-.footer-top{
- display:flex;
- justify-content:space-between;
- gap:40px
+.about-box{
+    border:1px solid #37332e;
+    padding:60px;
 }
 
-.footer-logo{
- font-family:"Playfair Display",serif;
- font-size:29px;
- letter-spacing:6px
+.about-box h3{
+    font-family:'Cormorant Garamond',serif;
+    font-size:38px;
+    font-weight:400;
 }
 
-.footer p{
- color:#a9a195;
- font-size:12px;
- line-height:1.7;
- max-width:420px;
- margin-top:12px
+.about-box p{
+    margin-top:20px;
 }
 
-.footer-bottom{
- border-top:1px solid rgba(255,255,255,.12);
- margin-top:45px;
- padding-top:20px;
- color:#807970;
- font-size:10px;
- display:flex;
- justify-content:space-between
+/* =========================
+   CART
+========================= */
+
+.cart-panel{
+    position:fixed;
+    top:0;
+    right:-450px;
+    width:min(430px,100%);
+    height:100vh;
+    background:#151311;
+    z-index:2000;
+    padding:30px;
+    transition:.5s;
+    box-shadow:-10px 0 40px rgba(0,0,0,.4);
+    overflow-y:auto;
 }
 
+.cart-panel.open{
+    right:0;
+}
+
+.cart-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding-bottom:25px;
+    border-bottom:1px solid #302c27;
+}
+
+.cart-head h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:34px;
+    font-weight:400;
+}
+
+.close-cart{
+    background:none;
+    border:0;
+    color:white;
+    font-size:25px;
+}
+
+.cart-item{
+    display:grid;
+    grid-template-columns:70px 1fr auto;
+    gap:12px;
+    align-items:center;
+    padding:20px 0;
+    border-bottom:1px solid #292622;
+}
+
+.cart-item img{
+    width:70px;
+    height:80px;
+    object-fit:contain;
+    background:#eeeae3;
+}
+
+.cart-item-name{
+    font-family:'Cormorant Garamond',serif;
+    font-size:20px;
+}
+
+.cart-item-price{
+    color:#aaa49a;
+    font-size:11px;
+    margin-top:5px;
+}
+
+.remove-item{
+    border:0;
+    background:none;
+    color:#8d8579;
+    font-size:11px;
+}
+
+.cart-total{
+    display:flex;
+    justify-content:space-between;
+    margin-top:30px;
+    font-size:15px;
+}
+
+.checkout-btn{
+    width:100%;
+    margin-top:20px;
+    padding:16px;
+    background:#d8b77b;
+    border:0;
+    color:#17120e;
+    letter-spacing:2px;
+    font-size:10px;
+    text-transform:uppercase;
+}
 
 /* =========================
    MODAL
 ========================= */
 
 .modal{
- position:fixed;
- inset:0;
- background:rgba(0,0,0,.7);
- z-index:100;
- display:none;
- align-items:center;
- justify-content:center;
- padding:20px
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.82);
+    z-index:3000;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
 }
 
 .modal.open{
- display:flex
+    display:flex;
 }
 
-.modal-box{
- background:#fffdf9;
- max-width:900px;
- width:100%;
- max-height:92vh;
- overflow:auto;
- position:relative
+.modal-content{
+    background:#171513;
+    width:min(650px,100%);
+    max-height:90vh;
+    overflow:auto;
+    padding:40px;
+    position:relative;
 }
 
 .modal-close{
- position:absolute;
- right:18px;
- top:15px;
- background:none;
- border:0;
- font-size:28px;
- z-index:2
+    position:absolute;
+    right:20px;
+    top:15px;
+    background:none;
+    border:0;
+    color:white;
+    font-size:25px;
 }
 
-.product-detail{
- display:grid;
- grid-template-columns:1fr 1fr
+.modal h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:42px;
+    font-weight:400;
+    margin-bottom:25px;
 }
 
-.detail-img{
- height:620px;
- background:#f0ede6
+.form-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
 }
 
-.detail-img img{
- width:100%;
- height:100%;
- object-fit:cover
+.form-group{
+    margin-bottom:15px;
 }
 
-.detail-copy{
- padding:55px 45px
+.form-group.full{
+    grid-column:1/-1;
 }
 
-.detail-copy h2{
- font-family:"Playfair Display",serif;
- font-size:42px;
- font-weight:400
+.form-group label{
+    display:block;
+    font-size:9px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    color:#aaa49a;
+    margin-bottom:7px;
 }
 
-.detail-copy p{
- color:#6a6359;
- font-size:13px;
- line-height:1.8;
- margin:18px 0
+.form-group input,
+.form-group select{
+    width:100%;
+    padding:13px;
+    background:#0e0d0c;
+    border:1px solid #38342e;
+    color:white;
+    outline:none;
 }
 
-.detail-price{
- font-size:18px;
- margin:25px 0
+.demo-note{
+    margin-top:20px;
+    color:#aaa49a;
+    font-size:10px;
+    line-height:1.7;
 }
 
-.swatches{
- display:flex;
- gap:8px;
- flex-wrap:wrap;
- margin:15px 0 25px
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    padding:70px 6%;
+    text-align:center;
+    background:#080807;
+    border-top:1px solid #25221e;
 }
 
-.swatch{
- border:1px solid var(--line);
- background:#fff;
- padding:9px 12px;
- font-size:10px
+footer .logo{
+    margin-bottom:20px;
 }
 
-.swatch.selected{
- background:#201b16;
- color:#fff
+footer p{
+    color:#777168;
+    font-size:10px;
+    letter-spacing:1px;
 }
 
-.add-btn,
-.checkout-btn{
- width:100%;
- padding:16px;
- background:#211d18;
- color:white;
- border:0;
- text-transform:uppercase;
- letter-spacing:2px;
- font-size:10px
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:900px){
+
+    header{
+        padding:18px 5%;
+    }
+
+    nav{
+        display:none;
+    }
+
+    .logo{
+        font-size:25px;
+    }
+
+    .hero{
+        min-height:700px;
+    }
+
+    /*
+    PRIMEIRA FOTO NO CELULAR:
+    mantém perfume + lua + modelo.
+    */
+    .hero-slide.hero-first{
+        background-size:cover;
+        background-position:center center;
+    }
+
+    /*
+    OUTRAS FOTOS NO CELULAR:
+    MUITO MAIS FOCO NO ROSTO.
+    O zoom reduz a quantidade de corpo aparecendo.
+    */
+    .hero-slide.hero-face{
+        background-size:190% auto;
+        background-position:center 13%;
+    }
+
+    .hero-content{
+        left:7%;
+        right:7%;
+        bottom:13%;
+    }
+
+    .hero h1{
+        font-size:65px;
+    }
+
+    .hero p{
+        font-size:11px;
+    }
+
+    .categories{
+        grid-template-columns:1fr;
+        padding:10px;
+    }
+
+    .category-card{
+        height:500px;
+    }
+
+    .products{
+        grid-template-columns:repeat(2,1fr);
+        gap:12px;
+    }
+
+    .product-image{
+        height:260px;
+    }
+
+    .product-info{
+        padding:15px;
+    }
+
+    .product-name{
+        font-size:20px;
+    }
+
+    .about{
+        grid-template-columns:1fr;
+        gap:50px;
+        padding:90px 7%;
+    }
+
+    .about h2{
+        font-size:58px;
+    }
+
+    .about-box{
+        padding:35px;
+    }
+
+    .section-title h2{
+        font-size:52px;
+    }
+
+    .shop{
+        padding:90px 4%;
+    }
+}
+
+@media(max-width:500px){
+
+    /*
+    Ajuste final para as fotos 2, 3 e 4:
+    só rosto + parte superior dos ombros.
+    */
+    .hero-slide.hero-face{
+        background-size:215% auto;
+        background-position:center 11%;
+    }
+
+    .hero-slide.hero-first{
+        background-size:cover;
+        background-position:center center;
+    }
+
+    .hero{
+        min-height:680px;
+    }
+
+    .hero h1{
+        font-size:57px;
+    }
+
+    .products{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .product-image{
+        height:210px;
+    }
+
+    .product-name{
+        font-size:18px;
+    }
+
+    .product-price{
+        font-size:11px;
+    }
+
+    .add-btn{
+        font-size:8px;
+        padding:10px 5px;
+    }
+
+    .details-btn{
+        display:none;
+    }
+
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .form-group.full{
+        grid-column:auto;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">MAISON GLOBAL</div>
+
+    <nav>
+        <a href="#inicio">Início</a>
+        <a href="#colecao">Coleção</a>
+        <a href="#shop">Shop</a>
+        <a href="#sobre">Sobre</a>
+    </nav>
+
+    <button class="cart-button" onclick="openCart()">
+        SACOLA (<span id="cartCount">0</span>)
+    </button>
+
+</header>
+
+
+<!-- =========================
+     CAPA
+========================= -->
+
+<section class="hero" id="inicio">
+
+    <!-- PRIMEIRA:
+         perfume + mulher + lua -->
+    <div
+        class="hero-slide hero-first active"
+        style="background-image:url('./IMG_0079.jpeg');">
+    </div>
+
+    <!-- SEGUNDA:
+         rosto / ombros -->
+    <div
+        class="hero-slide hero-face"
+        style="background-image:url('./IMG_0080.jpeg');">
+    </div>
+
+    <!-- TERCEIRA:
+         rosto / ombros -->
+    <div
+        class="hero-slide hero-face"
+        style="background-image:url('./IMG_0081.jpeg');">
+    </div>
+
+    <!-- QUARTA:
+         rosto / ombros -->
+    <div
+        class="hero-slide hero-face"
+        style="background-image:url('./IMG_0082.jpeg');">
+    </div>
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+
+        <div class="hero-small">
+            International Beauty
+        </div>
+
+        <h1>
+            Beauty<br>
+            Without<br>
+            Borders
+        </h1>
+
+        <p>
+            Uma curadoria internacional de beleza,
+            skincare, maquiagem e perfumaria para
+            quem transforma beleza em experiência.
+        </p>
+
+        <button class="hero-btn" onclick="document.getElementById('shop').scrollIntoView()">
+            Descobrir coleção
+        </button>
+
+    </div>
+
+    <div class="hero-dots">
+        <div class="hero-dot active"></div>
+        <div class="hero-dot"></div>
+        <div class="hero-dot"></div>
+        <div class="hero-dot"></div>
+    </div>
+
+</section>
+
+
+<!-- =========================
+     INTRO
+========================= -->
+
+<section class="intro">
+
+    <div class="eyebrow">
+        MAISON GLOBAL
+    </div>
+
+    <h2>
+        O mundo da beleza,<br>
+        agora mais perto.
+    </h2>
+
+    <p>
+        Selecionamos produtos icônicos e desejados
+        das maiores maisons internacionais para criar
+        uma experiência de beleza sofisticada,
+        exclusiva e contemporânea.
+    </p>
+
+</section>
+
+
+<!-- =========================
+     CATEGORIAS
+========================= -->
+
+<section class="categories" id="colecao">
+
+    <!-- MAKEUP -->
+
+    <div class="category-card category-slider" id="makeupCategory">
+
+        <div
+            class="category-bg active"
+            style="background-image:url('./IMG_9899.jpeg')">
+        </div>
+
+        <div
+            class="category-bg"
+            style="background-image:url('./IMG_9893.jpeg')">
+        </div>
+
+        <div
+            class="category-bg"
+            style="background-image:url('./IMG_9895.jpeg')">
+        </div>
+
+        <div
+            class="category-bg"
+            style="background-image:url('./IMG_9896.jpeg')">
+        </div>
+
+        <div
+            class="category-bg"
+            style="background-image:url('./IMG_9897.jpeg')">
+        </div>
+
+        <div
+            class="category-bg"
+            style="background-image:url('./IMG_9898.jpeg')">
+        </div>
+
+        <div class="category-info">
+            <span>01 — Collection</span>
+            <h3>Makeup</h3>
+        </div>
+
+    </div>
+
+
+    <!-- SKINCARE -->
+
+    <div class="category-card category-slider" id="skincareCategory">
+
+        <div
+            class="category-bg active"
+            style="background-image:url('./IMG_9901.jpeg')">
+        </div>
+
+        <div
+            class="category-bg"
+            style="background-image:url('./IMG_9902.jpeg')">
+        </div>
+
+        <div
+            class="category-bg"
+            style="background-image:url('./IMG_9903.jpeg')">
+        </div>
+
+        <div
+            class="category-bg"
+            style="background-image:url('./IMG_9904.jpeg')">
+        </div>
+
+        <div
+            class="category-bg"
+            style="background-image:url('./IMG_9906.jpeg')">
+        </div>
+
+        <div
+            class="category-bg"
+            style="background-image:url('./IMG_9907.jpeg')">
+        </div>
+
+        <div
+            class="category-bg"
+            style="background-image:url('./IMG_9908.jpeg')">
+        </div>
+
+        <div class="category-info">
+            <span>02 — Collection</span>
+            <h3>Skincare</h3>
+        </div>
+
+    </div>
+
+
+    <!-- FRAGRANCES -->
+
+    <div class="category-card category-slider" id="fragranceCategory">
+
+        <div
+            class="category-bg active"
+            style="background-image:url('./IMG_9909.jpeg')">
+        </div>
+
+        <div
+            class="category-bg"
+            style="background-image:url('./IMG_9910.jpeg')">
+        </div>
+
+        <div
+            class="category-bg"
+            style="background-image:url('./IMG_9911.jpeg')">
+        </div>
+
+        <div
+            class="category-bg"
+            style="background-image:url('./IMG_9912.jpeg')">
+        </div>
+
+        <div
+            class="category-bg"
+            style="background-image:url('./IMG_9913.jpeg')">
+        </div>
+
+        <div
+            class="category-bg"
+            style="background-image:url('./IMG_9914.jpeg')">
+        </div>
+
+        <div
+            class="category-bg"
+            style="background-image:url('./IMG_9915.jpeg')">
+        </div>
+
+        <div
+            class="category-bg"
+            style="background-image:url('./IMG_9916.jpeg')">
+        </div>
+
+        <div
+            class="category-bg"
+            style="background-image:url('./IMG_9917.jpeg')">
+        </div>
+
+        <div class="category-info">
+            <span>03 — Collection</span>
+            <h3>Fragrances</h3>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SHOP
+========================= -->
+
+<section class="shop" id="shop">
+
+    <div class="section-title">
+
+        <div class="eyebrow">
+            THE EDIT
+        </div>
+
+        <h2>
+            Selected Beauty
+        </h2>
+
+    </div>
+
+    <div class="filters">
+
+        <button class="filter active" onclick="filterProducts('Todos',this)">
+            Todos
+        </button>
+
+        <button class="filter" onclick="filterProducts('Makeup',this)">
+            Makeup
+        </button>
+
+        <button class="filter" onclick="filterProducts('Skincare',this)">
+            Skincare
+        </button>
+
+        <button class="filter" onclick="filterProducts('Fragrances',this)">
+            Fragrances
+        </button>
+
+    </div>
+
+    <div class="products" id="products"></div>
+
+</section>
+
+
+<!-- =========================
+     SOBRE
+========================= -->
+
+<section class="about" id="sobre">
+
+    <div>
+
+        <div class="eyebrow">
+            Our World
+        </div>
+
+        <h2>
+            Beauty<br>
+            has no<br>
+            borders.
+        </h2>
+
+    </div>
+
+    <div class="about-box">
+
+        <h3>
+            Uma ponte entre
+            o mundo e você.
+        </h3>
+
+        <p>
+            A MAISON GLOBAL nasceu para aproximar
+            o público brasileiro das maiores referências
+            internacionais de beleza.
+        </p>
+
+        <p>
+            Nosso trabalho é pesquisar, selecionar e
+            apresentar produtos especiais de grandes
+            maisons internacionais em uma experiência
+            sofisticada e cuidadosamente curada.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="logo">
+        MAISON GLOBAL
+    </div>
+
+    <p>
+        INTERNATIONAL BEAUTY — CURATED WORLDWIDE
+    </p>
+
+</footer>
+
+
+<!-- =========================
+     CARRINHO
+========================= -->
+
+<div class="cart-panel" id="cartPanel">
+
+    <div class="cart-head">
+
+        <h2>
+            Sua Sacola
+        </h2>
+
+        <button class="close-cart" onclick="closeCart()">
+            ×
+        </button>
+
+    </div>
+
+    <div id="cartItems"></div>
+
+    <div class="cart-total">
+
+        <span>Total</span>
+
+        <strong id="cartTotal">
+            R$ 0,00
+        </strong>
+
+    </div>
+
+    <button class="checkout-btn" onclick="openCheckout()">
+        Finalizar pedido
+    </button>
+
+</div>
+
+
+<!-- =========================
+     CHECKOUT
+========================= -->
+
+<div class="modal" id="checkoutModal">
+
+    <div class="modal-content">
+
+        <button class="modal-close" onclick="closeCheckout()">
+            ×
+        </button>
+
+        <h2>
+            Finalizar pedido
+        </h2>
+
+        <div class="form-grid">
+
+            <div class="form-group">
+                <label>Nome</label>
+                <input id="customerName" type="text">
+            </div>
+
+            <div class="form-group">
+                <label>Telefone</label>
+                <input id="customerPhone" type="tel">
+            </div>
+
+            <div class="form-group">
+                <label>E-mail</label>
+                <input id="customerEmail" type="email">
+            </div>
+
+            <div class="form-group">
+                <label>CEP</label>
+                <input
+                    id="customerCep"
+                    type="text"
+                    maxlength="9"
+                    onblur="buscarCep()">
+            </div>
+
+            <div class="form-group full">
+                <label>Endereço</label>
+                <input id="customerAddress" type="text">
+            </div>
+
+            <div class="form-group">
+                <label>Número</label>
+                <input id="customerNumber" type="text">
+            </div>
+
+            <div class="form-group">
+                <label>Cidade</label>
+                <input id="customerCity" type="text">
+            </div>
+
+            <div class="form-group full">
+
+                <label>
+                    Forma de pagamento
+                </label>
+
+                <select id="payment">
+
+                    <option value="">
+                        Selecione
+                    </option>
+
+                    <option>
+                        Cartão de crédito
+                    </option>
+
+                    <option>
+                        Pix
+                    </option>
+
+                    <option>
+                        Boleto
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+        <button class="checkout-btn" onclick="finishOrder()">
+            Confirmar pedido
+        </button>
+
+        <div class="demo-note">
+            Este é um checkout demonstrativo.
+            Nenhuma cobrança real será realizada.
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   PRODUTOS
+========================= */
+
+const products = [
+
+    {
+        id:1,
+        brand:"Dior",
+        name:"Dior Addict Lip Glow 001",
+        category:"Makeup",
+        price:299,
+        image:"IMG_9893.jpeg"
+    },
+
+    {
+        id:2,
+        brand:"Dior",
+        name:"Dior Forever",
+        category:"Makeup",
+        price:399,
+        image:"IMG_9894.jpeg"
+    },
+
+    {
+        id:3,
+        brand:"Chanel",
+        name:"Rouge Coco",
+        category:"Makeup",
+        price:349,
+        image:"IMG_9895.jpeg"
+    },
+
+    {
+        id:4,
+        brand:"Chanel",
+        name:"Les Beiges",
+        category:"Makeup",
+        price:389,
+        image:"IMG_9896.jpeg"
+    },
+
+    {
+        id:5,
+        brand:"Yves Saint Laurent",
+        name:"Touche Éclat",
+        category:"Makeup",
+        price:329,
+        image:"IMG_9897.jpeg"
+    },
+
+    {
+        id:6,
+        brand:"Giorgio Armani",
+        name:"Luminous Silk Foundation",
+        category:"Makeup",
+        price:449,
+        image:"IMG_9898.jpeg"
+    },
+
+    {
+        id:7,
+        brand:"Tom Ford",
+        name:"Lip Color",
+        category:"Makeup",
+        price:449,
+        image:"IMG_9899.jpeg"
+    },
+
+    {
+        id:8,
+        brand:"Guerlain",
+        name:"Rouge",
+        category:"Makeup",
+        price:379,
+        image:"IMG_9900.jpeg"
+    },
+
+    {
+        id:9,
+        brand:"La Mer",
+        name:"Crème de la Mer",
+        category:"Skincare",
+        price:2499,
+        image:"IMG_9901.jpeg"
+    },
+
+    {
+        id:10,
+        brand:"La Prairie",
+        name:"Skin Caviar",
+        category:"Skincare",
+        price:2199,
+        image:"IMG_9902.jpeg"
+    },
+
+    {
+        id:11,
+        brand:"Estée Lauder",
+        name:"Luxury Skincare",
+        category:"Skincare",
+        price:799,
+        image:"IMG_9903.jpeg"
+    },
+
+    {
+        id:12,
+        brand:"Dior",
+        name:"Dior Prestige La Crème",
+        category:"Skincare",
+        price:2399,
+        image:"IMG_9904.jpeg"
+    },
+
+    {
+        id:13,
+        brand:"Lancôme",
+        name:"Luxury Kit",
+        category:"Skincare",
+        price:899,
+        image:"IMG_9905.jpeg"
+    },
+
+    {
+        id:14,
+        brand:"Shiseido",
+        name:"Premium Skincare",
+        category:"Skincare",
+        price:749,
+        image:"IMG_9906.jpeg"
+    },
+
+    {
+        id:15,
+        brand:"Clé de Peau Beauté",
+        name:"Premium Collection",
+        category:"Skincare",
+        price:1899,
+        image:"IMG_9907.jpeg"
+    },
+
+    {
+        id:16,
+        brand:"Augustinus Bader",
+        name:"The Rich Cream",
+        category:"Skincare",
+        price:1799,
+        image:"IMG_9908.jpeg"
+    },
+
+    {
+        id:17,
+        brand:"Chanel",
+        name:"N°5 Paris",
+        category:"Fragrances",
+        price:899,
+        image:"IMG_9909.jpeg"
+    },
+
+    {
+        id:18,
+        brand:"Chanel",
+        name:"Coco Mademoiselle",
+        category:"Fragrances",
+        price:899,
+        image:"IMG_9910.jpeg"
+    },
+
+    {
+        id:19,
+        brand:"Dior",
+        name:"J'adore",
+        category:"Fragrances",
+        price:799,
+        image:"IMG_9911.jpeg"
+    },
+
+    {
+        id:20,
+        brand:"Dior",
+        name:"Miss Dior",
+        category:"Fragrances",
+        price:749,
+        image:"IMG_9912.jpeg"
+    },
+
+    {
+        id:21,
+        brand:"Yves Saint Laurent",
+        name:"Black Opium",
+        category:"Fragrances",
+        price:699,
+        image:"IMG_9913.jpeg"
+    },
+
+    {
+        id:22,
+        brand:"Tom Ford",
+        name:"Lost Cherry",
+        category:"Fragrances",
+        price:1499,
+        image:"IMG_9914.jpeg"
+    },
+
+    {
+        id:23,
+        brand:"Tom Ford",
+        name:"Oud Wood",
+        category:"Fragrances",
+        price:1399,
+        image:"IMG_9915.jpeg"
+    },
+
+    {
+        id:24,
+        brand:"Jo Malone London",
+        name:"London Collection",
+        category:"Fragrances",
+        price:899,
+        image:"IMG_9916.jpeg"
+    },
+
+    {
+        id:25,
+        brand:"Orient Rouge",
+        name:"Orient Rouge",
+        category:"Fragrances",
+        price:599,
+        image:"IMG_9917.jpeg"
+    }
+
+];
+
+
+/* =========================
+   RENDER PRODUTOS
+========================= */
+
+let currentFilter = "Todos";
+
+function renderProducts(){
+
+    const container =
+        document.getElementById("products");
+
+    let list = products;
+
+    if(currentFilter !== "Todos"){
+        list = products.filter(
+            product => product.category === currentFilter
+        );
+    }
+
+    container.innerHTML = list.map(product => `
+
+        <div class="product">
+
+            <div class="product-image">
+
+                <img
+                    src="./${product.image}"
+                    alt="${product.name}"
+                >
+
+            </div>
+
+            <div class="product-info">
+
+                <div class="product-brand">
+                    ${product.brand}
+                </div>
+
+                <div class="product-name">
+                    ${product.name}
+                </div>
+
+                <div class="product-price">
+                    R$ ${product.price.toLocaleString(
+                        'pt-BR',
+                        {
+                            minimumFractionDigits:2
+                        }
+                    )}
+                </div>
+
+                <div class="product-actions">
+
+                    <button
+                        class="add-btn"
+                        onclick="addToCart(${product.id})">
+                        Adicionar
+                    </button>
+
+                    <button
+                        class="details-btn"
+                        onclick="showProduct(${product.id})">
+                        +
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    `).join("");
+
+}
+
+
+function filterProducts(category,button){
+
+    currentFilter = category;
+
+    document
+        .querySelectorAll(".filter")
+        .forEach(btn =>
+            btn.classList.remove("active")
+        );
+
+    button.classList.add("active");
+
+    renderProducts();
+
 }
 
 
@@ -669,92 +1681,131 @@ a{text-decoration:none;color:inherit}
    CARRINHO
 ========================= */
 
-.cart-panel{
- position:fixed;
- top:0;
- right:-440px;
- width:min(430px,100%);
- height:100vh;
- background:#fffdf9;
- z-index:120;
- transition:.4s;
- box-shadow:-10px 0 30px rgba(0,0,0,.2);
- padding:28px;
- display:flex;
- flex-direction:column
+let cart = [];
+
+function addToCart(id){
+
+    const product =
+        products.find(item => item.id === id);
+
+    cart.push(product);
+
+    renderCart();
+
+    openCart();
+
 }
 
-.cart-panel.open{
- right:0
+
+function removeFromCart(index){
+
+    cart.splice(index,1);
+
+    renderCart();
+
 }
 
-.cart-head{
- display:flex;
- justify-content:space-between;
- align-items:center;
- border-bottom:1px solid var(--line);
- padding-bottom:20px
+
+function renderCart(){
+
+    const items =
+        document.getElementById("cartItems");
+
+    const count =
+        document.getElementById("cartCount");
+
+    const total =
+        document.getElementById("cartTotal");
+
+    count.textContent = cart.length;
+
+    if(cart.length === 0){
+
+        items.innerHTML = `
+            <p style="
+                color:#777;
+                margin-top:30px;
+                font-size:12px;
+            ">
+                Sua sacola está vazia.
+            </p>
+        `;
+
+        total.textContent = "R$ 0,00";
+
+        return;
+    }
+
+    items.innerHTML = cart.map((product,index) => `
+
+        <div class="cart-item">
+
+            <img
+                src="./${product.image}"
+                alt="${product.name}"
+            >
+
+            <div>
+
+                <div class="cart-item-name">
+                    ${product.name}
+                </div>
+
+                <div class="cart-item-price">
+                    R$ ${product.price.toLocaleString(
+                        'pt-BR',
+                        {
+                            minimumFractionDigits:2
+                        }
+                    )}
+                </div>
+
+            </div>
+
+            <button
+                class="remove-item"
+                onclick="removeFromCart(${index})">
+                remover
+            </button>
+
+        </div>
+
+    `).join("");
+
+    const cartTotal =
+        cart.reduce(
+            (sum,product) =>
+                sum + product.price,
+            0
+        );
+
+    total.textContent =
+        "R$ " +
+        cartTotal.toLocaleString(
+            'pt-BR',
+            {
+                minimumFractionDigits:2
+            }
+        );
+
 }
 
-.cart-head h2{
- font-family:"Playfair Display",serif;
- font-size:28px;
- font-weight:400
+
+function openCart(){
+
+    document
+        .getElementById("cartPanel")
+        .classList.add("open");
+
 }
 
-.cart-close{
- background:none;
- border:0;
- font-size:26px
-}
 
-.cart-items{
- flex:1;
- overflow:auto;
- padding:20px 0
-}
+function closeCart(){
 
-.cart-item{
- display:grid;
- grid-template-columns:75px 1fr auto;
- gap:12px;
- border-bottom:1px solid var(--line);
- padding:14px 0
-}
+    document
+        .getElementById("cartPanel")
+        .classList.remove("open");
 
-.cart-item img{
- width:75px;
- height:85px;
- object-fit:cover;
- background:#eee
-}
-
-.cart-item h4{
- font-family:"Playfair Display",serif;
- font-weight:400
-}
-
-.cart-item small{
- display:block;
- color:#766e63;
- margin-top:6px
-}
-
-.remove{
- background:none;
- border:0;
- font-size:11px;
- text-decoration:underline;
- margin-top:8px
-}
-
-.cart-total{
- border-top:1px solid var(--line);
- padding-top:20px;
- font-size:15px;
- display:flex;
- justify-content:space-between;
- margin-bottom:15px
 }
 
 
@@ -762,1186 +1813,273 @@ a{text-decoration:none;color:inherit}
    CHECKOUT
 ========================= */
 
-.checkout{
- position:fixed;
- inset:0;
- background:rgba(0,0,0,.75);
- z-index:130;
- display:none;
- align-items:center;
- justify-content:center;
- padding:20px
+function openCheckout(){
+
+    if(cart.length === 0){
+
+        alert("Adicione pelo menos um produto à sacola.");
+
+        return;
+    }
+
+    document
+        .getElementById("checkoutModal")
+        .classList.add("open");
+
 }
 
-.checkout.open{
- display:flex
-}
 
-.checkout-box{
- background:#fffdf9;
- width:min(650px,100%);
- max-height:92vh;
- overflow:auto;
- padding:35px
-}
+function closeCheckout(){
 
-.checkout-box h2{
- font-family:"Playfair Display",serif;
- font-size:35px;
- font-weight:400;
- margin-bottom:8px
-}
+    document
+        .getElementById("checkoutModal")
+        .classList.remove("open");
 
-.demo-note{
- font-size:11px;
- color:#856f48;
- background:#f2eadb;
- padding:12px;
- margin:15px 0 20px
-}
-
-.form-grid{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:12px
-}
-
-.form-group{
- display:flex;
- flex-direction:column;
- gap:6px
-}
-
-.form-group.full{
- grid-column:1/-1
-}
-
-.form-group label{
- font-size:10px;
- text-transform:uppercase;
- letter-spacing:1px
-}
-
-.form-group input,
-.form-group select{
- padding:12px;
- border:1px solid var(--line);
- background:white;
- outline:none
-}
-
-.success{
- display:none;
- text-align:center;
- padding:50px 10px
-}
-
-.success.show{
- display:block
-}
-
-.success h3{
- font-family:"Playfair Display",serif;
- font-size:40px;
- font-weight:400;
- margin-bottom:12px
 }
 
 
 /* =========================
-   RESPONSIVO
+   CEP
 ========================= */
-
-@media(max-width:950px){
-
- .nav{
-  gap:15px
- }
-
- .products{
-  grid-template-columns:repeat(3,1fr)
- }
-
- .categories{
-  grid-template-columns:1fr
- }
-
- .category-card{
-  height:500px
- }
-
- .about{
-  grid-template-columns:1fr
- }
-
- .process{
-  grid-template-columns:1fr
- }
-}
-
-@media(max-width:700px){
-
- .header{
-  height:70px;
-  padding:0 20px
- }
-
- .logo{
-  font-size:20px;
-  letter-spacing:4px
- }
-
- .nav{
-  display:none
- }
-
- .hero{
-  min-height:620px
- }
-
- /*
-    NO CELULAR A CAPA NÃO FICA "COLADA".
-    A imagem ocupa a tela inteira mantendo proporção.
- */
- .hero-slide:not(.hero-face){
-  background-size:cover;
-  background-position:center center
- }
-
- .hero-slide.hero-face{
-  background-size:cover;
-  background-position:center 25%
- }
-
- .hero-content{
-  left:7%;
-  right:7%;
-  bottom:11%
- }
-
- .hero h1{
-  font-size:clamp(43px,12vw,68px)
- }
-
- .section{
-  padding:75px 6%
- }
-
- .shop-head{
-  display:block
- }
-
- .filters{
-  margin-top:25px
- }
-
- .products{
-  grid-template-columns:repeat(2,1fr);
-  gap:14px
- }
-
- .product-img{
-  height:260px
- }
-
- .category-card{
-  height:460px
- }
-
- .category-content{
-  padding:28px
- }
-
- .category-content h2{
-  font-size:43px
- }
-
- .footer-top{
-  display:block
- }
-
- .footer-bottom{
-  display:block
- }
-
- .footer-bottom span{
-  display:block;
-  margin-top:8px
- }
-
- .product-detail{
-  grid-template-columns:1fr
- }
-
- .detail-img{
-  height:400px
- }
-
- .detail-copy{
-  padding:35px 25px
- }
-
- .form-grid{
-  grid-template-columns:1fr
- }
-
- .form-group.full{
-  grid-column:auto
- }
-}
-</style>
-</head>
-
-<body>
-
-<header class="header">
-
-<a href="#inicio" class="logo">MAISON GLOBAL</a>
-
-<nav class="nav">
-<a href="#inicio">Início</a>
-<a href="#maison">A Maison</a>
-<a href="#trabalho">Nosso Trabalho</a>
-<a href="#colecao">Coleção</a>
-</nav>
-
-<button class="cart-btn" onclick="openCart()">
-Sacola <span id="cartCount">0</span>
-</button>
-
-</header>
-
-
-<section class="hero" id="inicio">
-
-<div class="hero-slide hero-face active"
-style="background-image:url('./IMG_0079.jpeg')"></div>
-
-<div class="hero-slide"
-style="background-image:url('./IMG_0080.jpeg')"></div>
-
-<div class="hero-slide"
-style="background-image:url('./IMG_0081.jpeg')"></div>
-
-<div class="hero-slide"
-style="background-image:url('./IMG_0082.jpeg')"></div>
-
-<div class="hero-overlay"></div>
-
-<div class="hero-content">
-
-<div class="kicker">International Beauty House</div>
-
-<h1>O mundo da beleza, selecionado para você.</h1>
-
-<p>
-Uma curadoria internacional de maquiagem, skincare e fragrâncias
-icônicas, escolhidas para quem reconhece o extraordinário.
-</p>
-
-<a href="#colecao" class="hero-btn">
-Explorar coleção
-</a>
-
-</div>
-
-<div class="hero-dots">
-
-<button class="hero-dot active" onclick="goSlide(0)"></button>
-<button class="hero-dot" onclick="goSlide(1)"></button>
-<button class="hero-dot" onclick="goSlide(2)"></button>
-<button class="hero-dot" onclick="goSlide(3)"></button>
-
-</div>
-
-</section>
-
-
-<section class="section intro">
-
-<div class="eyebrow">MAISON GLOBAL</div>
-
-<h2 class="section-title">
-Beleza sem fronteiras.
-</h2>
-
-<p class="section-text">
-Conectamos o universo da beleza internacional ao Brasil através de uma
-seleção cuidadosa de produtos, marcas e experiências. Cada escolha passa
-por um olhar atento para qualidade, desejo e sofisticação.
-</p>
-
-</section>
-
-
-<section class="section about" id="maison">
-
-<div class="about-copy">
-
-<div class="eyebrow">A Maison</div>
-
-<h2 class="section-title">
-Uma nova forma de descobrir o luxo.
-</h2>
-
-<p>
-A MAISON GLOBAL nasceu para aproximar o Brasil dos grandes nomes da
-beleza mundial. Nossa proposta é pesquisar, selecionar e apresentar
-produtos que representam o melhor de diferentes mercados internacionais.
-</p>
-
-<p>
-Mais do que uma loja, somos uma curadoria: descobrimos, conectamos e
-entregamos uma experiência inspirada nas grandes maisons de beleza.
-</p>
-
-</div>
-
-<div class="about-stat">
-
-<div class="stat">
-<strong>01</strong>
-<span>Curadoria internacional</span>
-</div>
-
-<div class="stat">
-<strong>02</strong>
-<span>Seleção premium</span>
-</div>
-
-<div class="stat">
-<strong>03</strong>
-<span>Experiência brasileira</span>
-</div>
-
-<div class="stat">
-<strong>04</strong>
-<span>Beleza global</span>
-</div>
-
-</div>
-
-</section>
-
-
-<section class="section" id="trabalho">
-
-<div class="eyebrow">Nosso trabalho</div>
-
-<h2 class="section-title">
-Do mundo para a sua rotina.
-</h2>
-
-<div class="process">
-
-<div class="process-item">
-<div class="process-number">01</div>
-<h3>Descobrimos</h3>
-<p>
-Pesquisamos tendências, lançamentos e grandes ícones da beleza
-internacional.
-</p>
-</div>
-
-<div class="process-item">
-<div class="process-number">02</div>
-<h3>Selecionamos</h3>
-<p>
-Escolhemos produtos que combinam qualidade, desejo, inovação e identidade.
-</p>
-</div>
-
-<div class="process-item">
-<div class="process-number">03</div>
-<h3>Conectamos</h3>
-<p>
-Apresentamos essa curadoria ao público brasileiro em uma experiência
-sofisticada.
-</p>
-</div>
-
-</div>
-
-</section>
-
-
-<section class="categories" id="colecao">
-
-<div class="category-card category-slider" id="makeupCategory">
-
-<div class="category-bg active"
-style="background-image:url('./IMG_9899.jpeg')"></div>
-
-<div class="category-bg"
-style="background-image:url('./IMG_9895.jpeg')"></div>
-
-<div class="category-bg"
-style="background-image:url('./IMG_9896.jpeg')"></div>
-
-<div class="category-bg"
-style="background-image:url('./IMG_9897.jpeg')"></div>
-
-<div class="category-content">
-
-<h2>Makeup</h2>
-
-<p>
-Ícones internacionais para criar uma beleza única.
-</p>
-
-<a href="#shop" class="category-btn">
-Explorar
-</a>
-
-</div>
-
-</div>
-
-
-<div class="category-card category-slider" id="skincareCategory">
-
-<div class="category-bg active"
-style="background-image:url('./IMG_9901.jpeg')"></div>
-
-<div class="category-bg"
-style="background-image:url('./IMG_9902.jpeg')"></div>
-
-<div class="category-bg"
-style="background-image:url('./IMG_9903.jpeg')"></div>
-
-<div class="category-bg"
-style="background-image:url('./IMG_9904.jpeg')"></div>
-
-<div class="category-bg"
-style="background-image:url('./IMG_9906.jpeg')"></div>
-
-<div class="category-bg"
-style="background-image:url('./IMG_9907.jpeg')"></div>
-
-<div class="category-bg"
-style="background-image:url('./IMG_9908.jpeg')"></div>
-
-<div class="category-content">
-
-<h2>Skincare</h2>
-
-<p>
-Fórmulas e tratamentos selecionados ao redor do mundo.
-</p>
-
-<a href="#shop" class="category-btn">
-Explorar
-</a>
-
-</div>
-
-</div>
-
-
-<div class="category-card category-slider" id="fragranceCategory">
-
-<div class="category-bg active"
-style="background-image:url('./IMG_9909.jpeg')"></div>
-
-<div class="category-bg"
-style="background-image:url('./IMG_9910.jpeg')"></div>
-
-<div class="category-bg"
-style="background-image:url('./IMG_9911.jpeg')"></div>
-
-<div class="category-bg"
-style="background-image:url('./IMG_9912.jpeg')"></div>
-
-<div class="category-bg"
-style="background-image:url('./IMG_9913.jpeg')"></div>
-
-<div class="category-bg"
-style="background-image:url('./IMG_9914.jpeg')"></div>
-
-<div class="category-bg"
-style="background-image:url('./IMG_9915.jpeg')"></div>
-
-<div class="category-bg"
-style="background-image:url('./IMG_9916.jpeg')"></div>
-
-<div class="category-bg"
-style="background-image:url('./IMG_9917.jpeg')"></div>
-
-<div class="category-content">
-
-<h2>Fragrances</h2>
-
-<p>
-Fragrâncias marcantes para momentos inesquecíveis.
-</p>
-
-<a href="#shop" class="category-btn">
-Explorar
-</a>
-
-</div>
-
-</div>
-
-</section>
-
-
-<section class="section" id="shop">
-
-<div class="shop-head">
-
-<div>
-
-<div class="eyebrow">The collection</div>
-
-<h2 class="section-title">
-Seleção MAISON
-</h2>
-
-</div>
-
-<div class="filters">
-
-<button class="filter active" data-filter="all">
-Todos
-</button>
-
-<button class="filter" data-filter="makeup">
-Makeup
-</button>
-
-<button class="filter" data-filter="skincare">
-Skincare
-</button>
-
-<button class="filter" data-filter="fragrance">
-Fragrances
-</button>
-
-</div>
-
-</div>
-
-<div class="products" id="products"></div>
-
-</section>
-
-
-<section class="newsletter">
-
-<div class="eyebrow" style="color:#c4aa79">
-MAISON GLOBAL
-</div>
-
-<h2 class="section-title" style="color:white">
-Descubra o extraordinário.
-</h2>
-
-<p>
-Uma seleção internacional para quem acredita que beleza também é
-experiência, detalhe e desejo.
-</p>
-
-<a href="#shop" class="hero-btn">
-Ver coleção
-</a>
-
-</section>
-
-
-<footer class="footer">
-
-<div class="footer-top">
-
-<div>
-
-<div class="footer-logo">
-MAISON GLOBAL
-</div>
-
-<p>
-Curadoria internacional de beleza. Makeup, skincare e fragrâncias
-selecionadas ao redor do mundo.
-</p>
-
-</div>
-
-<div>
-
-<div class="eyebrow" style="color:#c4aa79">
-Experiência
-</div>
-
-<p>
-Uma proposta digital inspirada no universo das grandes maisons
-internacionais.
-</p>
-
-</div>
-
-</div>
-
-<div class="footer-bottom">
-
-<span>© 2026 MAISON GLOBAL</span>
-
-<span>
-Projeto demonstrativo — compras não são processadas.
-</span>
-
-</div>
-
-</footer>
-
-
-<div class="modal" id="productModal">
-
-<div class="modal-box">
-
-<button class="modal-close" onclick="closeProduct()">×</button>
-
-<div class="product-detail">
-
-<div class="detail-img">
-<img id="detailImage" src="" alt="">
-</div>
-
-<div class="detail-copy">
-
-<div class="product-brand" id="detailBrand"></div>
-
-<h2 id="detailName"></h2>
-
-<div class="detail-price" id="detailPrice"></div>
-
-<p id="detailDescription"></p>
-
-<div class="eyebrow">
-Escolha sua opção
-</div>
-
-<div class="swatches" id="swatches"></div>
-
-<button class="add-btn" onclick="addCurrentToCart()">
-Adicionar à sacola
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-<aside class="cart-panel" id="cartPanel">
-
-<div class="cart-head">
-
-<h2>Sua sacola</h2>
-
-<button class="cart-close" onclick="closeCart()">×</button>
-
-</div>
-
-<div class="cart-items" id="cartItems"></div>
-
-<div class="cart-total">
-<span>Total</span>
-<strong id="cartTotal">R$ 0,00</strong>
-</div>
-
-<button class="checkout-btn" onclick="openCheckout()">
-Finalizar pedido
-</button>
-
-</aside>
-
-
-<div class="checkout" id="checkout">
-
-<div class="checkout-box">
-
-<button class="modal-close" onclick="closeCheckout()">×</button>
-
-<div id="checkoutForm">
-
-<h2>Finalizar pedido</h2>
-
-<div class="demo-note">
-Demonstração: este site não realiza cobrança real.
-</div>
-
-<div class="form-grid">
-
-<div class="form-group full">
-<label>Nome completo</label>
-<input id="name" required>
-</div>
-
-<div class="form-group">
-<label>E-mail</label>
-<input id="email" type="email" required>
-</div>
-
-<div class="form-group">
-<label>Telefone</label>
-<input id="phone" required>
-</div>
-
-<div class="form-group">
-<label>CEP</label>
-<input id="cep" maxlength="9" placeholder="00000-000" onblur="buscarCep()">
-</div>
-
-<div class="form-group">
-<label>Rua</label>
-<input id="street">
-</div>
-
-<div class="form-group">
-<label>Número</label>
-<input id="number">
-</div>
-
-<div class="form-group">
-<label>Cidade</label>
-<input id="city">
-</div>
-
-<div class="form-group">
-<label>Estado</label>
-<input id="state">
-</div>
-
-<div class="form-group full">
-
-<label>Forma de pagamento</label>
-
-<select id="payment">
-
-<option>Cartão de crédito — demonstração</option>
-
-<option>Pix — demonstração</option>
-
-<option>Cartão de débito — demonstração</option>
-
-</select>
-
-</div>
-
-</div>
-
-<br>
-
-<button class="checkout-btn" onclick="finishOrder()">
-Confirmar pedido demonstrativo
-</button>
-
-</div>
-
-<div class="success" id="success">
-
-<h3>Pedido recebido.</h3>
-
-<p>
-Esta é uma simulação. Nenhuma cobrança foi realizada.
-</p>
-
-<br>
-
-<button class="checkout-btn" onclick="closeCheckout()">
-Voltar à Maison
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-
-<script>
-
-const products=[
-
-{id:1,img:"IMG_9893.jpeg",brand:"Dior",name:"Dior Addict Lip Glow 001",price:349,cat:"makeup",desc:"Bálsamo icônico para os lábios com acabamento natural e confortável."},
-{id:2,img:"IMG_9894.jpeg",brand:"Dior",name:"Dior Forever",price:429,cat:"makeup",desc:"Uma escolha sofisticada para uma pele impecável."},
-{id:3,img:"IMG_9895.jpeg",brand:"Chanel",name:"Rouge Coco",price:399,cat:"makeup",desc:"O clássico Chanel em uma textura elegante e confortável."},
-{id:4,img:"IMG_9896.jpeg",brand:"Chanel",name:"Les Beiges",price:459,cat:"makeup",desc:"Beleza natural inspirada no efeito saudável do verão."},
-{id:5,img:"IMG_9897.jpeg",brand:"Yves Saint Laurent",name:"Touche Éclat",price:389,cat:"makeup",desc:"O iluminador icônico para realçar o rosto."},
-{id:6,img:"IMG_9898.jpeg",brand:"Giorgio Armani",name:"Luminous Silk Foundation",price:499,cat:"makeup",desc:"Base de acabamento luminoso e sofisticado."},
-{id:7,img:"IMG_9899.jpeg",brand:"Tom Ford",name:"Tom Ford Lip Color",price:449,cat:"makeup",desc:"Cor intensa em uma assinatura luxuosa."},
-{id:8,img:"IMG_9900.jpeg",brand:"Guerlain",name:"Rouge Guerlain",price:419,cat:"makeup",desc:"Batom de alta perfumaria com acabamento elegante."},
-{id:9,img:"IMG_9901.jpeg",brand:"La Mer",name:"Crème de la Mer",price:2890,cat:"skincare",desc:"Um dos maiores ícones do universo do skincare."},
-{id:10,img:"IMG_9902.jpeg",brand:"La Prairie",name:"Skin Caviar",price:3190,cat:"skincare",desc:"Tratamento luxuoso inspirado no poder do caviar."},
-{id:11,img:"IMG_9903.jpeg",brand:"Estée Lauder",name:"Advanced Night Repair",price:599,cat:"skincare",desc:"Tratamento noturno clássico para uma pele radiante."},
-{id:12,img:"IMG_9904.jpeg",brand:"Dior",name:"Dior Prestige La Crème",price:2490,cat:"skincare",desc:"Tratamento premium da alta perfumaria Dior."},
-{id:13,img:"IMG_9905.jpeg",brand:"Lancôme",name:"Beauty Kit",price:799,cat:"skincare",desc:"Uma seleção completa para um ritual de beleza."},
-{id:14,img:"IMG_9906.jpeg",brand:"Shiseido",name:"Shiseido Treatment",price:649,cat:"skincare",desc:"Tecnologia japonesa em um ritual sofisticado."},
-{id:15,img:"IMG_9907.jpeg",brand:"Clé de Peau Beauté",name:"Clé de Peau Beauté",price:1590,cat:"skincare",desc:"Luxo japonês e tecnologia avançada."},
-{id:16,img:"IMG_9908.jpeg",brand:"Augustinus Bader",name:"The Rich Cream",price:1890,cat:"skincare",desc:"Creme de tratamento reconhecido por sua tecnologia."},
-{id:17,img:"IMG_9909.jpeg",brand:"Chanel",name:"N°5 Paris",price:899,cat:"fragrance",desc:"Uma das fragrâncias mais emblemáticas do mundo."},
-{id:18,img:"IMG_9910.jpeg",brand:"Chanel",name:"Coco Mademoiselle",price:849,cat:"fragrance",desc:"Uma assinatura moderna, elegante e marcante."},
-{id:19,img:"IMG_9911.jpeg",brand:"Dior",name:"J'adore",price:799,cat:"fragrance",desc:"Uma composição feminina luminosa e sofisticada."},
-{id:20,img:"IMG_9912.jpeg",brand:"Dior",name:"Miss Dior",price:749,cat:"fragrance",desc:"Romântica, delicada e contemporânea."},
-{id:21,img:"IMG_9913.jpeg",brand:"Yves Saint Laurent",name:"Black Opium",price:799,cat:"fragrance",desc:"Uma fragrância intensa e envolvente."},
-{id:22,img:"IMG_9914.jpeg",brand:"Tom Ford",name:"Lost Cherry",price:1590,cat:"fragrance",desc:"Uma assinatura ousada e irresistível."},
-{id:23,img:"IMG_9915.jpeg",brand:"Tom Ford",name:"Oud Wood",price:1590,cat:"fragrance",desc:"Madeiras preciosas em uma composição sofisticada."},
-{id:24,img:"IMG_9916.jpeg",brand:"Jo Malone London",name:"Jo Malone London",price:799,cat:"fragrance",desc:"Elegância britânica e perfumaria refinada."},
-{id:25,img:"IMG_9917.jpeg",brand:"Orient Rouge",name:"Orient Rouge",price:599,cat:"fragrance",desc:"Uma fragrância marcante para momentos especiais."}
-
-];
-
-let cart=[];
-let currentProduct=null;
-let selectedOption="01";
-
-function money(v){
-return v.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
-}
-
-function renderProducts(filter="all"){
-
-const box=document.getElementById("products");
-
-box.innerHTML="";
-
-products.forEach(p=>{
-
-if(filter!=="all"&&p.cat!==filter)return;
-
-const card=document.createElement("article");
-
-card.className="product";
-
-card.innerHTML=`
-
-<div class="product-tag">
-${p.cat==="makeup"?"Makeup":p.cat==="skincare"?"Skincare":"Fragrance"}
-</div>
-
-<div class="product-img">
-<img src="./${p.img}" alt="${p.name}" loading="lazy">
-</div>
-
-<div class="product-info">
-
-<div class="product-brand">
-${p.brand}
-</div>
-
-<div class="product-name">
-${p.name}
-</div>
-
-<div class="product-price">
-${money(p.price)}
-</div>
-
-</div>
-`;
-
-card.onclick=()=>openProduct(p.id);
-
-box.appendChild(card);
-
-});
-
-}
-
-document.querySelectorAll(".filter").forEach(btn=>{
-
-btn.addEventListener("click",()=>{
-
-document.querySelectorAll(".filter")
-.forEach(b=>b.classList.remove("active"));
-
-btn.classList.add("active");
-
-renderProducts(btn.dataset.filter);
-
-});
-
-});
-
-function openProduct(id){
-
-currentProduct=products.find(p=>p.id===id);
-
-document.getElementById("detailImage").src="./"+currentProduct.img;
-
-document.getElementById("detailBrand").textContent=currentProduct.brand;
-
-document.getElementById("detailName").textContent=currentProduct.name;
-
-document.getElementById("detailPrice").textContent=money(currentProduct.price);
-
-document.getElementById("detailDescription").textContent=currentProduct.desc;
-
-const sw=document.getElementById("swatches");
-
-const opts=currentProduct.cat==="makeup"
-?["01","02","03","04","05"]
-:["Standard"];
-
-sw.innerHTML="";
-
-opts.forEach((o,i)=>{
-
-const b=document.createElement("button");
-
-b.className="swatch"+(i===0?" selected":"");
-
-b.textContent=o;
-
-b.onclick=()=>{
-
-selectedOption=o;
-
-document.querySelectorAll(".swatch")
-.forEach(x=>x.classList.remove("selected"));
-
-b.classList.add("selected");
-
-};
-
-sw.appendChild(b);
-
-});
-
-selectedOption=opts[0];
-
-document.getElementById("productModal").classList.add("open");
-
-}
-
-function closeProduct(){
-document.getElementById("productModal").classList.remove("open");
-}
-
-function addCurrentToCart(){
-
-if(!currentProduct)return;
-
-cart.push({
-...currentProduct,
-option:selectedOption
-});
-
-renderCart();
-
-closeProduct();
-
-openCart();
-
-}
-
-function renderCart(){
-
-const box=document.getElementById("cartItems");
-
-box.innerHTML="";
-
-let total=0;
-
-cart.forEach((p,i)=>{
-
-total+=p.price;
-
-const item=document.createElement("div");
-
-item.className="cart-item";
-
-item.innerHTML=`
-
-<img src="./${p.img}" alt="">
-
-<div>
-
-<h4>${p.name}</h4>
-
-<small>
-${p.brand} · ${p.option}
-</small>
-
-<small>
-${money(p.price)}
-</small>
-
-<button class="remove" onclick="removeCart(${i})">
-Remover
-</button>
-
-</div>
-
-`;
-
-box.appendChild(item);
-
-});
-
-if(!cart.length){
-
-box.innerHTML=
-'<p style="color:#777;font-size:13px">Sua sacola está vazia.</p>';
-
-}
-
-document.getElementById("cartTotal").textContent=money(total);
-
-document.getElementById("cartCount").textContent=cart.length;
-
-}
-
-function removeCart(i){
-
-cart.splice(i,1);
-
-renderCart();
-
-}
-
-function openCart(){
-document.getElementById("cartPanel").classList.add("open");
-}
-
-function closeCart(){
-document.getElementById("cartPanel").classList.remove("open");
-}
-
-function openCheckout(){
-
-if(!cart.length){
-
-alert("Adicione pelo menos um produto à sacola.");
-
-return;
-
-}
-
-closeCart();
-
-document.getElementById("checkout").classList.add("open");
-
-}
-
-function closeCheckout(){
-
-document.getElementById("checkout").classList.remove("open");
-
-}
 
 async function buscarCep(){
 
-const cep=document
-.getElementById("cep")
-.value
-.replace(/\D/g,"");
+    let cep =
+        document
+        .getElementById("customerCep")
+        .value
+        .replace(/\D/g,"");
 
-if(cep.length!==8)return;
+    if(cep.length !== 8) return;
 
-try{
+    try{
 
-const r=await fetch(
-"https://viacep.com.br/ws/"+cep+"/json/"
-);
+        const response =
+            await fetch(
+                `https://viacep.com.br/ws/${cep}/json/`
+            );
 
-const d=await r.json();
+        const data =
+            await response.json();
 
-if(d.erro)return;
+        if(data.erro){
 
-document.getElementById("street").value=d.logradouro||"";
+            alert("CEP não encontrado.");
 
-document.getElementById("city").value=d.localidade||"";
+            return;
+        }
 
-document.getElementById("state").value=d.uf||"";
+        document
+            .getElementById("customerAddress")
+            .value =
+            `${data.logradouro}, ${data.bairro}`;
 
-}catch(e){}
+        document
+            .getElementById("customerCity")
+            .value =
+            `${data.localidade} - ${data.uf}`;
+
+    }catch(error){
+
+        console.log(error);
+
+    }
 
 }
+
+
+/* =========================
+   FINALIZAR PEDIDO
+========================= */
 
 function finishOrder(){
 
-const required=["name","email","phone"];
+    const name =
+        document
+        .getElementById("customerName")
+        .value.trim();
 
-if(required.some(id=>!document.getElementById(id).value.trim())){
+    const email =
+        document
+        .getElementById("customerEmail")
+        .value.trim();
 
-alert("Preencha nome, e-mail e telefone.");
+    const payment =
+        document
+        .getElementById("payment")
+        .value;
 
-return;
+    if(!name || !email || !payment){
 
-}
+        alert(
+            "Preencha seu nome, e-mail e forma de pagamento."
+        );
 
-document.getElementById("checkoutForm").style.display="none";
+        return;
+    }
 
-document.getElementById("success").classList.add("show");
+    alert(
+        "Pedido demonstrativo realizado com sucesso! ✨"
+    );
 
-cart=[];
+    cart = [];
 
-renderCart();
+    renderCart();
 
-}
+    closeCheckout();
 
-
-/* CATEGORIAS */
-
-function startCategorySlider(id,interval){
-
-const card=document.getElementById(id);
-
-if(!card)return;
-
-const images=card.querySelectorAll(".category-bg");
-
-let current=0;
-
-setInterval(()=>{
-
-images[current].classList.remove("active");
-
-current=(current+1)%images.length;
-
-images[current].classList.add("active");
-
-},interval);
+    closeCart();
 
 }
 
-startCategorySlider("makeupCategory",5000);
 
-startCategorySlider("skincareCategory",5500);
+/* =========================
+   DETALHES
+========================= */
 
-startCategorySlider("fragranceCategory",6000);
+function showProduct(id){
 
+    const product =
+        products.find(item => item.id === id);
 
-/* CAPA */
-
-let slide=0;
-
-const slides=document.querySelectorAll(".hero-slide");
-
-const dots=document.querySelectorAll(".hero-dot");
-
-function goSlide(n){
-
-slide=n;
-
-slides.forEach((s,i)=>{
-s.classList.toggle("active",i===n);
-});
-
-dots.forEach((d,i)=>{
-d.classList.toggle("active",i===n);
-});
+    alert(
+        `${product.name}\n\n` +
+        `${product.brand}\n\n` +
+        `Categoria: ${product.category}\n\n` +
+        `R$ ${product.price.toLocaleString(
+            'pt-BR',
+            {
+                minimumFractionDigits:2
+            }
+        )}`
+    );
 
 }
 
-setInterval(()=>{
-goSlide((slide+1)%slides.length);
+
+/* =========================
+   SLIDER DAS CATEGORIAS
+========================= */
+
+function startCategorySlider(
+    id,
+    interval
+){
+
+    const card =
+        document.getElementById(id);
+
+    if(!card) return;
+
+    const images =
+        card.querySelectorAll(".category-bg");
+
+    if(images.length <= 1) return;
+
+    let current = 0;
+
+    setInterval(() => {
+
+        images[current]
+            .classList
+            .remove("active");
+
+        current =
+            (current + 1) %
+            images.length;
+
+        images[current]
+            .classList
+            .add("active");
+
+    },interval);
+
+}
+
+
+startCategorySlider(
+    "makeupCategory",
+    5000
+);
+
+startCategorySlider(
+    "skincareCategory",
+    5500
+);
+
+startCategorySlider(
+    "fragranceCategory",
+    6000
+);
+
+
+/* =========================
+   HERO SLIDER
+========================= */
+
+let currentSlide = 0;
+
+const slides =
+    document.querySelectorAll(".hero-slide");
+
+const dots =
+    document.querySelectorAll(".hero-dot");
+
+
+function goSlide(index){
+
+    currentSlide = index;
+
+    slides.forEach(
+        (slide,i) => {
+
+            slide.classList.toggle(
+                "active",
+                i === index
+            );
+
+        }
+    );
+
+    dots.forEach(
+        (dot,i) => {
+
+            dot.classList.toggle(
+                "active",
+                i === index
+            );
+
+        }
+    );
+
+}
+
+
+setInterval(() => {
+
+    goSlide(
+        (currentSlide + 1) %
+        slides.length
+    );
+
 },6000);
 
+
+dots.forEach(
+    (dot,index) => {
+
+        dot.addEventListener(
+            "click",
+            () => goSlide(index)
+        );
+
+    }
+);
+
+
+/* =========================
+   INICIALIZAÇÃO
+========================= */
 
 renderProducts();
 
