@@ -7,7 +7,6 @@
 <title>MAISON GLOBAL — International Beauty</title>
 
 <style>
-
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600&display=swap');
 
 :root{
@@ -124,46 +123,50 @@ header.scrolled{
 
 .hero{
     min-height:100vh;
+    height:100vh;
     position:relative;
     overflow:hidden;
     display:flex;
     align-items:center;
     color:white;
-    background:
-        radial-gradient(circle at 75% 20%,rgba(199,168,107,.20),transparent 27%),
-        radial-gradient(circle at 15% 80%,rgba(255,255,255,.06),transparent 25%),
-        linear-gradient(120deg,#050505,#17130f 55%,#292118);
+    background:#050505;
 }
 
-.hero::before{
+.hero-slides{
+    position:absolute;
+    inset:0;
+}
+
+.hero-slide{
+    position:absolute;
+    inset:0;
+    background-size:cover;
+    background-position:center;
+    opacity:0;
+    transition:opacity 1.4s ease;
+}
+
+.hero-slide.active{
+    opacity:1;
+}
+
+.hero-slide::after{
     content:"";
     position:absolute;
     inset:0;
     background:
-        linear-gradient(90deg,rgba(0,0,0,.85),rgba(0,0,0,.35),rgba(0,0,0,.55));
-}
-
-.hero-decoration{
-    position:absolute;
-    width:600px;
-    height:600px;
-    border:1px solid rgba(199,168,107,.18);
-    border-radius:50%;
-    right:-180px;
-    top:-150px;
-}
-
-.hero-decoration::after{
-    content:"";
-    position:absolute;
-    inset:55px;
-    border:1px solid rgba(199,168,107,.12);
-    border-radius:50%;
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,.88) 0%,
+            rgba(0,0,0,.52) 38%,
+            rgba(0,0,0,.20) 70%,
+            rgba(0,0,0,.55) 100%
+        );
 }
 
 .hero-content{
     position:relative;
-    z-index:2;
+    z-index:5;
     max-width:1250px;
     width:100%;
     margin:auto;
@@ -236,13 +239,36 @@ header.scrolled{
     align-items:center;
     font-size:9px;
     letter-spacing:.2em;
-    color:#aaa;
+    color:#ddd;
+    z-index:6;
 }
 
 .hero-line{
     width:130px;
     height:1px;
-    background:#777;
+    background:#aaa;
+}
+
+.hero-dots{
+    position:absolute;
+    bottom:32px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:10;
+    display:flex;
+    gap:8px;
+}
+
+.hero-dot{
+    width:30px;
+    height:2px;
+    background:rgba(255,255,255,.35);
+    border:0;
+    transition:.4s;
+}
+
+.hero-dot.active{
+    background:var(--gold2);
 }
 
 /* =========================
@@ -531,6 +557,10 @@ header.scrolled{
     min-width:0;
 }
 
+.product.hidden{
+    display:none;
+}
+
 .product-image{
     aspect-ratio:4/5;
     background:#eeeae3;
@@ -631,7 +661,7 @@ header.scrolled{
 }
 
 /* =========================
-   STORY BANNER
+   STORY
 ========================= */
 
 .story-banner{
@@ -749,6 +779,7 @@ footer{
     background:none;
     border:0;
     font-size:28px;
+    z-index:3;
 }
 
 .modal-product{
@@ -839,6 +870,56 @@ footer{
     padding:16px;
     letter-spacing:.15em;
     font-size:10px;
+}
+
+/* =========================
+   CART
+========================= */
+
+.cart-items{
+    margin-bottom:25px;
+}
+
+.cart-item{
+    display:grid;
+    grid-template-columns:80px 1fr auto;
+    gap:15px;
+    align-items:center;
+    padding:15px 0;
+    border-bottom:1px solid #ddd;
+}
+
+.cart-item img{
+    width:80px;
+    height:90px;
+    object-fit:contain;
+    background:#eeeae3;
+}
+
+.cart-item h4{
+    font-family:'Cormorant Garamond',serif;
+    font-size:20px;
+    font-weight:400;
+}
+
+.cart-item small{
+    color:#777;
+}
+
+.cart-remove{
+    border:0;
+    background:none;
+    color:#888;
+    font-size:10px;
+}
+
+.cart-total{
+    display:flex;
+    justify-content:space-between;
+    border-top:1px solid #111;
+    padding-top:20px;
+    margin-top:20px;
+    font-size:16px;
 }
 
 /* =========================
@@ -969,6 +1050,15 @@ footer{
         padding:9px 11px;
     }
 
+    .hero{
+        min-height:100svh;
+        height:100svh;
+    }
+
+    .hero-slide{
+        background-position:center;
+    }
+
     .hero-content{
         padding:120px 22px 80px;
     }
@@ -985,6 +1075,10 @@ footer{
     .hero-bottom{
         left:22px;
         right:22px;
+    }
+
+    .hero-dots{
+        bottom:68px;
     }
 
     .intro{
@@ -1019,23 +1113,18 @@ footer{
     .process-card{
         border-right:0;
         border-bottom:1px solid #333;
-        padding:30px 0;
     }
 
     .categories{
-        padding:90px 18px;
+        padding:90px 22px;
     }
 
     .section-title h2{
-        font-size:52px;
-    }
-
-    .category{
-        height:430px;
+        font-size:50px;
     }
 
     .shop{
-        padding:90px 18px;
+        padding:90px 22px;
     }
 
     .shop-header{
@@ -1044,12 +1133,12 @@ footer{
 
     .shop-header h2{
         font-size:55px;
-        margin-bottom:15px;
+        margin-bottom:20px;
     }
 
     .product-grid{
-        grid-template-columns:repeat(2,1fr);
-        gap:22px 12px;
+        grid-template-columns:1fr 1fr;
+        gap:20px 12px;
     }
 
     .product-name{
@@ -1065,7 +1154,7 @@ footer{
     }
 
     .modal{
-        padding:20px;
+        padding:25px 18px;
     }
 
     .modal-product{
@@ -1074,11 +1163,7 @@ footer{
     }
 
     .modal-product-image{
-        min-height:350px;
-    }
-
-    .modal h2{
-        font-size:42px;
+        min-height:330px;
     }
 
     .checkout-grid{
@@ -1088,148 +1173,161 @@ footer{
     .checkout-full{
         grid-column:auto;
     }
-
 }
-
 </style>
 </head>
 
 <body>
 
-<!-- =========================
-     HEADER
-========================= -->
-
 <header id="header">
-
-    <div class="logo">
-        MAISON GLOBAL
-    </div>
+    <div class="logo">MAISON GLOBAL</div>
 
     <nav class="nav">
-        <a href="#sobre">A Maison</a>
+        <a href="#inicio">Início</a>
+        <a href="#maison">A Maison</a>
         <a href="#trabalho">Nosso trabalho</a>
-        <a href="#categorias">Categorias</a>
-        <a href="#loja">Shop</a>
+        <a href="#colecao">Coleção</a>
     </nav>
 
     <button class="cart-button" onclick="openCart()">
-        SACOLA (<span id="cartCount">0</span>)
+        SACOLA <span id="cartCount">0</span>
     </button>
-
 </header>
 
 
 <!-- =========================
-     HERO
+     HERO COM AS 4 IMAGENS
 ========================= -->
 
-<section class="hero">
+<section class="hero" id="inicio">
 
-    <div class="hero-decoration"></div>
+    <div class="hero-slides">
+
+        <div
+            class="hero-slide active"
+            style="background-image:url('./IMG_0079.jpeg');">
+        </div>
+
+        <div
+            class="hero-slide"
+            style="background-image:url('./IMG_0080.jpeg');">
+        </div>
+
+        <div
+            class="hero-slide"
+            style="background-image:url('./IMG_0081.jpeg');">
+        </div>
+
+        <div
+            class="hero-slide"
+            style="background-image:url('./IMG_0082.jpeg');">
+        </div>
+
+    </div>
 
     <div class="hero-content">
 
         <div class="hero-kicker">
-            INTERNATIONAL BEAUTY & ESTHETICS
+            International Beauty House
         </div>
 
         <h1>
-            Beauty,<br>
-            <span>reimagined.</span>
+            MAISON<br>
+            <span>GLOBAL</span>
         </h1>
 
         <p class="hero-description">
-            Uma nova forma de descobrir o universo da beleza internacional.
-            Curadoria, estética e experiência reunidas em uma única maison.
+            Uma curadoria internacional de beleza, estética e
+            perfumaria criada para aproximar o Brasil das maiores
+            referências do universo luxury beauty.
         </p>
 
         <div class="hero-buttons">
-
             <button class="btn-primary"
-                    onclick="scrollToSection('loja')">
+                    onclick="document.getElementById('colecao').scrollIntoView()">
                 EXPLORAR COLEÇÃO
             </button>
 
             <button class="btn-outline"
-                    onclick="scrollToSection('sobre')">
+                    onclick="document.getElementById('maison').scrollIntoView()">
                 CONHEÇA A MAISON
             </button>
-
         </div>
 
     </div>
 
     <div class="hero-bottom">
-
-        <span>
-            01 — MAISON GLOBAL
-        </span>
-
+        <span>BEAUTY • CULTURE • LUXURY</span>
         <div class="hero-line"></div>
+        <span>EST. INTERNATIONAL</span>
+    </div>
 
-        <span>
-            INTERNATIONAL BEAUTY
-        </span>
-
+    <div class="hero-dots">
+        <button class="hero-dot active" onclick="goSlide(0)"></button>
+        <button class="hero-dot" onclick="goSlide(1)"></button>
+        <button class="hero-dot" onclick="goSlide(2)"></button>
+        <button class="hero-dot" onclick="goSlide(3)"></button>
     </div>
 
 </section>
 
 
-<!-- =========================
-     INTRO
-========================= -->
+<!-- INTRO -->
 
 <section class="intro">
 
     <div class="eyebrow">
-        THE MAISON EXPERIENCE
+        The Maison
     </div>
 
     <h2>
-        Beleza que atravessa fronteiras.
+        Beleza internacional,
+        selecionada com propósito.
     </h2>
 
     <p>
-        A Maison Global nasceu para conectar o universo da beleza
-        internacional ao mercado brasileiro através de uma experiência
-        sofisticada, informativa e cuidadosamente construída.
+        A MAISON GLOBAL nasce para conectar o universo da beleza
+        internacional ao Brasil através de uma seleção cuidadosa
+        de marcas, produtos e experiências.
     </p>
 
 </section>
 
 
-<!-- =========================
-     SOBRE
-========================= -->
+<!-- ABOUT -->
 
-<section class="about" id="sobre">
+<section class="about" id="maison">
 
     <div class="about-grid">
 
         <div>
+            <div class="about-number">01</div>
 
-            <div class="about-number">
-                01
+            <div class="eyebrow">
+                A Maison
             </div>
 
             <h2>
-                Mais do que uma distribuidora.
-                Uma conexão com o mundo da beleza.
+                Mais do que produtos.
+                Uma experiência.
             </h2>
+        </div>
+
+        <div>
 
             <p>
-                Nosso trabalho consiste em aproximar consumidores brasileiros
-                de uma seleção internacional de produtos de beleza e estética.
+                A MAISON GLOBAL trabalha com uma curadoria de
+                produtos internacionais de beleza, skincare,
+                maquiagem e fragrâncias.
             </p>
 
             <br>
 
             <p>
-                Trabalhamos com uma curadoria que reúne maquiagem,
-                skincare e fragrâncias de marcas reconhecidas mundialmente,
-                transformando produtos em uma experiência completa.
+                Nosso propósito é apresentar ao público brasileiro
+                referências globais, reunindo produtos desejados,
+                marcas reconhecidas e descobertas especiais em
+                uma experiência sofisticada.
             </p>
 
             <div class="about-signature">
@@ -1238,53 +1336,12 @@ footer{
 
         </div>
 
-        <div>
-
-            <div style="
-                min-height:620px;
-                background:
-                radial-gradient(circle at 70% 30%,#c9ad78 0%,transparent 25%),
-                linear-gradient(145deg,#17130f,#3a3024);
-                display:flex;
-                align-items:flex-end;
-                padding:45px;
-                color:white;
-            ">
-
-                <div>
-
-                    <div style="
-                        font-size:10px;
-                        letter-spacing:.3em;
-                        color:#d7bd86;
-                    ">
-                        OUR VISION
-                    </div>
-
-                    <div style="
-                        font-family:'Cormorant Garamond',serif;
-                        font-size:55px;
-                        line-height:.9;
-                        margin-top:18px;
-                    ">
-                        O luxo está<br>
-                        nos detalhes.
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
     </div>
 
 </section>
 
 
-<!-- =========================
-     NOSSO TRABALHO
-========================= -->
+<!-- PROCESS -->
 
 <section class="process" id="trabalho">
 
@@ -1293,12 +1350,12 @@ footer{
         <div class="process-title">
 
             <div class="eyebrow">
-                WHAT WE DO
+                Nosso trabalho
             </div>
 
             <h2>
-                Do mundo<br>
-                para a sua beleza.
+                O mundo da beleza,
+                cuidadosamente selecionado.
             </h2>
 
         </div>
@@ -1306,71 +1363,40 @@ footer{
         <div class="process-grid">
 
             <div class="process-card">
-
-                <div class="process-number">
-                    01
-                </div>
-
-                <h3>
-                    Curadoria
-                </h3>
-
+                <div class="process-number">01</div>
+                <h3>Curadoria</h3>
                 <p>
-                    Selecionamos produtos e categorias que representam
-                    diferentes universos da beleza internacional.
+                    Pesquisamos tendências, lançamentos e
+                    referências internacionais para selecionar
+                    produtos especiais.
                 </p>
-
             </div>
 
             <div class="process-card">
-
-                <div class="process-number">
-                    02
-                </div>
-
-                <h3>
-                    Conexão
-                </h3>
-
+                <div class="process-number">02</div>
+                <h3>Conexão</h3>
                 <p>
-                    Aproximamos marcas, produtos e consumidores
-                    através de uma experiência digital sofisticada.
+                    Aproximamos marcas e produtos internacionais
+                    do mercado brasileiro.
                 </p>
-
             </div>
 
             <div class="process-card">
-
-                <div class="process-number">
-                    03
-                </div>
-
-                <h3>
-                    Seleção
-                </h3>
-
+                <div class="process-number">03</div>
+                <h3>Seleção</h3>
                 <p>
-                    Nossa proposta reúne maquiagem, skincare e fragrâncias
-                    em uma única seleção internacional.
+                    Cada item é escolhido para fazer parte de uma
+                    coleção coerente e sofisticada.
                 </p>
-
             </div>
 
             <div class="process-card">
-
-                <div class="process-number">
-                    04
-                </div>
-
-                <h3>
-                    Experiência
-                </h3>
-
+                <div class="process-number">04</div>
+                <h3>Experiência</h3>
                 <p>
-                    Criamos uma jornada de compra que une informação,
-                    estética, praticidade e exclusividade.
+                    Criamos uma experiência digital inspirada
+                    no universo das grandes maisons.
                 </p>
-
             </div>
 
         </div>
@@ -1380,20 +1406,18 @@ footer{
 </section>
 
 
-<!-- =========================
-     CATEGORIAS
-========================= -->
+<!-- CATEGORIES -->
 
-<section class="categories" id="categorias">
+<section class="categories">
 
     <div class="section-title">
 
         <div class="eyebrow">
-            DISCOVER
+            Explore
         </div>
 
         <h2>
-            The world of beauty.
+            Universos da beleza
         </h2>
 
     </div>
@@ -1404,21 +1428,15 @@ footer{
 
             <div class="category-content">
 
-                <div class="eyebrow" style="color:#d7bd86;">
-                    01
-                </div>
-
-                <h3>
-                    Makeup
-                </h3>
+                <h3>Makeup</h3>
 
                 <p>
-                    Cores, texturas e produtos para criar
-                    sua própria assinatura.
+                    Ícones internacionais para criar
+                    uma beleza única.
                 </p>
 
-                <button onclick="filterCategory('makeup')">
-                    EXPLORAR MAQUIAGEM
+                <button onclick="filterProducts('makeup')">
+                    EXPLORAR
                 </button>
 
             </div>
@@ -1430,21 +1448,15 @@ footer{
 
             <div class="category-content">
 
-                <div class="eyebrow" style="color:#d7bd86;">
-                    02
-                </div>
-
-                <h3>
-                    Skincare
-                </h3>
+                <h3>Skincare</h3>
 
                 <p>
-                    Rituais de cuidado inspirados
-                    pela alta beleza internacional.
+                    Fórmulas e tratamentos selecionados
+                    ao redor do mundo.
                 </p>
 
-                <button onclick="filterCategory('skin')">
-                    EXPLORAR SKINCARE
+                <button onclick="filterProducts('skincare')">
+                    EXPLORAR
                 </button>
 
             </div>
@@ -1456,21 +1468,15 @@ footer{
 
             <div class="category-content">
 
-                <div class="eyebrow" style="color:#d7bd86;">
-                    03
-                </div>
-
-                <h3>
-                    Fragrances
-                </h3>
+                <h3>Fragrances</h3>
 
                 <p>
-                    Fragrâncias que transformam
-                    presença em assinatura.
+                    Fragrâncias marcantes para
+                    momentos inesquecíveis.
                 </p>
 
-                <button onclick="filterCategory('fragrance')">
-                    EXPLORAR FRAGRÂNCIAS
+                <button onclick="filterProducts('fragrance')">
+                    EXPLORAR
                 </button>
 
             </div>
@@ -1482,29 +1488,27 @@ footer{
 </section>
 
 
-<!-- =========================
-     SHOP
-========================= -->
+<!-- SHOP -->
 
-<section class="shop" id="loja">
+<section class="shop" id="colecao">
 
     <div class="shop-header">
 
         <div>
 
             <div class="eyebrow">
-                CURATED COLLECTION
+                Selected Collection
             </div>
 
             <h2>
-                Shop the Maison.
+                A coleção
             </h2>
 
         </div>
 
         <p>
-            Explore nossa seleção demonstrativa de maquiagem,
-            skincare e fragrâncias internacionais.
+            Uma seleção de ícones da beleza internacional,
+            escolhidos para a experiência MAISON GLOBAL.
         </p>
 
     </div>
@@ -1514,22 +1518,22 @@ footer{
 
         <button class="filter active"
                 onclick="filterProducts('all',this)">
-            TODOS
+            Todos
         </button>
 
         <button class="filter"
                 onclick="filterProducts('makeup',this)">
-            MAQUIAGEM
+            Makeup
         </button>
 
         <button class="filter"
-                onclick="filterProducts('skin',this)">
-            SKINCARE
+                onclick="filterProducts('skincare',this)">
+            Skincare
         </button>
 
         <button class="filter"
                 onclick="filterProducts('fragrance',this)">
-            FRAGRÂNCIAS
+            Fragrâncias
         </button>
 
     </div>
@@ -1540,41 +1544,33 @@ footer{
 </section>
 
 
-<!-- =========================
-     FINAL CAMPAIGN
-========================= -->
+<!-- STORY -->
 
 <section class="story-banner">
 
     <div>
 
         <div class="eyebrow">
-            MAISON GLOBAL
+            Maison Global
         </div>
 
         <h2>
-            Beauty has<br>
-            no borders.
+            Beauty<br>
+            without<br>
+            borders.
         </h2>
 
         <p>
-            Uma experiência criada para aproximar o mundo
-            da beleza de você.
+            Descubra uma nova maneira de experimentar
+            a beleza internacional.
         </p>
-
-        <button class="btn-primary"
-                onclick="scrollToSection('loja')">
-            DISCOVER THE COLLECTION
-        </button>
 
     </div>
 
 </section>
 
 
-<!-- =========================
-     FOOTER
-========================= -->
+<!-- FOOTER -->
 
 <footer>
 
@@ -1586,34 +1582,34 @@ footer{
                 MAISON GLOBAL
             </div>
 
-            <p class="footer-description">
-                International Beauty & Esthetics.
-                Uma experiência demonstrativa de distribuição,
-                curadoria e comércio de produtos de beleza.
-            </p>
+            <div class="footer-description">
+                International beauty, carefully selected.
+                Uma experiência digital inspirada no universo
+                das grandes maisons internacionais.
+            </div>
 
         </div>
 
 
         <div class="footer-col">
 
-            <h4>EXPLORE</h4>
+            <h4>NAVEGAÇÃO</h4>
 
-            <a href="#sobre">A Maison</a>
+            <a href="#inicio">Início</a>
+            <a href="#maison">A Maison</a>
             <a href="#trabalho">Nosso trabalho</a>
-            <a href="#categorias">Categorias</a>
-            <a href="#loja">Shop</a>
+            <a href="#colecao">Coleção</a>
 
         </div>
 
 
         <div class="footer-col">
 
-            <h4>COLLECTION</h4>
+            <h4>CATEGORIAS</h4>
 
-            <a href="#loja">Makeup</a>
-            <a href="#loja">Skincare</a>
-            <a href="#loja">Fragrances</a>
+            <a href="#colecao">Makeup</a>
+            <a href="#colecao">Skincare</a>
+            <a href="#colecao">Fragrâncias</a>
 
         </div>
 
@@ -1624,7 +1620,7 @@ footer{
 
             <a href="#">Instagram</a>
             <a href="#">Contato</a>
-            <a href="#">Informações</a>
+            <a href="#">Atendimento</a>
 
         </div>
 
@@ -1632,22 +1628,26 @@ footer{
 
 
     <div class="footer-bottom">
-
         © 2026 MAISON GLOBAL — Projeto demonstrativo.
-        Os valores exibidos são ilustrativos e o checkout não realiza pagamentos reais.
-
+        Valores e checkout apresentados neste site são ilustrativos.
     </div>
 
 </footer>
 
 
-<!-- =========================
-     MODAL
-========================= -->
+<!-- MODAL -->
 
-<div class="modal-bg" id="modal">
+<div class="modal-bg" id="modalBg">
 
-    <div class="modal" id="modalContent"></div>
+    <div class="modal">
+
+        <button class="close" onclick="closeModal()">
+            ×
+        </button>
+
+        <div id="modalContent"></div>
+
+    </div>
 
 </div>
 
@@ -1655,285 +1655,342 @@ footer{
 <script>
 
 /* =========================
-   PRODUTOS
+   HERO SLIDER
+========================= */
+
+let currentSlide = 0;
+
+const heroSlides =
+    document.querySelectorAll('.hero-slide');
+
+const heroDots =
+    document.querySelectorAll('.hero-dot');
+
+
+function goSlide(index){
+
+    heroSlides.forEach((slide,i)=>{
+        slide.classList.toggle('active',i === index);
+    });
+
+    heroDots.forEach((dot,i)=>{
+        dot.classList.toggle('active',i === index);
+    });
+
+    currentSlide = index;
+}
+
+
+setInterval(()=>{
+
+    currentSlide++;
+
+    if(currentSlide >= heroSlides.length){
+        currentSlide = 0;
+    }
+
+    goSlide(currentSlide);
+
+},6000);
+
+
+/* =========================
+   HEADER
+========================= */
+
+window.addEventListener('scroll',()=>{
+
+    const header =
+        document.getElementById('header');
+
+    header.classList.toggle(
+        'scrolled',
+        window.scrollY > 50
+    );
+
+});
+
+
+/* =========================
+   PRODUCTS
 ========================= */
 
 const products = [
 
 {
+name:"Dior Addict Lip Glow 001",
+brand:"Dior",
+category:"makeup",
+price:299,
 image:"IMG_9893.jpeg",
-brand:"DIOR",
-name:"Dior Addict Lip Glow",
-price:299,
-category:"makeup",
-description:"Bálsamo labial luminoso com proposta hidratante e acabamento sofisticado.",
-lipstick:true
+description:"Bálsamo icônico para os lábios com acabamento luminoso."
 },
 
 {
-image:"IMG_9894.jpeg",
-brand:"DIOR",
 name:"Dior Forever",
+brand:"Dior",
+category:"makeup",
 price:429,
-category:"makeup",
-description:"Base de acabamento sofisticado para uma pele uniforme."
+image:"IMG_9894.jpeg",
+description:"Base de alta performance com acabamento sofisticado."
 },
 
 {
+name:"Rouge Coco",
+brand:"Chanel",
+category:"makeup",
+price:399,
 image:"IMG_9895.jpeg",
-brand:"CHANEL",
-name:"Rouge Coco Chanel",
-price:399,
-category:"makeup",
-description:"Batom cremoso com aparência elegante e sofisticada.",
-lipstick:true
+description:"Batom clássico Chanel com textura confortável."
 },
 
 {
-image:"IMG_9896.jpeg",
-brand:"CHANEL",
 name:"Les Beiges",
+brand:"Chanel",
+category:"makeup",
 price:565,
-category:"makeup",
-description:"Seleção de maquiagem inspirada em uma aparência natural."
+image:"IMG_9896.jpeg",
+description:"Coleção inspirada na beleza natural e sofisticada."
 },
 
 {
-image:"IMG_9897.jpeg",
-brand:"YVES SAINT LAURENT",
 name:"Touche Éclat",
+brand:"Yves Saint Laurent",
+category:"makeup",
 price:299,
-category:"makeup",
-description:"Produto iluminador para criar pontos de luz no rosto."
+image:"IMG_9897.jpeg",
+description:"Iluminador icônico para uma aparência radiante."
 },
 
 {
-image:"IMG_9898.jpeg",
-brand:"GIORGIO ARMANI",
 name:"Luminous Silk Foundation",
+brand:"Giorgio Armani",
+category:"makeup",
 price:499,
-category:"makeup",
-description:"Base de acabamento luminoso e aparência natural."
+image:"IMG_9898.jpeg",
+description:"Base conhecida pelo acabamento luminoso e elegante."
 },
 
 {
-image:"IMG_9899.jpeg",
-brand:"TOM FORD",
 name:"Lip Color",
-price:399,
+brand:"Tom Ford",
 category:"makeup",
-description:"Batom de acabamento intenso e sofisticado.",
-lipstick:true
+price:399,
+image:"IMG_9899.jpeg",
+description:"Batom luxuoso com acabamento sofisticado."
 },
 
 {
-image:"IMG_9900.jpeg",
-brand:"GUERLAIN",
 name:"Rouge G",
-price:399,
+brand:"Guerlain",
 category:"makeup",
-description:"Batom luxuoso com acabamento marcante.",
-lipstick:true
+price:399,
+image:"IMG_9900.jpeg",
+description:"Batom de luxo com assinatura Guerlain."
 },
 
 {
-image:"IMG_9901.jpeg",
-brand:"LA MER",
 name:"Crème de la Mer",
+brand:"La Mer",
+category:"skincare",
 price:3540,
-category:"skin",
-description:"Creme facial de luxo para uma rotina de skincare premium."
+image:"IMG_9901.jpeg",
+description:"Tratamento icônico para uma rotina de skincare luxuosa."
 },
 
 {
-image:"IMG_9902.jpeg",
-brand:"LA PRAIRIE",
 name:"Skin Caviar",
+brand:"La Prairie",
+category:"skincare",
 price:3200,
-category:"skin",
-description:"Tratamento premium inspirado no universo do caviar."
+image:"IMG_9902.jpeg",
+description:"Skincare de luxo inspirado na ciência e no caviar."
 },
 
 {
-image:"IMG_9903.jpeg",
-brand:"ESTÉE LAUDER",
 name:"Advanced Night Repair",
+brand:"Estée Lauder",
+category:"skincare",
 price:649,
-category:"skin",
-description:"Sérum para uma rotina de cuidado noturno."
+image:"IMG_9903.jpeg",
+description:"Sérum clássico para uma rotina avançada de skincare."
 },
 
 {
-image:"IMG_9904.jpeg",
-brand:"DIOR",
 name:"Dior Prestige La Crème",
+brand:"Dior",
+category:"skincare",
 price:3589,
-category:"skin",
-description:"Creme de tratamento da linha Dior Prestige."
+image:"IMG_9904.jpeg",
+description:"Tratamento premium da linha Dior Prestige."
 },
 
 {
-image:"IMG_9905.jpeg",
-brand:"LANCÔME",
 name:"Absolue Kit",
+brand:"Lancôme",
+category:"skincare",
 price:1890,
-category:"skin",
-description:"Seleção de cuidados premium para a pele."
+image:"IMG_9905.jpeg",
+description:"Kit de tratamento luxuoso da linha Absolue."
 },
 
 {
-image:"IMG_9906.jpeg",
-brand:"SHISEIDO",
 name:"Future Solution LX",
+brand:"Shiseido",
+category:"skincare",
 price:2200,
-category:"skin",
-description:"Tratamento avançado para uma rotina de skincare."
+image:"IMG_9906.jpeg",
+description:"Tratamento premium inspirado na tecnologia japonesa."
 },
 
 {
-image:"IMG_9907.jpeg",
-brand:"CLÉ DE PEAU BEAUTÉ",
 name:"La Crème",
+brand:"Clé de Peau Beauté",
+category:"skincare",
 price:3174,
-category:"skin",
-description:"Creme facial de luxo com textura rica."
+image:"IMG_9907.jpeg",
+description:"Creme de tratamento de alta perfomance."
 },
 
 {
-image:"IMG_9908.jpeg",
-brand:"AUGUSTINUS BADER",
 name:"The Rich Cream",
+brand:"Augustinus Bader",
+category:"skincare",
 price:1200,
-category:"skin",
-description:"Creme nutritivo para uma rotina sofisticada."
+image:"IMG_9908.jpeg",
+description:"Creme de luxo desenvolvido com tecnologia avançada."
 },
 
 {
-image:"IMG_9909.jpeg",
-brand:"CHANEL",
 name:"N°5 Paris",
+brand:"Chanel",
+category:"fragrance",
 price:1199,
-category:"fragrance",
-description:"Fragrância clássica e atemporal."
+image:"IMG_9909.jpeg",
+description:"Uma das fragrâncias mais icônicas da história."
 },
 
 {
-image:"IMG_9910.jpeg",
-brand:"CHANEL",
 name:"Coco Mademoiselle Paris",
+brand:"Chanel",
+category:"fragrance",
 price:1099,
-category:"fragrance",
-description:"Fragrância elegante e marcante."
+image:"IMG_9910.jpeg",
+description:"Fragrância elegante, moderna e marcante."
 },
 
 {
-image:"IMG_9911.jpeg",
-brand:"DIOR",
 name:"J’adore",
-price:899,
+brand:"Dior",
 category:"fragrance",
-description:"Fragrância floral sofisticada."
+price:899,
+image:"IMG_9911.jpeg",
+description:"Uma assinatura floral sofisticada da Dior."
 },
 
 {
-image:"IMG_9912.jpeg",
-brand:"DIOR",
 name:"Miss Dior",
-price:899,
+brand:"Dior",
 category:"fragrance",
-description:"Fragrância delicada e feminina."
+price:899,
+image:"IMG_9912.jpeg",
+description:"Romântica, elegante e feminina."
 },
 
 {
-image:"IMG_9913.jpeg",
-brand:"YVES SAINT LAURENT",
 name:"Black Opium",
+brand:"Yves Saint Laurent",
+category:"fragrance",
 price:799,
-category:"fragrance",
-description:"Fragrância intensa e contemporânea."
+image:"IMG_9913.jpeg",
+description:"Uma fragrância intensa e contemporânea."
 },
 
 {
-image:"IMG_9914.jpeg",
-brand:"TOM FORD",
 name:"Lost Cherry",
-price:2399,
+brand:"Tom Ford",
 category:"fragrance",
-description:"Fragrância marcante e envolvente."
+price:2399,
+image:"IMG_9914.jpeg",
+description:"Uma fragrância ousada com assinatura gourmand."
 },
 
 {
-image:"IMG_9915.jpeg",
-brand:"TOM FORD",
 name:"Oud Wood",
+brand:"Tom Ford",
+category:"fragrance",
 price:2399,
-category:"fragrance",
-description:"Fragrância de perfil amadeirado sofisticado."
+image:"IMG_9915.jpeg",
+description:"Uma interpretação sofisticada do oud."
 },
 
 {
-image:"IMG_9916.jpeg",
-brand:"JO MALONE LONDON",
 name:"English Pear & Freesia",
-price:899,
+brand:"Jo Malone London",
 category:"fragrance",
-description:"Fragrância fresca e elegante."
+price:899,
+image:"IMG_9916.jpeg",
+description:"Fragrância delicada e elegante."
 },
 
 {
-image:"IMG_9917.jpeg",
-brand:"ORIENT ROUGE",
 name:"Orient Rouge",
-price:699,
+brand:"Maison",
 category:"fragrance",
-description:"Fragrância envolvente para uma assinatura marcante."
+price:699,
+image:"IMG_9917.jpeg",
+description:"Fragrância marcante para uma presença sofisticada."
 }
 
 ];
 
 
 /* =========================
-   CARRINHO
+   RENDER PRODUCTS
 ========================= */
 
-let cart = [];
+const productGrid =
+    document.getElementById('productGrid');
 
 
-/* =========================
-   RENDER
-========================= */
+function money(value){
 
-function renderProducts(list = products){
+    return value.toLocaleString(
+        'pt-BR',
+        {
+            style:'currency',
+            currency:'BRL'
+        }
+    );
 
-    const grid = document.getElementById("productGrid");
+}
 
-    grid.innerHTML = "";
 
-    list.forEach((product,index)=>{
+function renderProducts(){
 
-        const card = document.createElement("article");
+    productGrid.innerHTML =
+        products.map((p,index)=>`
 
-        card.className = "product";
-
-        card.innerHTML = `
+        <article
+            class="product"
+            data-category="${p.category}"
+        >
 
             <div class="product-image">
 
                 <img
-                    src="${product.image}"
-                    alt="${product.name}"
-                    onerror="this.style.opacity='.12'"
+                    src="./${p.image}"
+                    alt="${p.name}"
+                    onerror="this.style.opacity='.15'"
                 >
 
                 <div class="product-overlay">
 
-                    <small>${product.brand}</small>
+                    <small>${p.brand}</small>
 
-                    <p>
-                        ${product.description}
-                    </p>
+                    <p>${p.description}</p>
 
-                    <button onclick="openProduct(${products.indexOf(product)})">
+                    <button onclick="openProduct(${index})">
                         VER PRODUTO
                     </button>
 
@@ -1944,184 +2001,91 @@ function renderProducts(list = products){
             <div class="product-info">
 
                 <div class="product-brand">
-                    ${product.brand}
+                    ${p.brand}
                 </div>
 
                 <div class="product-name">
-                    ${product.name}
+                    ${p.name}
                 </div>
 
                 <div class="product-price">
-                    ${formatPrice(product.price)}
+                    ${money(p.price)}
                 </div>
-
-                ${
-                    product.lipstick
-                    ?
-                    `
-                    <div class="swatches">
-
-                        <span class="swatch" style="background:#d88f9a"></span>
-                        <span class="swatch" style="background:#c86d78"></span>
-                        <span class="swatch" style="background:#a9464e"></span>
-                        <span class="swatch" style="background:#8b3038"></span>
-                        <span class="swatch" style="background:#9c6a55"></span>
-
-                    </div>
-                    `
-                    :
-                    ""
-                }
 
                 <button
                     class="add-cart"
-                    onclick="addToCart(${products.indexOf(product)})"
+                    onclick="addToCart(${index})"
                 >
                     ADICIONAR À SACOLA
                 </button>
 
             </div>
 
-        `;
+        </article>
 
-        grid.appendChild(card);
-
-    });
+        `).join('');
 
 }
 
+renderProducts();
+
 
 /* =========================
-   FILTROS
+   FILTER
 ========================= */
 
 function filterProducts(category,button){
 
-    document.querySelectorAll(".filter")
-    .forEach(item=>item.classList.remove("active"));
+    document.querySelectorAll('.filter')
+        .forEach(b=>b.classList.remove('active'));
 
-    button.classList.add("active");
-
-    if(category === "all"){
-
-        renderProducts(products);
-
-    }else{
-
-        renderProducts(
-            products.filter(product=>product.category === category)
-        );
-
+    if(button){
+        button.classList.add('active');
     }
 
-}
+    document.querySelectorAll('.product')
+        .forEach(product=>{
 
+            if(
+                category === 'all' ||
+                product.dataset.category === category
+            ){
 
-function filterCategory(category){
+                product.classList.remove('hidden');
 
-    document.getElementById("loja")
-    .scrollIntoView({
-        behavior:"smooth"
-    });
+            }else{
 
-    setTimeout(()=>{
+                product.classList.add('hidden');
 
-        const button = [...document.querySelectorAll(".filter")]
-        .find(btn=>btn.textContent.toLowerCase().includes(
-            category === "makeup"
-            ? "maquiagem"
-            : category === "skin"
-            ? "skincare"
-            : "fragrâncias"
-        ));
+            }
 
-        if(button){
+        });
 
-            filterProducts(category,button);
-
-        }
-
-    },600);
+    document.getElementById('colecao')
+        .scrollIntoView({
+            behavior:'smooth'
+        });
 
 }
 
 
 /* =========================
-   FORMATAR PREÇO
-========================= */
-
-function formatPrice(value){
-
-    return value.toLocaleString(
-        "pt-BR",
-        {
-            style:"currency",
-            currency:"BRL"
-        }
-    );
-
-}
-
-
-/* =========================
-   ADICIONAR
-========================= */
-
-function addToCart(index){
-
-    cart.push({
-        ...products[index],
-        quantity:1
-    });
-
-    updateCart();
-
-}
-
-
-/* =========================
-   CONTADOR
-========================= */
-
-function updateCart(){
-
-    document.getElementById("cartCount").textContent =
-        cart.reduce(
-            (total,item)=>total + item.quantity,
-            0
-        );
-
-}
-
-
-/* =========================
-   PRODUTO
+   MODAL PRODUCT
 ========================= */
 
 function openProduct(index){
 
-    const product = products[index];
+    const p = products[index];
 
-    const modal = document.getElementById("modal");
-
-    const content = document.getElementById("modalContent");
-
-    content.innerHTML = `
-
-        <button
-            class="close"
-            onclick="closeModal()"
-        >
-            ×
-        </button>
+    document.getElementById('modalContent').innerHTML = `
 
         <div class="modal-product">
 
             <div class="modal-product-image">
 
                 <img
-                    src="${product.image}"
-                    alt="${product.name}"
+                    src="./${p.image}"
+                    alt="${p.name}"
                 >
 
             </div>
@@ -2129,73 +2093,58 @@ function openProduct(index){
             <div>
 
                 <div class="modal-brand">
-                    ${product.brand}
+                    ${p.brand}
                 </div>
 
                 <h2>
-                    ${product.name}
+                    ${p.name}
                 </h2>
 
                 <p class="modal-description">
-                    ${product.description}
+                    ${p.description}
                 </p>
 
                 <div class="modal-price">
-                    ${formatPrice(product.price)}
+                    ${money(p.price)}
                 </div>
 
-                ${
-                    product.lipstick
-                    ?
-                    `
-                    <div class="color-title">
-                        ESCOLHA A COR
-                    </div>
+                <div class="color-title">
+                    SELECIONE UMA COR
+                </div>
 
-                    <div class="color-options">
+                <div class="color-options">
 
-                        <button
-                            class="color-option selected"
-                            style="background:#d88f9a"
-                        ></button>
+                    <button
+                        class="color-option selected"
+                        style="background:#9b5147">
+                    </button>
 
-                        <button
-                            class="color-option"
-                            style="background:#c86d78"
-                        ></button>
+                    <button
+                        class="color-option"
+                        style="background:#c98278">
+                    </button>
 
-                        <button
-                            class="color-option"
-                            style="background:#a9464e"
-                        ></button>
+                    <button
+                        class="color-option"
+                        style="background:#7a2424">
+                    </button>
 
-                        <button
-                            class="color-option"
-                            style="background:#8b3038"
-                        ></button>
+                    <button
+                        class="color-option"
+                        style="background:#d9b49b">
+                    </button>
 
-                        <button
-                            class="color-option"
-                            style="background:#9c6a55"
-                        ></button>
-
-                    </div>
-                    `
-                    :
-                    ""
-                }
+                </div>
 
                 <div class="quantity">
-
-                    <span>QUANTIDADE</span>
 
                     <button onclick="changeQuantity(-1)">
                         −
                     </button>
 
-                    <strong id="productQuantity">
+                    <span id="quantity">
                         1
-                    </strong>
+                    </span>
 
                     <button onclick="changeQuantity(1)">
                         +
@@ -2205,7 +2154,7 @@ function openProduct(index){
 
                 <button
                     class="modal-add"
-                    onclick="addProductWithQuantity(${index})"
+                    onclick="addToCart(${index});closeModal()"
                 >
                     ADICIONAR À SACOLA
                 </button>
@@ -2216,77 +2165,111 @@ function openProduct(index){
 
     `;
 
-    modal.style.display = "flex";
+    document.getElementById('modalBg')
+        .style.display='flex';
+
+}
+
+
+function closeModal(){
+
+    document.getElementById('modalBg')
+        .style.display='none';
+
+}
+
+
+let quantity = 1;
+
+
+function changeQuantity(value){
+
+    quantity += value;
+
+    if(quantity < 1){
+        quantity = 1;
+    }
+
+    const q =
+        document.getElementById('quantity');
+
+    if(q){
+        q.textContent = quantity;
+    }
 
 }
 
 
 /* =========================
-   QUANTIDADE
+   CART
 ========================= */
 
-let selectedQuantity = 1;
+let cart = [];
 
-function changeQuantity(amount){
 
-    selectedQuantity += amount;
+function addToCart(index){
 
-    if(selectedQuantity < 1){
-        selectedQuantity = 1;
+    const product = products[index];
+
+    const existing =
+        cart.find(item=>item.index === index);
+
+    if(existing){
+
+        existing.quantity++;
+
+    }else{
+
+        cart.push({
+            index:index,
+            quantity:1
+        });
+
     }
 
-    document.getElementById("productQuantity")
-    .textContent = selectedQuantity;
+    updateCart();
 
 }
 
-function addProductWithQuantity(index){
 
-    for(let i=0;i<selectedQuantity;i++){
+function updateCart(){
 
-        addToCart(index);
+    const count =
+        cart.reduce(
+            (total,item)=>total + item.quantity,
+            0
+        );
 
-    }
-
-    selectedQuantity = 1;
-
-    closeModal();
+    document.getElementById('cartCount')
+        .textContent = count;
 
 }
 
-
-/* =========================
-   SACOLA
-========================= */
 
 function openCart(){
 
-    const modal = document.getElementById("modal");
-
-    const content = document.getElementById("modalContent");
+    let html = '';
 
     if(cart.length === 0){
 
-        content.innerHTML = `
+        html = `
 
-            <button
-                class="close"
-                onclick="closeModal()"
-            >
-                ×
-            </button>
+            <div style="text-align:center;padding:60px 20px">
 
-            <div class="order-success">
-
-                <div class="success-symbol">
-                    ♡
+                <div class="eyebrow">
+                    Your Maison
                 </div>
 
-                <h2>
+                <h2 style="
+                    font-family:'Cormorant Garamond',serif;
+                    font-size:50px;
+                    font-weight:400;
+                    margin:15px 0;
+                ">
                     Sua sacola está vazia.
                 </h2>
 
-                <p>
+                <p style="color:#777">
                     Descubra nossa seleção internacional.
                 </p>
 
@@ -2294,132 +2277,109 @@ function openCart(){
 
         `;
 
-        modal.style.display = "flex";
+    }else{
 
-        return;
+        let total = 0;
 
-    }
+        html = `
+            <h2 class="checkout-title">
+                Sua sacola
+            </h2>
 
+            <div class="cart-items">
+        `;
 
-    let total = cart.reduce(
-        (sum,item)=>sum + item.price * item.quantity,
-        0
-    );
+        cart.forEach(item=>{
 
+            const p =
+                products[item.index];
 
-    content.innerHTML = `
+            const subtotal =
+                p.price * item.quantity;
 
-        <button
-            class="close"
-            onclick="closeModal()"
-        >
-            ×
-        </button>
+            total += subtotal;
 
-        <div class="checkout-title">
-            Sua sacola
-        </div>
+            html += `
 
-        ${
-
-            cart.map((item,index)=>`
-
-                <div style="
-                    display:flex;
-                    gap:18px;
-                    padding:18px 0;
-                    border-bottom:1px solid #ddd;
-                    align-items:center;
-                ">
+                <div class="cart-item">
 
                     <img
-                        src="${item.image}"
-                        style="
-                            width:80px;
-                            height:90px;
-                            object-fit:contain;
-                            background:#eeeae3;
-                        "
+                        src="./${p.image}"
+                        alt="${p.name}"
                     >
 
-                    <div style="flex:1">
+                    <div>
 
-                        <div class="product-brand">
-                            ${item.brand}
-                        </div>
+                        <h4>${p.name}</h4>
 
-                        <div class="product-name">
-                            ${item.name}
-                        </div>
+                        <small>
+                            ${p.brand} ·
+                            Quantidade:
+                            ${item.quantity}
+                        </small>
 
-                        <div>
-                            ${formatPrice(item.price)}
-                        </div>
-
-                        <div style="
-                            font-size:10px;
-                            color:#777;
-                            margin-top:5px;
-                        ">
-                            Quantidade: ${item.quantity}
+                        <div style="margin-top:6px">
+                            ${money(subtotal)}
                         </div>
 
                     </div>
 
                     <button
-                        onclick="removeFromCart(${index})"
-                        style="
-                            border:0;
-                            background:none;
-                            font-size:18px;
-                        "
+                        class="cart-remove"
+                        onclick="removeFromCart(${item.index})"
                     >
-                        ×
+                        REMOVER
                     </button>
 
                 </div>
 
-            `).join("")
+            `;
 
-        }
+        });
 
-        <div style="
-            display:flex;
-            justify-content:space-between;
-            margin:30px 0;
-            font-size:18px;
-        ">
+        html += `
 
-            <strong>
-                TOTAL
-            </strong>
+            </div>
 
-            <strong>
-                ${formatPrice(total)}
-            </strong>
+            <div class="cart-total">
 
-        </div>
+                <span>TOTAL</span>
 
-        <button
-            class="modal-add"
-            onclick="openCheckout()"
-        >
-            IR PARA CHECKOUT
-        </button>
+                <strong>
+                    ${money(total)}
+                </strong>
 
-    `;
+            </div>
 
-    modal.style.display = "flex";
+            <button
+                class="modal-add"
+                style="margin-top:25px"
+                onclick="openCheckout()"
+            >
+                FINALIZAR PEDIDO DEMONSTRATIVO
+            </button>
+
+        `;
+
+    }
+
+    document.getElementById('modalContent')
+        .innerHTML = html;
+
+    document.getElementById('modalBg')
+        .style.display='flex';
 
 }
 
 
 function removeFromCart(index){
 
-    cart.splice(index,1);
+    cart =
+        cart.filter(
+            item=>item.index !== index
+        );
 
     updateCart();
-
     openCart();
 
 }
@@ -2431,46 +2391,50 @@ function removeFromCart(index){
 
 function openCheckout(){
 
-    const content =
-        document.getElementById("modalContent");
+    if(cart.length === 0){
+        return;
+    }
 
-    content.innerHTML = `
+    document.getElementById('modalContent')
+        .innerHTML = `
 
-        <button
-            class="close"
-            onclick="closeModal()"
-        >
-            ×
-        </button>
-
-        <div class="checkout-title">
+        <h2 class="checkout-title">
             Finalizar pedido
+        </h2>
+
+        <div class="demo-note">
+            ESTE É UM CHECKOUT DEMONSTRATIVO.
+            Nenhum pagamento real será realizado.
         </div>
 
         <div class="checkout-section">
-            Dados pessoais
+            Seus dados
         </div>
 
         <div class="checkout-grid">
 
             <input
                 class="checkout-input"
+                id="checkoutName"
                 placeholder="Nome completo"
             >
 
             <input
                 class="checkout-input"
-                placeholder="E-mail"
+                id="checkoutEmail"
                 type="email"
+                placeholder="E-mail"
             >
 
             <input
                 class="checkout-input"
+                id="checkoutPhone"
                 placeholder="Telefone"
             >
 
             <input
                 class="checkout-input"
+                id="checkoutCpf"
                 placeholder="CPF"
             >
 
@@ -2478,50 +2442,47 @@ function openCheckout(){
 
 
         <div class="checkout-section">
-            Entrega
+            Endereço
         </div>
 
         <div class="checkout-grid">
 
             <input
                 class="checkout-input"
+                id="checkoutCep"
                 placeholder="CEP"
-                id="cep"
-                onblur="searchCEP()"
+                maxlength="9"
+                onblur="findCEP()"
             >
 
             <input
                 class="checkout-input"
-                placeholder="Estado"
-                id="estado"
-            >
-
-            <input
-                class="checkout-input checkout-full"
+                id="checkoutRua"
                 placeholder="Rua"
-                id="rua"
             >
 
             <input
                 class="checkout-input"
+                id="checkoutNumero"
                 placeholder="Número"
             >
 
             <input
                 class="checkout-input"
-                placeholder="Complemento"
-            >
-
-            <input
-                class="checkout-input"
-                placeholder="Cidade"
-                id="cidade"
-            >
-
-            <input
-                class="checkout-input"
+                id="checkoutBairro"
                 placeholder="Bairro"
-                id="bairro"
+            >
+
+            <input
+                class="checkout-input"
+                id="checkoutCidade"
+                placeholder="Cidade"
+            >
+
+            <input
+                class="checkout-input"
+                id="checkoutEstado"
+                placeholder="Estado"
             >
 
         </div>
@@ -2531,38 +2492,32 @@ function openCheckout(){
             Pagamento
         </div>
 
-        <select class="checkout-input">
+        <select
+            class="checkout-input"
+            id="payment"
+        >
 
             <option>
-                Cartão de crédito — demonstração
+                Cartão de crédito
             </option>
 
             <option>
-                Pix — demonstração
+                Cartão de débito
             </option>
 
             <option>
-                Cartão de débito — demonstração
+                PIX
             </option>
 
         </select>
 
 
-        <div class="demo-note">
-
-            ESTE É UM CHECKOUT DEMONSTRATIVO.
-            Nenhum pagamento real será realizado,
-            nenhum cartão será processado e nenhum pedido
-            será enviado.
-
-        </div>
-
-
         <button
             class="modal-add"
+            style="margin-top:25px"
             onclick="finishOrder()"
         >
-            FINALIZAR PEDIDO DEMONSTRATIVO
+            FINALIZAR PEDIDO
         </button>
 
     `;
@@ -2570,16 +2525,12 @@ function openCheckout(){
 }
 
 
-/* =========================
-   CEP
-========================= */
-
-async function searchCEP(){
+async function findCEP(){
 
     const cep =
-        document.getElementById("cep")
-        .value
-        .replace(/\D/g,"");
+        document.getElementById('checkoutCep')
+            .value
+            .replace(/\D/g,'');
 
     if(cep.length !== 8){
         return;
@@ -2589,29 +2540,27 @@ async function searchCEP(){
 
         const response =
             await fetch(
-                "https://viacep.com.br/ws/"
-                + cep +
-                "/json/"
+                `https://viacep.com.br/ws/${cep}/json/`
             );
 
         const data =
             await response.json();
 
-        if(!data.erro){
-
-            document.getElementById("rua").value =
-                data.logradouro || "";
-
-            document.getElementById("cidade").value =
-                data.localidade || "";
-
-            document.getElementById("estado").value =
-                data.uf || "";
-
-            document.getElementById("bairro").value =
-                data.bairro || "";
-
+        if(data.erro){
+            return;
         }
+
+        document.getElementById('checkoutRua')
+            .value = data.logradouro || '';
+
+        document.getElementById('checkoutBairro')
+            .value = data.bairro || '';
+
+        document.getElementById('checkoutCidade')
+            .value = data.localidade || '';
+
+        document.getElementById('checkoutEstado')
+            .value = data.uf || '';
 
     }catch(error){
 
@@ -2622,48 +2571,42 @@ async function searchCEP(){
 }
 
 
-/* =========================
-   FINALIZAR
-========================= */
-
 function finishOrder(){
 
-    const orderNumber =
-        "MG-" +
-        Math.floor(
-            10000 +
-            Math.random()*89999
-        );
-
-
-    document.getElementById("modalContent")
-    .innerHTML = `
+    document.getElementById('modalContent')
+        .innerHTML = `
 
         <div class="order-success">
 
             <div class="success-symbol">
-                ✦
+                ✓
+            </div>
+
+            <div class="eyebrow">
+                Maison Global
             </div>
 
             <h2>
-                Pedido confirmado.
+                Pedido recebido.
             </h2>
 
-            <p>
-                Obrigada por escolher a
-                Maison Global.
+            <p style="
+                color:#777;
+                line-height:1.8;
+                max-width:500px;
+                margin:auto;
+            ">
+                Esta é uma experiência demonstrativa.
+                Nenhuma cobrança real foi realizada.
             </p>
 
-            <br>
-
-            <strong>
-                Pedido ${orderNumber}
-            </strong>
-
-            <p class="demo-note">
-                Esta é uma compra demonstrativa.
-                Nenhum pagamento foi realizado.
-            </p>
+            <button
+                class="modal-add"
+                style="max-width:300px;margin-top:30px"
+                onclick="closeModal()"
+            >
+                VOLTAR À MAISON
+            </button>
 
         </div>
 
@@ -2677,73 +2620,17 @@ function finishOrder(){
 
 
 /* =========================
-   MODAL
+   CLOSE MODAL
 ========================= */
 
-function closeModal(){
+document.getElementById('modalBg')
+    .addEventListener('click',function(event){
 
-    document.getElementById("modal")
-    .style.display = "none";
+        if(event.target === this){
+            closeModal();
+        }
 
-    selectedQuantity = 1;
-
-}
-
-
-document.getElementById("modal")
-.addEventListener("click",(event)=>{
-
-    if(event.target.id === "modal"){
-
-        closeModal();
-
-    }
-
-});
-
-
-/* =========================
-   HEADER SCROLL
-========================= */
-
-window.addEventListener("scroll",()=>{
-
-    const header =
-        document.getElementById("header");
-
-    if(window.scrollY > 50){
-
-        header.classList.add("scrolled");
-
-    }else{
-
-        header.classList.remove("scrolled");
-
-    }
-
-});
-
-
-/* =========================
-   SCROLL
-========================= */
-
-function scrollToSection(id){
-
-    document
-        .getElementById(id)
-        .scrollIntoView({
-            behavior:"smooth"
-        });
-
-}
-
-
-/* =========================
-   START
-========================= */
-
-renderProducts();
+    });
 
 </script>
 
